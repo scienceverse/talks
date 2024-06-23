@@ -6,17 +6,20 @@ $body-bg: #FFF;
 
 :root {
   --red: #B52824; 
-  --orange: #E2A458; 
-  --yellow: #F5DC70; 
+  --orange: #CB7631; 
+  --yellow: #F7BB44; 
   --green: #327118;  
   --blue: #154E80;  
-  --purple: #61589C;
+  --purple: #532A93;
 }
 
 /* rainbow borders */
 .slide-background-content {
   margin-top: 18px;
-  box-shadow: 0 -6px 0 0px var(--blue),
-              0 -12px 0 0px var(--green),
+  box-shadow: 0 -3px 0 0px var(--purple),
+              0 -6px 0 0px var(--blue),
+              0 -9px 0 0px var(--green),
+              0 -12px 0 0px var(--yellow),
+              0 -15px 0 0px var(--orange),
               0 -18px 0 0px var(--red);
 }

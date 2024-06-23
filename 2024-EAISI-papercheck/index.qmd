@@ -1,8 +1,8 @@
 ---
 # https://www.tue.nl/en/our-university/calendar-and-events/25-06-2024-eaisi-lecture-by-visiting-professor-lisa-debruine
-title: "Automated assessment of scientific papers "
-subtitle: "[scienceverse.github.io/talks/2024-EAISI-papercheck/](https://scienceverse.github.io/talks/2024-EAISI-papercheck/)"
-author: "Lisa DeBruine  \n![](images/rainbow.png){width=60 style='vertical-align:middle;'} [@debruine](https://debruine.github.io)"
+title: "Automated assessment of scientific papers"
+subtitle: "![](images/scienceverse.png){height=180}![](images/qr.png){height=180}![](images/papercheck.png){height=180}<br>[scienceverse.github.io/talks/2024-EAISI-papercheck/](https://scienceverse.github.io/talks/2024-EAISI-papercheck/)"
+author: "Lisa DeBruine ![](images/rainbow.png){width=60 style='vertical-align:middle;'} [@debruine](https://debruine.github.io)"
 format: 
   revealjs:
     logo: images/papercheck.png
@@ -27,7 +27,66 @@ Researchers are increasingly aware of the need to share all aspects of the resea
 
 # The Problem
 
-# A Solution
+## Best Practices are Rapidly Evolving
+
+<!--
+- share data, code, and materials
+- correctly apply statistical methods
+- declare conflicts of interests 
+- transparent author contributions
+- appropriately cite papers; acknowledge retractions
+- avoid overclaiming and inappropriate use of causal language
+-->
+
+::: {layout="[[2,1,1], [1,2,1]]"}
+
+![](images/os-foster.jpg)
+
+![](images/os-liber.jpg)
+
+![](images/os-opus.png)
+
+![](images/os-unesco.png)
+
+![](images/os-4pillars.jpg)
+
+![](images/os-umbrella.png)
+:::
+
+
+## Machine-Readable Meta-Data
+
+:::: columns
+::: {.column width="30%"}
+
+::: {layout="[[1], [1]]"}
+![](images/FAIR.png)
+
+![](images/pdf-die.png)
+:::
+
+:::
+::: {.column width="70%"}
+
+- All research outputs should be FAIR
+- PDFs are where data goes to die
+- Meta-data use cases:
+    - facilitating meta-analyses
+    - improving the re-use of reliable measures
+    - meta-scientific research
+
+:::
+::::
+
+##
+
+
+
+# Solutions
+
+## Checklists
+
+## Automted Checks
 
 # Workflow
 
