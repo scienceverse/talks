@@ -1,0 +1,22 @@
+/*-- scss:defaults --*/
+
+$body-bg: #FFF;
+
+/*-- scss:rules --*/
+
+:root {
+  --red: #B52824; 
+  --orange: #E2A458; 
+  --yellow: #F5DC70; 
+  --green: #327118;  
+  --blue: #154E80;  
+  --purple: #61589C;
+}
+
+/* rainbow borders */
+.slide-background-content {
+  margin-top: 18px;
+  box-shadow: 0 -6px 0 0px var(--blue),
+              0 -12px 0 0px var(--green),
+              0 -18px 0 0px var(--red);
+}
