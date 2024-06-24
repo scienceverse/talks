@@ -31,6 +31,71 @@
       margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
       vertical-align: middle;
     }
+    /* CSS for syntax highlighting */
+    pre > code.sourceCode { white-space: pre; position: relative; }
+    pre > code.sourceCode > span { line-height: 1.25; }
+    pre > code.sourceCode > span:empty { height: 1.2em; }
+    .sourceCode { overflow: visible; }
+    code.sourceCode > span { color: inherit; text-decoration: inherit; }
+    div.sourceCode { margin: 1em 0; }
+    pre.sourceCode { margin: 0; }
+    @media screen {
+    div.sourceCode { overflow: auto; }
+    }
+    @media print {
+    pre > code.sourceCode { white-space: pre-wrap; }
+    pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+    }
+    pre.numberSource code
+      { counter-reset: source-line 0; }
+    pre.numberSource code > span
+      { position: relative; left: -4em; counter-increment: source-line; }
+    pre.numberSource code > span > a:first-child::before
+      { content: counter(source-line);
+        position: relative; left: -1em; text-align: right; vertical-align: baseline;
+        border: none; display: inline-block;
+        -webkit-touch-callout: none; -webkit-user-select: none;
+        -khtml-user-select: none; -moz-user-select: none;
+        -ms-user-select: none; user-select: none;
+        padding: 0 4px; width: 4em;
+        color: #aaaaaa;
+      }
+    pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+    div.sourceCode
+      { color: #003b4f; background-color: #f1f3f5; }
+    @media screen {
+    pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+    }
+    code span { color: #003b4f; } /* Normal */
+    code span.al { color: #ad0000; } /* Alert */
+    code span.an { color: #5e5e5e; } /* Annotation */
+    code span.at { color: #657422; } /* Attribute */
+    code span.bn { color: #ad0000; } /* BaseN */
+    code span.bu { } /* BuiltIn */
+    code span.cf { color: #003b4f; } /* ControlFlow */
+    code span.ch { color: #20794d; } /* Char */
+    code span.cn { color: #8f5902; } /* Constant */
+    code span.co { color: #5e5e5e; } /* Comment */
+    code span.cv { color: #5e5e5e; font-style: italic; } /* CommentVar */
+    code span.do { color: #5e5e5e; font-style: italic; } /* Documentation */
+    code span.dt { color: #ad0000; } /* DataType */
+    code span.dv { color: #ad0000; } /* DecVal */
+    code span.er { color: #ad0000; } /* Error */
+    code span.ex { } /* Extension */
+    code span.fl { color: #ad0000; } /* Float */
+    code span.fu { color: #4758ab; } /* Function */
+    code span.im { color: #00769e; } /* Import */
+    code span.in { color: #5e5e5e; } /* Information */
+    code span.kw { color: #003b4f; } /* Keyword */
+    code span.op { color: #5e5e5e; } /* Operator */
+    code span.ot { color: #003b4f; } /* Other */
+    code span.pp { color: #ad0000; } /* Preprocessor */
+    code span.sc { color: #5e5e5e; } /* SpecialChar */
+    code span.ss { color: #20794d; } /* SpecialString */
+    code span.st { color: #20794d; } /* String */
+    code span.va { color: #111111; } /* Variable */
+    code span.vs { color: #20794d; } /* VerbatimString */
+    code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
   </style>
   <link rel="stylesheet" href="index_files/libs/revealjs/dist/theme/quarto.css">
   <link href="index_files/libs/revealjs/plugin/quarto-line-highlight/line-highlight.css" rel="stylesheet">
@@ -354,14 +419,26 @@ Lisa DeBruine <img data-src="images/rainbow.png" style="vertical-align:middle;" 
 </section>
 <section id="best-practices-are-rapidly-evolving" class="slide level2">
 <h2>Best Practices are Rapidly Evolving</h2>
-<!--
-- share data, code, and materials
-- correctly apply statistical methods
-- declare conflicts of interests 
-- transparent author contributions
-- appropriately cite papers; acknowledge retractions
-- avoid overclaiming and inappropriate use of causal language
--->
+<aside class="notes">
+<ul>
+<li>share data, code, and materials</li>
+<li>correctly apply statistical methods</li>
+<li>declare conflicts of interests</li>
+<li>transparent author contributions</li>
+<li>appropriately cite papers; acknowledge retractions</li>
+<li>avoid overclaiming and inappropriate use of causal language</li>
+</ul>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
 <div class="quarto-layout-panel" data-layout="[[2,1,1], [1,2,1]]">
 <div class="quarto-layout-row">
 <div class="quarto-layout-cell" style="flex-basis: 50.0%;justify-content: center;">
@@ -387,8 +464,8 @@ Lisa DeBruine <img data-src="images/rainbow.png" style="vertical-align:middle;" 
 </div>
 </div>
 </section>
-<section id="machine-readable-meta-data" class="slide level2">
-<h2>Machine-Readable Meta-Data</h2>
+<section id="un-fair-meta-data" class="slide level2">
+<h2>Un-FAIR Meta-Data</h2>
 <div class="columns">
 <div class="column" style="width:30%;">
 <div class="quarto-layout-panel" data-layout="[[1], [1]]">
@@ -416,9 +493,6 @@ Lisa DeBruine <img data-src="images/rainbow.png" style="vertical-align:middle;" 
 </ul>
 </div>
 </div>
-</section>
-<section id="section" class="slide level2">
-<h2></h2>
 </section></section>
 <section>
 <section id="solutions" class="title-slide slide level1 center">
@@ -426,17 +500,531 @@ Lisa DeBruine <img data-src="images/rainbow.png" style="vertical-align:middle;" 
 
 </section>
 <section id="checklists" class="slide level2">
-<h2>Checklists</h2>
+<h2>Checklists?</h2>
+<div class="columns">
+<div class="column" style="width:50%;">
+<p>Reporting guidelines, such as <a href="https://www.goodreports.org/reporting-checklists/consort/">CONSORT</a>, <a href="https://prisma.shinyapps.io/checklist/">PRISMA</a>, and <a href="https://apastyle.apa.org/jars">JARS</a> often provide extensive checklists.</p>
+<style>
+.checklist li::before {
+  background-image: url('images/checkbox.svg');
+}
+</style>
+<div class="checklist">
+<ul>
+<li>Time-consuming</li>
+<li>Requires expertise</li>
+<li>Can be vague</li>
+<li>Who checks the checklist?</li>
+</ul>
+</div>
+</div><div class="column" style="width:50%;">
+<div class="panel-tabset">
+<ul id="tabset-1" class="panel-tabset-tabby"><li><a data-tabby-default="" href="#tabset-1-1">JARS-1</a></li><li><a href="#tabset-1-2">2</a></li><li><a href="#tabset-1-3">3</a></li></ul>
+<div class="tab-content">
+<div id="tabset-1-1">
+<p><img data-src="images/JARS-quant1.png"></p>
+</div>
+<div id="tabset-1-2">
+<p><img data-src="images/JARS-quant2.png"></p>
+</div>
+<div id="tabset-1-3">
+<p><img data-src="images/JARS-quant3.png"></p>
+</div>
+</div>
+</div>
+</div>
+</div>
 </section>
-<section id="automted-checks" class="slide level2">
-<h2>Automted Checks</h2>
+<section id="automated-checks" class="slide level2">
+<h2>Automated Checks</h2>
+<div class="checklist">
+<ul>
+<li>Time-efficient</li>
+<li>Requires less expertise</li>
+<li>Reproducible</li>
+<li>Generates machine-readable metadata</li>
+</ul>
+</div>
+</section>
+<section id="automation-strategies" class="slide level2">
+<h2>Automation Strategies</h2>
+<p><a href="grobid.readthedocs.io">Grobid</a>: A machine learning software for extracting structured information from scholarly documents</p>
+<p>And then…</p>
+<div class="quarto-layout-panel" data-layout="[[1,1,1,1]]">
+<div class="quarto-layout-row">
+<div class="quarto-layout-cell" style="flex-basis: 25.0%;justify-content: flex-start;">
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><img data-src="images/regex.png"></p>
+<figcaption>Text Search</figcaption>
+</figure>
+</div>
+</div>
+<div class="quarto-layout-cell" style="flex-basis: 25.0%;justify-content: flex-start;">
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><img data-src="images/code.png"></p>
+<figcaption>Code</figcaption>
+</figure>
+</div>
+</div>
+<div class="quarto-layout-cell" style="flex-basis: 25.0%;justify-content: flex-start;">
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><img data-src="images/ml.png"></p>
+<figcaption>Machine Learning</figcaption>
+</figure>
+</div>
+</div>
+<div class="quarto-layout-cell" style="flex-basis: 25.0%;justify-content: flex-start;">
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><img data-src="images/ai.jpg"></p>
+<figcaption>AI</figcaption>
+</figure>
+</div>
+</div>
+</div>
+</div>
 </section></section>
 <section>
-<section id="workflow" class="title-slide slide level1 center">
-<h1>Workflow</h1>
+<section id="r-package" class="title-slide slide level1 center">
+<h1>R Package</h1>
 
+<img data-src="images/papercheck.png" class="r-stretch"></section>
+<section id="paper-import" class="slide level2">
+<h2>Paper Import</h2>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href=""></a>file <span class="ot">&lt;-</span> <span class="fu">demopdf</span>()</span>
+<span id="cb1-2"><a href=""></a>xml <span class="ot">&lt;-</span> <span class="fu">pdf2grobid</span>(file)</span>
+<span id="cb1-3"><a href=""></a>paper <span class="ot">&lt;-</span> <span class="fu">read_grobid</span>(xml)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell">
+<div class="cell-output cell-output-stdout">
+<pre><code>---------------
+to_err_is_human
+---------------
+
+* Sections: 4
+* Sentences: 24
+* References: 2
+* Citations: 2</code></pre>
+</div>
+</div>
+</section>
+<section id="batch-import" class="slide level2">
+<h2>Batch Import</h2>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href=""></a>dir <span class="ot">&lt;-</span> <span class="fu">demodir</span>()</span>
+<span id="cb3-2"><a href=""></a>papers <span class="ot">&lt;-</span> <span class="fu">read_grobid</span>(dir)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="columns">
+<div class="column" style="width:33%;">
+<div class="cell">
+<div class="cell-output cell-output-stdout">
+<pre><code>--------
+eyecolor
+--------
+
+* Sections: 8
+* Sentences: 93
+* References: 21
+* Citations: 22</code></pre>
+</div>
+</div>
+</div><div class="column" style="width:33%;">
+<div class="cell">
+<div class="cell-output cell-output-stdout">
+<pre><code>------
+incest
+------
+
+* Sections: 7
+* Sentences: 56
+* References: 4
+* Citations: 14</code></pre>
+</div>
+</div>
+</div><div class="column" style="width:33%;">
+<div class="cell">
+<div class="cell-output cell-output-stdout">
+<pre><code>------
+prereg
+------
+
+* Sections: 10
+* Sentences: 180
+* References: 23
+* Citations: 31</code></pre>
+</div>
+</div>
+</div>
+</div>
+</section>
+<section id="text-search" class="slide level2">
+<h2>Text Search</h2>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href=""></a><span class="fu">search_text</span>(paper, <span class="st">"="</span>, <span class="at">return =</span> <span class="st">"sentence"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="module">
+<div class="cell">
+<div class="cell-output-display">
+<table>
+<colgroup>
+<col style="width: 82%">
+<col style="width: 3%">
+<col style="width: 3%">
+<col style="width: 1%">
+<col style="width: 1%">
+<col style="width: 1%">
+<col style="width: 7%">
+</colgroup>
+<thead>
+<tr class="header">
+<th style="text-align: left;">text</th>
+<th style="text-align: left;">section</th>
+<th style="text-align: left;">header</th>
+<th style="text-align: right;">div</th>
+<th style="text-align: right;">p</th>
+<th style="text-align: right;">s</th>
+<th style="text-align: left;">id</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">On average researchers in the experimental (app) condition made fewer mistakes (M = 9.12) than researchers in the control (checklist) condition (M = 10.9), t(97.7) = 2.9, p = 0.005.</td>
+<td style="text-align: left;">results</td>
+<td style="text-align: left;">Results</td>
+<td style="text-align: right;">3</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">2</td>
+<td style="text-align: left;">to_err_is_human.xml</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">On average researchers in the experimental condition found the app marginally significantly more useful (M = 5.06) than researchers in the control condition found the checklist (M = 4.5), t(97.2) = -1.96, p = 0.052.</td>
+<td style="text-align: left;">results</td>
+<td style="text-align: left;">Results</td>
+<td style="text-align: right;">3</td>
+<td style="text-align: right;">2</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: left;">to_err_is_human.xml</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+</section>
+<section id="chatgpt" class="slide level2">
+<h2>ChatGPT</h2>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href=""></a>papers <span class="sc">|&gt;</span> </span>
+<span id="cb8-2"><a href=""></a>  <span class="fu">search_text</span>(<span class="at">section =</span> <span class="st">"method"</span>) <span class="sc">|&gt;</span></span>
+<span id="cb8-3"><a href=""></a>  <span class="fu">gpt</span>(<span class="at">query =</span> <span class="st">"How many subjects are in this study?"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="module">
+<div class="cell">
+<div class="cell-output-display">
+<table>
+<colgroup>
+<col style="width: 12%">
+<col style="width: 78%">
+<col style="width: 8%">
+</colgroup>
+<thead>
+<tr class="header">
+<th style="text-align: left;">id</th>
+<th style="text-align: left;">answer</th>
+<th style="text-align: right;">cost</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">eyecolor.xml</td>
+<td style="text-align: left;">There were 150 women and 150 men, making a total of 300 subjects in this study.</td>
+<td style="text-align: right;">0.000598</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">incest.xml</td>
+<td style="text-align: left;">There were a total of 1998 participants in this study.</td>
+<td style="text-align: right;">0.000551</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
 </section>
 <section id="modules" class="slide level2">
+<h2>Modules</h2>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href=""></a><span class="fu">module_list</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code> * ai-summarise: Generate a 1-sentence summary for each section
+ * all-p-values: List all p-values in the text, returning the matched text (e.g., 'p = 0.04') and document location in a table.
+ * all-urls: List all the URLs in the main text
+ * imprecise-p: List any p-values reported with insufficient precision (e.g., p &lt; .05 or p = n.s.)
+ * marginal: List all sentences that describe an effect as 'marginally significant'.
+ * osf-check: List all OSF links and whether they are open, closed, or do not exist.
+ * ref-consistency: Check if all references are cited and all citations are referenced
+ * retractionwatch: Flag any cited papers in the RetractionWatch database
+ * sample-size-ml: [DEMO] Classify each sentence for whether it contains sample-size information, returning only sentences with probable sample-size info.</code></pre>
+</div>
+</div>
+</section>
+<section id="modules-imprecise-p-values" class="slide level2">
+<h2>Modules: Imprecise P-Values</h2>
+<aside class="notes">
+<p>Those of us of a certain age remember looking up p-values from tables of test statistics and degrees of freedom, leading to the common practice of reporting p-values inexactly, such as “p &lt; .05”. However, modern computational techniques allow us to report p-values exactly, and this practice helps us to check papers for inconsistencies (e.g., Statcheck) and to reuse findings in meta-analysis.</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+<p>This module scans the text for all p-values and flags those reported inexactly, such as p &lt; .01, p &lt; .10, or p = n.s.</p>
+<div class="module">
+<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href=""></a><span class="fu">module_run</span>(paper, <span class="st">"imprecise-p"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<h3 class="red" id="imprecise-p-values">Imprecise P-Values</h3>
+<p>You may have reported some imprecise p-values</p>
+<table>
+<thead>
+<tr class="header">
+<th style="text-align: left;">text</th>
+<th style="text-align: left;">section</th>
+<th style="text-align: left;">header</th>
+<th style="text-align: right;">div</th>
+<th style="text-align: right;">p</th>
+<th style="text-align: right;">s</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">p &gt; .05</td>
+<td style="text-align: left;">results</td>
+<td style="text-align: left;">Results</td>
+<td style="text-align: right;">3</td>
+<td style="text-align: right;">2</td>
+<td style="text-align: right;">2</td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+<section id="modules-marginal-significance" class="slide level2">
+<h2>Modules: Marginal Significance</h2>
+<aside class="notes">
+<p>Researchers commonly interpret statistically non-significant test results just above 0.05 as ‘marginally significant’. This practice, beyond being formally incorrect, inflates the Type 1 error rate of scientific claims when such results are interpreted as supporting the hypothesis, just as if they were statistically significant. For example, in the Reproducibility Project: Psychology where 100 studies were replicated, 97 of the original studies were interpreted as supporting the hypothesis, even though four studies had p values just above the alpha level (0.0508, 0.0514, 0.0516, and 0.0567). None of these studies replicated.</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+<p>This module searches the text for phrases such as “marginally significant” or “borderline significance” and flags these as inappropriate descriptions.</p>
+<div class="module">
+<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href=""></a><span class="fu">module_run</span>(paper, <span class="st">"marginal"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<h3 class="red" id="marginal-significance">Marginal Significance</h3>
+<p>You described effects as marginally/borderline/close to significant. It is better to write ‘did not reach the threshold alpha for significance’.</p>
+<table>
+<colgroup>
+<col style="width: 89%">
+<col style="width: 3%">
+<col style="width: 3%">
+<col style="width: 1%">
+<col style="width: 1%">
+<col style="width: 1%">
+</colgroup>
+<thead>
+<tr class="header">
+<th style="text-align: left;">text</th>
+<th style="text-align: left;">section</th>
+<th style="text-align: left;">header</th>
+<th style="text-align: right;">div</th>
+<th style="text-align: right;">p</th>
+<th style="text-align: right;">s</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">On average researchers in the experimental condition found the app marginally significantly more useful (M = 5.06) than researchers in the control condition found the checklist (M = 4.5), t(97.2) = -1.96, p = 0.052.</td>
+<td style="text-align: left;">results</td>
+<td style="text-align: left;">Results</td>
+<td style="text-align: right;">3</td>
+<td style="text-align: right;">2</td>
+<td style="text-align: right;">1</td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+<section id="modules-inaccessible-resources" class="slide level2">
+<h2>Modules: Inaccessible Resources</h2>
+<aside class="notes">
+<p>While the sharing of data, code and materials underlying scientific claims is increasing, with many research funders and journals encouraging or requiring this practice, it is a frequent frustration that the references to such resources are not actually findable or accessible. One common problem with the popular sharing platform OSF is that projects can be public or private, and researchers can easily accidentally fail to make linked resources public.</p>
+<p>Indeed, in a scan of XXX papers published in XXX, we found that X% (XX of XXX) OSF links led to inaccessible projects.</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+<p>This module scans text for references to OSF projects and checks their status, flagging users if any of the links are either broken or lead to inaccessible private projects.</p>
+<div class="module">
+<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href=""></a><span class="fu">module_run</span>(paper, <span class="st">"osf-check"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<h3 class="red" id="check-status-of-osf-links">Check Status of OSF Links</h3>
+<p>We detected closed OSF links</p>
+<table style="width:100%;">
+<colgroup>
+<col style="width: 30%">
+<col style="width: 11%">
+<col style="width: 34%">
+<col style="width: 5%">
+<col style="width: 4%">
+<col style="width: 4%">
+<col style="width: 10%">
+</colgroup>
+<thead>
+<tr class="header">
+<th style="text-align: left;">text</th>
+<th style="text-align: left;">section</th>
+<th style="text-align: left;">header</th>
+<th style="text-align: right;">div</th>
+<th style="text-align: right;">p</th>
+<th style="text-align: right;">s</th>
+<th style="text-align: left;">status</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">osf.io/5tbm9</td>
+<td style="text-align: left;">method</td>
+<td style="text-align: left;">Method and Participants</td>
+<td style="text-align: right;">2</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">2</td>
+<td style="text-align: left;">closed</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">https://osf.io/5tbm9</td>
+<td style="text-align: left;">results</td>
+<td style="text-align: left;">Results</td>
+<td style="text-align: right;">3</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: left;">closed</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">https://osf.io/629bx</td>
+<td style="text-align: left;">results</td>
+<td style="text-align: left;">Results</td>
+<td style="text-align: right;">3</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: left;">open</td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+<section id="modules-reference-consistency" class="slide level2">
+<h2>Modules: Reference Consistency</h2>
+<p>This modules checks for missing references or citations.</p>
+<div class="module">
+<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href=""></a><span class="fu">module_run</span>(paper, <span class="st">"ref-consistency"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<h3 class="red" id="reference-consistency">Reference Consistency</h3>
+<p>This module relies on Grobid correctly parsing the references. There may be some false positives. There are references that are not cited or citations that are not referenced</p>
+<table>
+<colgroup>
+<col style="width: 11%">
+<col style="width: 13%">
+<col style="width: 67%">
+<col style="width: 7%">
+</colgroup>
+<thead>
+<tr class="header">
+<th style="text-align: left;">bib_id</th>
+<th style="text-align: left;">doi</th>
+<th style="text-align: left;">ref</th>
+<th style="text-align: left;">missing</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">b1</td>
+<td style="text-align: left;">10.0000/0123456789</td>
+<td style="text-align: left;">NA</td>
+<td style="text-align: left;">citation</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">(Smithy, 2020)</td>
+<td style="text-align: left;">NA</td>
+<td style="text-align: left;">From a human factors perspective, human error is a symptom of a poor design (Smithy, 2020).</td>
+<td style="text-align: left;">reference</td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+<section id="modules-retracted-papers" class="slide level2">
+<h2>Modules: Retracted Papers</h2>
+<aside class="notes">
+<p>More than 10,000 scientific papers were retracted in 2023 (https://www.nature.com/articles/d41586-023-03974-8), for various reasons including honest error, duplicate publication, and misconduct. Retraction Watch (https://retractionwatch.com) keeps a database of retracted papers along with information about the reason for the retraction, which is also publicly available from CrossRef. This module includes the sentences in which a retracted paper was cited so that researchers can more easily check if the citation acknowledged the retracted status of the cited paper.</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+<p>This module searches the <a href="https://retractionwatch.com">RetractionWatch</a> database for all cited references in a paper and flags those that have been retracted.</p>
+<div class="module">
+<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href=""></a><span class="fu">module_run</span>(paper, <span class="st">"retractionwatch"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<h3 class="yellow" id="retractionwatch">RetractionWatch</h3>
+<p>You cited some papers in the Retraction Watch database; double-check that you are acknowledging their retracted status when citing them.</p>
+<table>
+<thead>
+<tr class="header">
+<th style="text-align: left;">bib_id</th>
+<th style="text-align: left;">doi</th>
+<th style="text-align: left;">ref</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">b0</td>
+<td style="text-align: left;">10.1177/0956797614520714</td>
+<td style="text-align: left;">NA</td>
+</tr>
+</tbody>
+</table>
+</div>
+</section></section>
+<section>
+<section id="shiny-app" class="title-slide slide level1 center">
+<h1>Shiny App</h1>
+
+</section>
+<section id="modules-1" class="slide level2">
 <h2>Modules</h2>
 <video id="video_shortcode_videojs_video1" class="video-js vjs-default-skin vjs-fluid" controls="" preload="auto" data-setup="{}" title=""><source src="images/modules.mov"></video>
 </section>
@@ -444,21 +1032,54 @@ Lisa DeBruine <img data-src="images/rainbow.png" style="vertical-align:middle;" 
 <h2>Reports</h2>
 <video id="video_shortcode_videojs_video2" class="video-js vjs-default-skin vjs-fluid" controls="" preload="auto" data-setup="{}" title=""><source src="images/report.mov"></video>
 </section>
-<section id="chatgpt" class="slide level2">
+<section id="chatgpt-1" class="slide level2">
 <h2>ChatGPT</h2>
 <video id="video_shortcode_videojs_video3" class="video-js vjs-default-skin vjs-fluid" controls="" preload="auto" data-setup="{}" title=""><source src="images/chatgpt.mov"></video>
 </section></section>
-<section id="columns" class="title-slide slide level1 center">
-<h1>Columns</h1>
-<div class="columns">
-<div class="column" style="width:50%;">
-<p>Left</p>
-</div><div class="column" style="width:50%;">
-<p>Right</p>
-</div>
-</div>
-</section>
+<section>
+<section id="promoting-adoption" class="title-slide slide level1 center">
+<h1>Promoting Adoption</h1>
 
+<img data-src="images/cos_triangle_text.webp" class="r-stretch quarto-figure-center"><p class="caption">Center for Open Science</p></section>
+<section id="workflows" class="slide level2">
+<h2>Workflows</h2>
+<div class="quarto-layout-panel" data-layout="[[1,1,1,1]]">
+<div class="quarto-layout-row">
+<div class="quarto-layout-cell" style="flex-basis: 25.0%;justify-content: flex-start;">
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><img data-src="images/individual.svg"></p>
+<figcaption>Individual</figcaption>
+</figure>
+</div>
+</div>
+<div class="quarto-layout-cell" style="flex-basis: 25.0%;justify-content: flex-start;">
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><img data-src="images/arxiv.jpg"></p>
+<figcaption>Automated</figcaption>
+</figure>
+</div>
+</div>
+<div class="quarto-layout-cell" style="flex-basis: 25.0%;justify-content: flex-start;">
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><img data-src="images/metascience.png"></p>
+<figcaption>Meta-Science</figcaption>
+</figure>
+</div>
+</div>
+<div class="quarto-layout-cell" style="flex-basis: 25.0%;justify-content: flex-start;">
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><img data-src="images/systematic.png"></p>
+<figcaption>Systemic</figcaption>
+</figure>
+</div>
+</div>
+</div>
+</div>
+</section></section>
 <section id="thank-you" class="title-slide slide level1 center">
 <h1>Thank You!</h1>
 <p><img data-src="images/papercheck.png" style="vertical-align:middle;" width="120"> <a href="https://scienceverse.github.io/papercheck/">papercheck</a></p>

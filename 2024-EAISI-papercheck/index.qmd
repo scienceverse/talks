@@ -15,8 +15,6 @@ format:
 
 ```{r, include = FALSE}
 library(papercheck)
-library(ggdark)
-library(gt)
 
 knitr::opts_chunk$set(echo = TRUE)
 ```
@@ -29,14 +27,14 @@ Researchers are increasingly aware of the need to share all aspects of the resea
 
 ## Best Practices are Rapidly Evolving
 
-<!--
+::: {.notes}
 - share data, code, and materials
 - correctly apply statistical methods
 - declare conflicts of interests 
 - transparent author contributions
 - appropriately cite papers; acknowledge retractions
 - avoid overclaiming and inappropriate use of causal language
--->
+:::
 
 ::: {layout="[[2,1,1], [1,2,1]]"}
 
@@ -54,7 +52,7 @@ Researchers are increasingly aware of the need to share all aspects of the resea
 :::
 
 
-## Machine-Readable Meta-Data
+## Un-FAIR Meta-Data
 
 :::: columns
 ::: {.column width="30%"}
@@ -78,17 +76,244 @@ Researchers are increasingly aware of the need to share all aspects of the resea
 :::
 ::::
 
-##
-
-
 
 # Solutions
 
-## Checklists
+## Checklists?
 
-## Automted Checks
+:::: columns
+::: {.column width="50%"}
 
-# Workflow
+Reporting guidelines, such as [CONSORT](https://www.goodreports.org/reporting-checklists/consort/), [PRISMA](https://prisma.shinyapps.io/checklist/), and [JARS](https://apastyle.apa.org/jars) often provide extensive checklists.
+
+<style>
+.checklist li::before {
+  background-image: url('images/checkbox.svg');
+}
+</style>
+
+::: {.checklist}
+- Time-consuming
+- Requires expertise
+- Can be vague
+- Who checks the checklist?
+:::
+
+:::
+
+::: {.column width="50%"}
+
+::: {.panel-tabset}
+
+### JARS-1
+
+![](images/JARS-quant1.png)
+
+### 2
+
+![](images/JARS-quant2.png)
+
+### 3
+
+![](images/JARS-quant3.png)
+
+:::
+
+:::
+::::
+
+## Automated Checks
+
+::: {.checklist}
+- Time-efficient
+- Requires less expertise
+- Reproducible
+- Generates machine-readable metadata
+:::
+
+## Automation Strategies
+
+[Grobid](grobid.readthedocs.io): A machine learning software for extracting structured information from scholarly documents
+
+And then...
+
+::: {layout="[[1,1,1,1]]"}
+![Text Search](images/regex.png)
+
+![Code](images/code.png)
+
+![Machine Learning](images/ml.png)
+
+![AI](images/ai.jpg)
+:::
+
+
+# R Package
+
+![](images/papercheck.png)
+
+## Paper Import
+
+```{r, eval = FALSE}
+file <- demopdf()
+xml <- pdf2grobid(file)
+paper <- read_grobid(xml)
+```
+
+```{r, echo = FALSE}
+paper <- demoxml() |> read_grobid()
+paper
+```
+
+
+
+
+## Batch Import
+
+```{r}
+dir <- demodir()
+papers <- read_grobid(dir)
+```
+
+:::: columns
+::: {.column width="33%"}
+```{r, echo = FALSE}
+papers[[1]]
+```
+:::
+::: {.column width="33%"}
+```{r, echo = FALSE}
+papers[[2]]
+```
+:::
+::: {.column width="33%"}
+```{r, echo = FALSE}
+papers[[3]]
+```
+:::
+::::
+
+
+## Text Search
+
+```{r, eval = FALSE}
+search_text(paper, "=", return = "sentence")
+```
+::: {.module}
+
+```{r, echo = FALSE}
+search_text(paper, "=", return = "sentence") |> knitr::kable()
+```
+
+:::
+
+## ChatGPT
+
+```{r, eval = FALSE}
+papers |> 
+  search_text(section = "method") |>
+  gpt(query = "How many subjects are in this study?")
+```
+
+::: {.module}
+
+```{r, echo = FALSE}
+data.frame(
+  id = c("eyecolor.xml", "incest.xml"), 
+  answer = c("There were 150 women and 150 men, making a total of 300 subjects in this study.",
+             "There were a total of 1998 participants in this study."),
+  cost = c(0.000598, 0.000551) 
+) |> knitr::kable()
+```
+
+:::
+
+## Modules
+
+```{r}
+module_list()
+```
+
+
+## Modules: Imprecise P-Values
+
+::: {.notes}
+Those of us of a certain age remember looking up p-values from tables of test statistics and degrees of freedom, leading to the common practice of reporting p-values inexactly, such as “p < .05”. However, modern computational techniques allow us to report p-values exactly, and this practice helps us to check papers for inconsistencies (e.g., Statcheck) and to reuse findings in meta-analysis. 
+:::
+
+This module scans the text for all p-values and flags those reported inexactly, such as p < .01, p < .10, or p = n.s. 
+
+::: {.module}
+
+```{r, results='asis'}
+module_run(paper, "imprecise-p")
+```
+
+:::
+
+## Modules: Marginal Significance
+
+::: {.notes}
+Researchers commonly interpret statistically non-significant test results just above 0.05 as 'marginally significant'. This practice, beyond being formally incorrect, inflates the Type 1 error rate of scientific claims when such results are interpreted as supporting the hypothesis, just as if they were statistically significant. For example, in the Reproducibility Project: Psychology where 100 studies were replicated, 97 of the original studies were interpreted as supporting the hypothesis, even though four studies had p values just above the alpha level (0.0508, 0.0514, 0.0516, and 0.0567). None of these studies replicated. 
+:::
+
+This module searches the text for phrases such as “marginally significant” or “borderline significance” and flags these as inappropriate descriptions.
+
+::: {.module}
+
+```{r, results='asis'}
+module_run(paper, "marginal")
+```
+
+:::
+
+## Modules: Inaccessible Resources
+
+::: {.notes}
+While the sharing of data, code and materials underlying scientific claims is increasing, with many research funders and journals encouraging or requiring this practice, it is a frequent frustration that the references to such resources are not actually findable or accessible. One common problem with the popular sharing platform OSF is that projects can be public or private, and researchers can easily accidentally fail to make linked resources public.
+
+Indeed, in a scan of XXX papers published in XXX, we found that X% (XX of XXX) OSF links led to inaccessible projects. 
+:::
+
+This module scans text for references to OSF projects and checks their status, flagging users if any of the links are either broken or lead to inaccessible private projects. 
+
+::: {.module}
+
+```{r, results='asis'}
+module_run(paper, "osf-check")
+```
+
+:::
+
+## Modules: Reference Consistency
+
+This modules checks for missing references or citations.
+
+::: {.module}
+
+```{r, results='asis'}
+module_run(paper, "ref-consistency")
+```
+
+:::
+
+## Modules: Retracted Papers
+
+::: {.notes}
+More than 10,000 scientific papers were retracted in 2023 (https://www.nature.com/articles/d41586-023-03974-8), for various reasons including honest error, duplicate publication, and misconduct. Retraction Watch (https://retractionwatch.com) keeps a database of retracted papers along with information about the reason for the retraction, which is also publicly available from CrossRef. This module includes the sentences in which a retracted paper was cited so that researchers can more easily check if the citation acknowledged the retracted status of the cited paper. 
+:::
+
+This module searches the [RetractionWatch](https://retractionwatch.com) database for all cited references in a paper and flags those that have been retracted.  
+
+::: {.module}
+
+```{r, results='asis'}
+module_run(paper, "retractionwatch")
+```
+
+:::
+
+# Shiny App
 
 ## Modules
 
@@ -102,21 +327,21 @@ Researchers are increasingly aware of the need to share all aspects of the resea
 
 {{< video images/chatgpt.mov >}}
 
+# Promoting Adoption
 
-# Columns
+![Center for Open Science](images/cos_triangle_text.webp)
 
-:::: columns
-::: {.column width="50%"}
+## Workflows
 
-Left
+::: {layout="[[1,1,1,1]]"}
+![Individual](images/individual.svg)
 
+![Automated](images/arxiv.jpg)
+
+![Meta-Science](images/metascience.png)
+
+![Systemic](images/systematic.png)
 :::
-::: {.column width="50%"}
-
-Right
-
-:::
-::::
 
 # Thank You!
 

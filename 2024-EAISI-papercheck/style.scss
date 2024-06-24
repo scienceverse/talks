@@ -23,3 +23,33 @@ $body-bg: #FFF;
               0 -15px 0 0px var(--orange),
               0 -18px 0 0px var(--red);
 }
+
+/* traffic lights */
+h3.na::before { content: '⚪️ '; }
+h3.fail::before { content: '⚫️ '; }
+h3.info::before { content: '🔵 '; }
+h3.red::before { content: '🔴 '; }
+h3.yellow::before { content: '🟡 '; }
+h3.green::before { content: '🟢 '; }
+
+
+.module p, .module table {
+  font-size: 0.5em;
+}
+
+.module h3 { 
+  font-size: 0.75em;
+  margin-top: 1em; 
+}
+
+.checklist li {
+  list-style: none;
+}
+
+.checklist li::before {
+  content: '';
+  display: inline-block;
+  margin: 0 0 -.25em -1.3em;
+  height: 1.2em;
+  width: 1.2em;
+}
