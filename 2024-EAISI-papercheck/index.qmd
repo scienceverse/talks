@@ -234,6 +234,28 @@ data.frame(
 module_list()
 ```
 
+## Modules: StatCheck
+
+::: {.notes}
+ 
+:::
+
+This module uses the {[statcheck](https://michelenuijten.shinyapps.io/statcheck-web/)} package to check the consistency of p-values and test statistics.
+
+::: {.module}
+
+```{r, eval = FALSE}
+module_run(paper, "statcheck")
+```
+
+```{r, echo = FALSE, results='asis'}
+sc <- module_run(paper, "statcheck")
+sc$table <- dplyr::select(sc$table, reported_p:apa_factor)
+sc
+```
+
+:::
+
 
 ## Modules: Imprecise P-Values
 

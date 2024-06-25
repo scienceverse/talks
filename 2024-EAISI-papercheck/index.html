@@ -701,7 +701,7 @@ prereg
 <td style="text-align: left;">to_err_is_human.xml</td>
 </tr>
 <tr class="even">
-<td style="text-align: left;">On average researchers in the experimental condition found the app marginally significantly more useful (M = 5.06) than researchers in the control condition found the checklist (M = 4.5), t(97.2) = -1.96, p = 0.052.</td>
+<td style="text-align: left;">On average researchers in the experimental condition found the app marginally significantly more useful (M = 5.06) than researchers in the control condition found the checklist (M = 4.5), t(97.2) = -1.96, p = 0.152.</td>
 <td style="text-align: left;">results</td>
 <td style="text-align: left;">Results</td>
 <td style="text-align: right;">3</td>
@@ -768,8 +768,75 @@ prereg
  * osf-check: List all OSF links and whether they are open, closed, or do not exist.
  * ref-consistency: Check if all references are cited and all citations are referenced
  * retractionwatch: Flag any cited papers in the RetractionWatch database
- * sample-size-ml: [DEMO] Classify each sentence for whether it contains sample-size information, returning only sentences with probable sample-size info.</code></pre>
+ * sample-size-ml: [DEMO] Classify each sentence for whether it contains sample-size information, returning only sentences with probable sample-size info.
+ * statcheck: Check consistency of p-values and test statistics</code></pre>
 </div>
+</div>
+</section>
+<section id="modules-statcheck" class="slide level2">
+<h2>Modules: StatCheck</h2>
+<aside class="notes">
+
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+<p>This module uses the {<a href="https://michelenuijten.shinyapps.io/statcheck-web/">statcheck</a>} package to check the consistency of p-values and test statistics.</p>
+<div class="module">
+<div class="cell">
+<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href=""></a><span class="fu">module_run</span>(paper, <span class="st">"statcheck"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<h3 class="red" id="statcheck">StatCheck</h3>
+<p>We detected possible errors in test statistics</p>
+<table>
+<colgroup>
+<col style="width: 11%">
+<col style="width: 11%">
+<col style="width: 27%">
+<col style="width: 6%">
+<col style="width: 15%">
+<col style="width: 18%">
+<col style="width: 11%">
+</colgroup>
+<thead>
+<tr class="header">
+<th style="text-align: right;">reported_p</th>
+<th style="text-align: right;">computed_p</th>
+<th style="text-align: left;">raw</th>
+<th style="text-align: left;">error</th>
+<th style="text-align: left;">decision_error</th>
+<th style="text-align: left;">one_tailed_in_txt</th>
+<th style="text-align: right;">apa_factor</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: right;">0.005</td>
+<td style="text-align: right;">0.0046094</td>
+<td style="text-align: left;">t(97.7) = 2.9, p = 0.005</td>
+<td style="text-align: left;">FALSE</td>
+<td style="text-align: left;">FALSE</td>
+<td style="text-align: left;">FALSE</td>
+<td style="text-align: right;">1</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">0.152</td>
+<td style="text-align: right;">0.0528594</td>
+<td style="text-align: left;">t(97.2) = -1.96, p = 0.152</td>
+<td style="text-align: left;">TRUE</td>
+<td style="text-align: left;">FALSE</td>
+<td style="text-align: left;">FALSE</td>
+<td style="text-align: right;">1</td>
+</tr>
+</tbody>
+</table>
 </div>
 </section>
 <section id="modules-imprecise-p-values" class="slide level2">
@@ -789,7 +856,7 @@ prereg
       }</style></aside>
 <p>This module scans the text for all p-values and flags those reported inexactly, such as p &lt; .01, p &lt; .10, or p = n.s.</p>
 <div class="module">
-<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href=""></a><span class="fu">module_run</span>(paper, <span class="st">"imprecise-p"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href=""></a><span class="fu">module_run</span>(paper, <span class="st">"imprecise-p"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <h3 class="red" id="imprecise-p-values">Imprecise P-Values</h3>
 <p>You may have reported some imprecise p-values</p>
 <table>
@@ -833,12 +900,12 @@ prereg
       }</style></aside>
 <p>This module searches the text for phrases such as “marginally significant” or “borderline significance” and flags these as inappropriate descriptions.</p>
 <div class="module">
-<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href=""></a><span class="fu">module_run</span>(paper, <span class="st">"marginal"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href=""></a><span class="fu">module_run</span>(paper, <span class="st">"marginal"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <h3 class="red" id="marginal-significance">Marginal Significance</h3>
 <p>You described effects as marginally/borderline/close to significant. It is better to write ‘did not reach the threshold alpha for significance’.</p>
 <table>
 <colgroup>
-<col style="width: 89%">
+<col style="width: 90%">
 <col style="width: 3%">
 <col style="width: 3%">
 <col style="width: 1%">
@@ -857,7 +924,15 @@ prereg
 </thead>
 <tbody>
 <tr class="odd">
-<td style="text-align: left;">On average researchers in the experimental condition found the app marginally significantly more useful (M = 5.06) than researchers in the control condition found the checklist (M = 4.5), t(97.2) = -1.96, p = 0.052.</td>
+<td style="text-align: left;">The paper shows examples of (1) open and closed OSF links; (2) citation of retracted papers; (3) missing/mismatched citations and references; (4) imprecise reporting of p-values; and (5) use of “marginally significant” to describe non-significant findings.</td>
+<td style="text-align: left;">abstract</td>
+<td style="text-align: left;">Abstract</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">3</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">On average researchers in the experimental condition found the app marginally significantly more useful (M = 5.06) than researchers in the control condition found the checklist (M = 4.5), t(97.2) = -1.96, p = 0.152.</td>
 <td style="text-align: left;">results</td>
 <td style="text-align: left;">Results</td>
 <td style="text-align: right;">3</td>
@@ -886,7 +961,7 @@ prereg
       }</style></aside>
 <p>This module scans text for references to OSF projects and checks their status, flagging users if any of the links are either broken or lead to inaccessible private projects.</p>
 <div class="module">
-<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href=""></a><span class="fu">module_run</span>(paper, <span class="st">"osf-check"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href=""></a><span class="fu">module_run</span>(paper, <span class="st">"osf-check"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <h3 class="red" id="check-status-of-osf-links">Check Status of OSF Links</h3>
 <p>We detected closed OSF links</p>
 <table style="width:100%;">
@@ -946,7 +1021,7 @@ prereg
 <h2>Modules: Reference Consistency</h2>
 <p>This modules checks for missing references or citations.</p>
 <div class="module">
-<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href=""></a><span class="fu">module_run</span>(paper, <span class="st">"ref-consistency"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href=""></a><span class="fu">module_run</span>(paper, <span class="st">"ref-consistency"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <h3 class="red" id="reference-consistency">Reference Consistency</h3>
 <p>This module relies on Grobid correctly parsing the references. There may be some false positives. There are references that are not cited or citations that are not referenced</p>
 <table>
@@ -998,7 +1073,7 @@ prereg
       }</style></aside>
 <p>This module searches the <a href="https://retractionwatch.com">RetractionWatch</a> database for all cited references in a paper and flags those that have been retracted.</p>
 <div class="module">
-<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href=""></a><span class="fu">module_run</span>(paper, <span class="st">"retractionwatch"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a href=""></a><span class="fu">module_run</span>(paper, <span class="st">"retractionwatch"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <h3 class="yellow" id="retractionwatch">RetractionWatch</h3>
 <p>You cited some papers in the Retraction Watch database; double-check that you are acknowledging their retracted status when citing them.</p>
 <table>
