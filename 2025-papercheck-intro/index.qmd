@@ -526,7 +526,7 @@ mod$summary |> dplyr::filter(rw_Correction + rw_Retraction > 0)
 ![](images/caveat.png)
 
 :::
-::: {.column width="30%"}
+::: {.column width="70%"}
 
 * Validation
 * Sustainability
