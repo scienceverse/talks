@@ -7,7 +7,7 @@ qrcode::qr_code(url) |> qrcode::generate_svg("images/qrcode.svg")
 ---
 title: "Papercheck"
 subtitle: "`r subtitle`"
-author: "Lisa DeBruine \n ![](images/qrcode.svg){width=300}"
+author: "Lisa DeBruine \n\n ![](images/qrcode.svg){width=300}"
 format: 
   revealjs:
     logo: images/papercheck.png
@@ -20,6 +20,9 @@ format:
 
 ```{r, include = FALSE}
 library(papercheck)
+library(tidyverse)
+
+theme_set(theme_minimal(13))
 
 knitr::opts_chunk$set(echo = TRUE)
 ```
@@ -209,12 +212,26 @@ papers[[4]]
 ## Text Search
 
 ```{r, eval = FALSE}
-search_text(paper, "=", return = "sentence")
+search_text(paper, "Canadian")
 ```
 ::: {.module}
 
 ```{r, echo = FALSE}
-search_text(paper, "=", return = "sentence") |> knitr::kable()
+search_text(paper, "Canadian") |> knitr::kable()
+```
+
+:::
+
+## Regex Text Search
+
+```{r, eval = FALSE}
+search_text(paper, "\\b\\S+\\s*=\\s*\\S+\\b", return = "match")
+```
+
+::: {.module}
+
+```{r, echo = FALSE}
+search_text(paper, "\\b\\S+\\s*=\\s*\\S+\\b", return = "match") |> head(10) |> knitr::kable()
 ```
 
 :::
@@ -222,10 +239,16 @@ search_text(paper, "=", return = "sentence") |> knitr::kable()
 ## LLM
 
 ```{r, eval = FALSE}
+query <- 'How many subjects were in the studies in total? 
+Return your answer in JSON format giving the total and 
+any subgroupings by gender, e.g.:
+{"total": 100, men": 42, "women": 58}, 
+Only return valid JSON, no notes.'
+
 llm_subjects <- papers |> 
-  search_text("\\d+|one|two|three|four|five|six|seven|eight|nine|ten|eleven|twelve", section = "method") |>
+  search_text("\\d+", section = "method") |>
   search_text(return = "section") |>
-  llm(query = 'How many subjects were in the studies in total? Return your answer in JSON format like {"total": 100, men": 42, "women": 58}, giving the total and any subgroupings by gender. Only return valid JSON, no notes.')
+  llm(query)
 
 llm_subjects |> json_expand()
 ```
@@ -252,11 +275,103 @@ data.frame(
 
 :::
 
+## OSF Functions
+
+```{r, eval = FALSE}
+# find all OSF links in the papers
+links <- osf_links(psychsci)
+
+# get info about a link and its children
+osf <- osf_retrieve(links$text[1], recursive = TRUE)
+
+# download all files
+osf_file_download(links$text[1])
+```
+
+::: {.module}
+```{r, echo = FALSE}
+#osf[, c(2:3, 5:6, 10, 13:14)] |> dput()
+
+data.frame(
+  osf_id = c("e2aks", "7jh5v", "pj4e8", 
+             "553e58658c5e4a219919a629", 
+              "553e58658c5e4a219919a62a", 
+              "553e58658c5e4a219919a62c", 
+              "553e58658c5e4a219919a628", 
+              "553e58658c5e4a219919a62b", 
+              "553e7e168c5e4a21991a4dac"), 
+  name = c("Action-specific disruption of perceptual confidence", 
+  "Data", "Analysis scripts", "allData_orientation.txt", "allData_contrast_M1.txt", "Mratio_contrast_M1.txt", "Mratio_all.txt", "allData_contrast_PMC.txt", "tms_analysis.R"), 
+  osf_type = c("nodes", "nodes", "nodes", "files", "files", "files", "files", "files", "files"), 
+  public = c(TRUE, TRUE, TRUE, NA, NA, NA, NA, NA, NA), 
+  parent = c(NA, "e2aks", "e2aks", "7jh5v", "7jh5v", "7jh5v", "7jh5v", "7jh5v", "pj4e8"), 
+  size = c(NA, NA, NA, 1096113L, 691560L, 5508L, 15326L, 712804L, 5670L), 
+  downloads = c(NA, NA, NA, 41L, 68L, 31L, 34L, 59L, 66L
+)) |>knitr::kable()
+```
+::: 
+
 ## Modules
 
 ```{r}
 module_list()
 ```
+
+## Modules: Effect Sizes
+
+::: {.notes}
+A JARS guideline that can be automatically checked is whether people report effect sizes alongside their test result. Each test, like a t-test or F-test, should include the corresponding effect size, like a Cohen’s d, or partial eta-squared. Based on a text search that uses regular expressions (regex), we can identify t-tests and F-tests that are not followed by an effect size, and warn researchers accordingly.
+:::
+
+```{r}
+mod <- module_run(
+  paper = psychsci,
+  module = "effect_size"
+)
+```
+
+::: {.module}
+
+```{r, echo = FALSE}
+mod$summary |> head(10) |> knitr::kable()
+```
+:::
+
+## Modules: Effect Sizes
+
+```{r, eval = FALSE}
+mod <- module_run(
+  paper = psychsci,
+  module = "effect_size"
+)
+```
+
+```{r, echo = FALSE}
+info_table(psychsci, "accepted") |>
+  left_join(mod$summary, by = "id") |>
+  mutate(accepted = as_date(accepted),
+         year = year(accepted)) |>
+  filter(!is.na(year)) |>
+  pivot_longer(cols = ttests_n:Ftests_without_es) |>
+  separate(name, c("test", "stat"), extra = "drop") |>
+  pivot_wider(names_from = stat) |>
+  summarise(n = sum(n), with = sum(with), .by = c("year", "test")) |>
+  ggplot(aes(x = year, y = with/n, colour = test)) +
+  stat_summary() +
+  geom_line() +
+  # geom_text(aes(label = n), y = 0) +
+  scale_x_continuous(breaks = 2000:2025) +
+  scale_color_manual(values = c("darkorange", "darkgreen")) +
+  guides(
+    colour = guide_legend(position = "inside")
+  ) +
+  labs(x = "",
+       y = "Percent of tests with effect sizes", color = "") +
+  theme(legend.position.inside = c(.8, .2))
+
+
+```
+
 
 ## Modules: StatCheck
 
@@ -399,6 +514,26 @@ mod$summary |> dplyr::filter(rw_Correction + rw_Retraction > 0)
 
 ![Systemic](images/systematic.png)
 :::
+
+## Caveats
+
+:::: {.columns}
+
+::: {.column width="30%"}
+
+<!-- icon credit WEBTECHOPS LLP -->
+
+![](images/caveat.png)
+
+:::
+::: {.column width="30%"}
+
+* Validation
+* Sustainability
+* Inappropriate Use
+
+:::
+::::
 
 # Thank You!
 

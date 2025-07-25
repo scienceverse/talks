@@ -198,7 +198,8 @@
 <div class="quarto-title-authors">
 <div class="quarto-title-author">
 <div class="quarto-title-author-name">
-Lisa DeBruine <img data-src="images/qrcode.svg" width="300"> 
+Lisa DeBruine<br>
+<img data-src="images/qrcode.svg" width="300"> 
 </div>
 </div>
 </div>
@@ -486,20 +487,20 @@ Trustworthy but not lust-worthy: context-specific effects of facial resemblance
 <section id="text-search" class="slide level2">
 <h2>Text Search</h2>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href=""></a><span class="fu">search_text</span>(paper, <span class="st">"="</span>, <span class="at">return =</span> <span class="st">"sentence"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href=""></a><span class="fu">search_text</span>(paper, <span class="st">"Canadian"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <div class="module">
 <div class="cell">
 <div class="cell-output-display">
 <table class="caption-top">
 <colgroup>
-<col style="width: 84%">
+<col style="width: 83%">
 <col style="width: 2%">
-<col style="width: 8%">
-<col style="width: 0%">
-<col style="width: 0%">
-<col style="width: 0%">
-<col style="width: 2%">
+<col style="width: 4%">
+<col style="width: 1%">
+<col style="width: 1%">
+<col style="width: 1%">
+<col style="width: 5%">
 </colgroup>
 <thead>
 <tr class="header">
@@ -514,7 +515,61 @@ Trustworthy but not lust-worthy: context-specific effects of facial resemblance
 </thead>
 <tbody>
 <tr class="odd">
-<td style="text-align: left;">The shape-colour morphs were based on pictures of Caucasians and non-bearded men (n = 11), while the shape-only morphs were based on images of non-white persons (n = 9) and men with facial hair (n = 4).</td>
+<td style="text-align: left;">The monetary value of X ranged from (Canadian) $2 to $5 and was balanced between self and non-self morph trials.</td>
+<td style="text-align: left;">intro</td>
+<td style="text-align: left;">INTRODUCTION</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">4</td>
+<td style="text-align: right;">5</td>
+<td style="text-align: left;">debruine-fret</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">In the pay-off structure of the current game, the expected effect of such an evolved psychology would be both to raise the incentive to trust from (Canadian) $1 to $(1 ϩ r) and to lower the cost of betrayal from $1 to $(1 Ϫ r).</td>
+<td style="text-align: left;">intro</td>
+<td style="text-align: left;">INTRODUCTION</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">6</td>
+<td style="text-align: right;">2</td>
+<td style="text-align: left;">debruine-fret</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+</section>
+<section id="regex-text-search" class="slide level2">
+<h2>Regex Text Search</h2>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href=""></a><span class="fu">search_text</span>(paper, <span class="st">"</span><span class="sc">\\</span><span class="st">b</span><span class="sc">\\</span><span class="st">S+</span><span class="sc">\\</span><span class="st">s*=</span><span class="sc">\\</span><span class="st">s*</span><span class="sc">\\</span><span class="st">S+</span><span class="sc">\\</span><span class="st">b"</span>, <span class="at">return =</span> <span class="st">"match"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="module">
+<div class="cell">
+<div class="cell-output-display">
+<table class="caption-top" style="width:100%;">
+<colgroup>
+<col style="width: 11%">
+<col style="width: 9%">
+<col style="width: 50%">
+<col style="width: 4%">
+<col style="width: 3%">
+<col style="width: 3%">
+<col style="width: 16%">
+</colgroup>
+<thead>
+<tr class="header">
+<th style="text-align: left;">text</th>
+<th style="text-align: left;">section</th>
+<th style="text-align: left;">header</th>
+<th style="text-align: right;">div</th>
+<th style="text-align: right;">p</th>
+<th style="text-align: right;">s</th>
+<th style="text-align: left;">id</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">n = 11</td>
 <td style="text-align: left;">method</td>
 <td style="text-align: left;">METHODS (a) Preparation of facial stimuli</td>
 <td style="text-align: right;">2</td>
@@ -523,7 +578,25 @@ Trustworthy but not lust-worthy: context-specific effects of facial resemblance
 <td style="text-align: left;">debruine-fret</td>
 </tr>
 <tr class="even">
-<td style="text-align: left;">The 11 subjects who saw shape-colour morphs as stimuli were more trusting of self morphs than of non-self ) number of prosocial responses (‘trusting’ as P1 and ‘unself ish’ as P2) in resemblance experiments using shapecolour morphs (n = 11) and shape-only morphs (n = 13).</td>
+<td style="text-align: left;">n = 9</td>
+<td style="text-align: left;">method</td>
+<td style="text-align: left;">METHODS (a) Preparation of facial stimuli</td>
+<td style="text-align: right;">2</td>
+<td style="text-align: right;">3</td>
+<td style="text-align: right;">4</td>
+<td style="text-align: left;">debruine-fret</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">n = 4).</td>
+<td style="text-align: left;">method</td>
+<td style="text-align: left;">METHODS (a) Preparation of facial stimuli</td>
+<td style="text-align: right;">2</td>
+<td style="text-align: right;">3</td>
+<td style="text-align: right;">4</td>
+<td style="text-align: left;">debruine-fret</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">n = 11</td>
 <td style="text-align: left;">results</td>
 <td style="text-align: left;">RESULTS</td>
 <td style="text-align: right;">6</td>
@@ -532,7 +605,25 @@ Trustworthy but not lust-worthy: context-specific effects of facial resemblance
 <td style="text-align: left;">debruine-fret</td>
 </tr>
 <tr class="odd">
-<td style="text-align: left;">Subjects for both morphing techniques showed more trust in self morphs than in non-self morphs ( p Ͻ 0.05), but unself ish plays were not affected by facial resemblance. morphs when playing P1 (t 10 = 2.63, p = 0.013), but as P2, they were equally unself ish towards both types of morph (t 10 = 0.00, n.s.).</td>
+<td style="text-align: left;">n = 13).</td>
+<td style="text-align: left;">results</td>
+<td style="text-align: left;">RESULTS</td>
+<td style="text-align: right;">6</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: left;">debruine-fret</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">10 = 2.63</td>
+<td style="text-align: left;">results</td>
+<td style="text-align: left;">RESULTS</td>
+<td style="text-align: right;">6</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">2</td>
+<td style="text-align: left;">debruine-fret</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">p = 0.013</td>
 <td style="text-align: left;">results</td>
 <td style="text-align: left;">RESULTS</td>
 <td style="text-align: right;">6</td>
@@ -541,7 +632,16 @@ Trustworthy but not lust-worthy: context-specific effects of facial resemblance
 <td style="text-align: left;">debruine-fret</td>
 </tr>
 <tr class="even">
-<td style="text-align: left;">The 13 subjects who saw shape-only morphs as stimuli behaved similarly, trusting self morphs more than non-self morphs as P1 (t 12 = 2.13, p = 0.028), but failing to discriminate between self and non-self morphs as P2 (t 12 = 0.37, n.s.) (f igure 4).</td>
+<td style="text-align: left;">10 = 0.00</td>
+<td style="text-align: left;">results</td>
+<td style="text-align: left;">RESULTS</td>
+<td style="text-align: right;">6</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">2</td>
+<td style="text-align: left;">debruine-fret</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">12 = 2.13</td>
 <td style="text-align: left;">results</td>
 <td style="text-align: left;">RESULTS</td>
 <td style="text-align: right;">6</td>
@@ -549,85 +649,13 @@ Trustworthy but not lust-worthy: context-specific effects of facial resemblance
 <td style="text-align: right;">3</td>
 <td style="text-align: left;">debruine-fret</td>
 </tr>
-<tr class="odd">
-<td style="text-align: left;">Combining the data for all 24 subjects and using a difference score for number of prosocial plays to self-morphs minus non-self morphs, there were no signif icant effects of sex (F 1,23 = 0.13, p = 0.73), ‘race’ (white versus nonwhite; F 1,23 = 0.83, p = 0.38) or morph type (shape-colour morphs versus shape-only morphs; F 1,23 = 0.13, p = 0.73), nor were there any statistically signif icant interactions (all p Ͼ 0.50).</td>
-<td style="text-align: left;">results</td>
-<td style="text-align: left;">RESULTS</td>
-<td style="text-align: right;">6</td>
-<td style="text-align: right;">2</td>
-<td style="text-align: right;">1</td>
-<td style="text-align: left;">debruine-fret</td>
-</tr>
 <tr class="even">
-<td style="text-align: left;">In other words, these control players did not play differentially towards faces that had been self morphs versus non-self morphs for the original subjects, neither in their trusting responses as P1 (t 23 = Ϫ1.50, n.s.) nor in their self ish choices as P2 (t 23 = Ϫ0.35, n.s.) (f igure 5).</td>
+<td style="text-align: left;">p = 0.028</td>
 <td style="text-align: left;">results</td>
 <td style="text-align: left;">RESULTS</td>
 <td style="text-align: right;">6</td>
+<td style="text-align: right;">1</td>
 <td style="text-align: right;">3</td>
-<td style="text-align: right;">2</td>
-<td style="text-align: left;">debruine-fret</td>
-</tr>
-<tr class="odd">
-<td style="text-align: left;">The attractiveness ratings by the independent set of 10 judges also showed no difference; the faces that had served as self morphs for the original subjects were actually rated slightly less attractive (M = 4.11 ± 1.17 s.d. on a 10-point scale) than the non-self morphs (M = 4.27 ± 1.13 s.d.), but the difference was not signif icant.</td>
-<td style="text-align: left;">results</td>
-<td style="text-align: left;">RESULTS</td>
-<td style="text-align: right;">6</td>
-<td style="text-align: right;">4</td>
-<td style="text-align: right;">1</td>
-<td style="text-align: left;">debruine-fret</td>
-</tr>
-<tr class="even">
-<td style="text-align: left;">Moreover, there was no difference in attractiveness ratings between morphed images that did or did not elicit trust from subjects playing P1 (M trusting = 4.11 ± 1.06, M not trusting = 4.11 ± 1.22, t 141 = 0.00, n.s.), nor between those that elicited self ish and unselfish moves by subjects playing P2 (M self ish = 4.30 ± 1.18, M unself ish = 4.26 ± 1.20, t 142 = Ϫ0.18, n.s.).</td>
-<td style="text-align: left;">results</td>
-<td style="text-align: left;">RESULTS</td>
-<td style="text-align: right;">6</td>
-<td style="text-align: right;">4</td>
-<td style="text-align: right;">2</td>
-<td style="text-align: left;">debruine-fret</td>
-</tr>
-<tr class="odd">
-<td style="text-align: left;">those that did not (M trust = 4.14 ± 1.04, M no trust = 4.28 ± 1.25, t = Ϫ0.53, n.s.).</td>
-<td style="text-align: left;">results</td>
-<td style="text-align: left;">RESULTS</td>
-<td style="text-align: right;">6</td>
-<td style="text-align: right;">5</td>
-<td style="text-align: right;">1</td>
-<td style="text-align: left;">debruine-fret</td>
-</tr>
-<tr class="even">
-<td style="text-align: left;">In the P1 role, subjects trusted ‘famous’ opponents 1.40 times on average and non-famous opponents 1.25 times (t 19 = 0.51, n.s.).</td>
-<td style="text-align: left;">results</td>
-<td style="text-align: left;">RESULTS</td>
-<td style="text-align: right;">6</td>
-<td style="text-align: right;">5</td>
-<td style="text-align: right;">3</td>
-<td style="text-align: left;">debruine-fret</td>
-</tr>
-<tr class="odd">
-<td style="text-align: left;">In the P2 role, subjects responded unselfishly to a trusting move by a famous P1 1.70 times and by a non-famous P1 1.80 times (t 19 = Ϫ0.42, n.s.).</td>
-<td style="text-align: left;">results</td>
-<td style="text-align: left;">RESULTS</td>
-<td style="text-align: right;">6</td>
-<td style="text-align: right;">5</td>
-<td style="text-align: right;">4</td>
-<td style="text-align: left;">debruine-fret</td>
-</tr>
-<tr class="even">
-<td style="text-align: left;">Following the logic of inclusive fitness theory (Hamilton 1964), P1 is expected to be indifferent between trusting and not trusting if the coeff icient of relatedness between the players is zero (r = 0) and P2’s probability of a self ish betrayal of trust is equal to the probability of reciprocating trust (that is, if p = 0.5 for both moves), because the expected pay-off is the same in each case.</td>
-<td style="text-align: left;">discussion</td>
-<td style="text-align: left;">DISCUSSION</td>
-<td style="text-align: right;">7</td>
-<td style="text-align: right;">4</td>
-<td style="text-align: right;">2</td>
-<td style="text-align: left;">debruine-fret</td>
-</tr>
-<tr class="odd">
-<td style="text-align: left;">Bars represent the average (± s.e.) number of prosocial responses (‘trusting’ as P1 and ‘unself ish’ as P2) in resemblance experiments using shapecolour morphs (n = 11) and shape-only morphs (n = 13).</td>
-<td style="text-align: left;">fig</td>
-<td style="text-align: left;">Figure 4 .</td>
-<td style="text-align: right;">3</td>
-<td style="text-align: right;">1</td>
-<td style="text-align: right;">6</td>
 <td style="text-align: left;">debruine-fret</td>
 </tr>
 </tbody>
@@ -639,12 +667,18 @@ Trustworthy but not lust-worthy: context-specific effects of facial resemblance
 <section id="llm" class="slide level2">
 <h2>LLM</h2>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href=""></a>llm_subjects <span class="ot">&lt;-</span> papers <span class="sc">|&gt;</span> </span>
-<span id="cb9-2"><a href=""></a>  <span class="fu">search_text</span>(<span class="st">"</span><span class="sc">\\</span><span class="st">d+|one|two|three|four|five|six|seven|eight|nine|ten|eleven|twelve"</span>, <span class="at">section =</span> <span class="st">"method"</span>) <span class="sc">|&gt;</span></span>
-<span id="cb9-3"><a href=""></a>  <span class="fu">search_text</span>(<span class="at">return =</span> <span class="st">"section"</span>) <span class="sc">|&gt;</span></span>
-<span id="cb9-4"><a href=""></a>  <span class="fu">llm</span>(<span class="at">query =</span> <span class="st">'How many subjects were in the studies in total? Return your answer in JSON format like {"total": 100, men": 42, "women": 58}, giving the total and any subgroupings by gender. Only return valid JSON, no notes.'</span>)</span>
-<span id="cb9-5"><a href=""></a></span>
-<span id="cb9-6"><a href=""></a>llm_subjects <span class="sc">|&gt;</span> <span class="fu">json_expand</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href=""></a>query <span class="ot">&lt;-</span> <span class="st">'How many subjects were in the studies in total? </span></span>
+<span id="cb10-2"><a href=""></a><span class="st">Return your answer in JSON format giving the total and </span></span>
+<span id="cb10-3"><a href=""></a><span class="st">any subgroupings by gender, e.g.:</span></span>
+<span id="cb10-4"><a href=""></a><span class="st">{"total": 100, men": 42, "women": 58}, </span></span>
+<span id="cb10-5"><a href=""></a><span class="st">Only return valid JSON, no notes.'</span></span>
+<span id="cb10-6"><a href=""></a></span>
+<span id="cb10-7"><a href=""></a>llm_subjects <span class="ot">&lt;-</span> papers <span class="sc">|&gt;</span> </span>
+<span id="cb10-8"><a href=""></a>  <span class="fu">search_text</span>(<span class="st">"</span><span class="sc">\\</span><span class="st">d+"</span>, <span class="at">section =</span> <span class="st">"method"</span>) <span class="sc">|&gt;</span></span>
+<span id="cb10-9"><a href=""></a>  <span class="fu">search_text</span>(<span class="at">return =</span> <span class="st">"section"</span>) <span class="sc">|&gt;</span></span>
+<span id="cb10-10"><a href=""></a>  <span class="fu">llm</span>(query)</span>
+<span id="cb10-11"><a href=""></a></span>
+<span id="cb10-12"><a href=""></a>llm_subjects <span class="sc">|&gt;</span> <span class="fu">json_expand</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <div class="module">
 <div class="cell">
@@ -701,10 +735,134 @@ Trustworthy but not lust-worthy: context-specific effects of facial resemblance
 </div>
 </div>
 </section>
+<section id="osf-functions" class="slide level2">
+<h2>OSF Functions</h2>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href=""></a><span class="co"># find all OSF links in the papers</span></span>
+<span id="cb11-2"><a href=""></a>links <span class="ot">&lt;-</span> <span class="fu">osf_links</span>(psychsci)</span>
+<span id="cb11-3"><a href=""></a></span>
+<span id="cb11-4"><a href=""></a><span class="co"># get info about a link and its children</span></span>
+<span id="cb11-5"><a href=""></a>osf <span class="ot">&lt;-</span> <span class="fu">osf_retrieve</span>(links<span class="sc">$</span>text[<span class="dv">1</span>], <span class="at">recursive =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb11-6"><a href=""></a></span>
+<span id="cb11-7"><a href=""></a><span class="co"># download all files</span></span>
+<span id="cb11-8"><a href=""></a><span class="fu">osf_file_download</span>(links<span class="sc">$</span>text[<span class="dv">1</span>])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="module">
+<div class="cell">
+<div class="cell-output-display">
+<table class="caption-top">
+<colgroup>
+<col style="width: 21%">
+<col style="width: 44%">
+<col style="width: 7%">
+<col style="width: 5%">
+<col style="width: 5%">
+<col style="width: 6%">
+<col style="width: 8%">
+</colgroup>
+<thead>
+<tr class="header">
+<th style="text-align: left;">osf_id</th>
+<th style="text-align: left;">name</th>
+<th style="text-align: left;">osf_type</th>
+<th style="text-align: left;">public</th>
+<th style="text-align: left;">parent</th>
+<th style="text-align: right;">size</th>
+<th style="text-align: right;">downloads</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">e2aks</td>
+<td style="text-align: left;">Action-specific disruption of perceptual confidence</td>
+<td style="text-align: left;">nodes</td>
+<td style="text-align: left;">TRUE</td>
+<td style="text-align: left;">NA</td>
+<td style="text-align: right;">NA</td>
+<td style="text-align: right;">NA</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">7jh5v</td>
+<td style="text-align: left;">Data</td>
+<td style="text-align: left;">nodes</td>
+<td style="text-align: left;">TRUE</td>
+<td style="text-align: left;">e2aks</td>
+<td style="text-align: right;">NA</td>
+<td style="text-align: right;">NA</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">pj4e8</td>
+<td style="text-align: left;">Analysis scripts</td>
+<td style="text-align: left;">nodes</td>
+<td style="text-align: left;">TRUE</td>
+<td style="text-align: left;">e2aks</td>
+<td style="text-align: right;">NA</td>
+<td style="text-align: right;">NA</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">553e58658c5e4a219919a629</td>
+<td style="text-align: left;">allData_orientation.txt</td>
+<td style="text-align: left;">files</td>
+<td style="text-align: left;">NA</td>
+<td style="text-align: left;">7jh5v</td>
+<td style="text-align: right;">1096113</td>
+<td style="text-align: right;">41</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">553e58658c5e4a219919a62a</td>
+<td style="text-align: left;">allData_contrast_M1.txt</td>
+<td style="text-align: left;">files</td>
+<td style="text-align: left;">NA</td>
+<td style="text-align: left;">7jh5v</td>
+<td style="text-align: right;">691560</td>
+<td style="text-align: right;">68</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">553e58658c5e4a219919a62c</td>
+<td style="text-align: left;">Mratio_contrast_M1.txt</td>
+<td style="text-align: left;">files</td>
+<td style="text-align: left;">NA</td>
+<td style="text-align: left;">7jh5v</td>
+<td style="text-align: right;">5508</td>
+<td style="text-align: right;">31</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">553e58658c5e4a219919a628</td>
+<td style="text-align: left;">Mratio_all.txt</td>
+<td style="text-align: left;">files</td>
+<td style="text-align: left;">NA</td>
+<td style="text-align: left;">7jh5v</td>
+<td style="text-align: right;">15326</td>
+<td style="text-align: right;">34</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">553e58658c5e4a219919a62b</td>
+<td style="text-align: left;">allData_contrast_PMC.txt</td>
+<td style="text-align: left;">files</td>
+<td style="text-align: left;">NA</td>
+<td style="text-align: left;">7jh5v</td>
+<td style="text-align: right;">712804</td>
+<td style="text-align: right;">59</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">553e7e168c5e4a21991a4dac</td>
+<td style="text-align: left;">tms_analysis.R</td>
+<td style="text-align: left;">files</td>
+<td style="text-align: left;">NA</td>
+<td style="text-align: left;">pj4e8</td>
+<td style="text-align: right;">5670</td>
+<td style="text-align: right;">66</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+</section>
 <section id="modules" class="slide level2">
 <h2>Modules</h2>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href=""></a><span class="fu">module_list</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href=""></a><span class="fu">module_list</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code> * all_p_values: List all p-values in the text, returning the matched text (e.g., 'p = 0.04') and document location in a table.
  * all_urls: List all the URLs in the main text.
@@ -720,6 +878,158 @@ Use `module_help("module_name")` for help with a specific module</code></pre>
 </div>
 </div>
 </section>
+<section id="modules-effect-sizes" class="slide level2">
+<h2>Modules: Effect Sizes</h2>
+<aside class="notes">
+<p>A JARS guideline that can be automatically checked is whether people report effect sizes alongside their test result. Each test, like a t-test or F-test, should include the corresponding effect size, like a Cohen’s d, or partial eta-squared. Based on a text search that uses regular expressions (regex), we can identify t-tests and F-tests that are not followed by an effect size, and warn researchers accordingly.</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href=""></a>mod <span class="ot">&lt;-</span> <span class="fu">module_run</span>(</span>
+<span id="cb14-2"><a href=""></a>  <span class="at">paper =</span> psychsci,</span>
+<span id="cb14-3"><a href=""></a>  <span class="at">module =</span> <span class="st">"effect_size"</span></span>
+<span id="cb14-4"><a href=""></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="module">
+<div class="cell">
+<div class="cell-output-display">
+<table class="caption-top">
+<colgroup>
+<col style="width: 16%">
+<col style="width: 8%">
+<col style="width: 14%">
+<col style="width: 17%">
+<col style="width: 8%">
+<col style="width: 14%">
+<col style="width: 17%">
+</colgroup>
+<thead>
+<tr class="header">
+<th style="text-align: left;">id</th>
+<th style="text-align: right;">ttests_n</th>
+<th style="text-align: right;">ttests_with_es</th>
+<th style="text-align: right;">ttests_without_es</th>
+<th style="text-align: right;">Ftests_n</th>
+<th style="text-align: right;">Ftests_with_es</th>
+<th style="text-align: right;">Ftests_without_es</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">0956797613520608</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">5</td>
+<td style="text-align: right;">5</td>
+<td style="text-align: right;">0</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">0956797614522816</td>
+<td style="text-align: right;">5</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">5</td>
+<td style="text-align: right;">20</td>
+<td style="text-align: right;">20</td>
+<td style="text-align: right;">0</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">0956797614527830</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">0</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">0956797614557697</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">5</td>
+<td style="text-align: right;">5</td>
+<td style="text-align: right;">0</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">0956797614560771</td>
+<td style="text-align: right;">2</td>
+<td style="text-align: right;">2</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">0</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">0956797614566469</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">0</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">0956797615569001</td>
+<td style="text-align: right;">2</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">0</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">0956797615569889</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">12</td>
+<td style="text-align: right;">12</td>
+<td style="text-align: right;">0</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">0956797615583071</td>
+<td style="text-align: right;">10</td>
+<td style="text-align: right;">6</td>
+<td style="text-align: right;">4</td>
+<td style="text-align: right;">4</td>
+<td style="text-align: right;">2</td>
+<td style="text-align: right;">2</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">0956797615588467</td>
+<td style="text-align: right;">7</td>
+<td style="text-align: right;">4</td>
+<td style="text-align: right;">3</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">1</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+</section>
+<section id="modules-effect-sizes-1" class="slide level2">
+<h2>Modules: Effect Sizes</h2>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href=""></a>mod <span class="ot">&lt;-</span> <span class="fu">module_run</span>(</span>
+<span id="cb15-2"><a href=""></a>  <span class="at">paper =</span> psychsci,</span>
+<span id="cb15-3"><a href=""></a>  <span class="at">module =</span> <span class="st">"effect_size"</span></span>
+<span id="cb15-4"><a href=""></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+
+<img data-src="index_files/figure-revealjs/unnamed-chunk-22-1.png" width="960" class="r-stretch"></section>
 <section id="modules-statcheck" class="slide level2">
 <h2>Modules: StatCheck</h2>
 <aside class="notes">
@@ -738,7 +1048,7 @@ Use `module_help("module_name")` for help with a specific module</code></pre>
 <p>This module uses the {<a href="https://michelenuijten.shinyapps.io/statcheck-web/">statcheck</a>} package to check the consistency of p-values and test statistics.</p>
 <div class="module">
 <div class="cell">
-<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href=""></a><span class="fu">module_run</span>(psychsci[<span class="dv">6</span><span class="sc">:</span><span class="dv">10</span>], <span class="st">"statcheck"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a href=""></a><span class="fu">module_run</span>(psychsci[<span class="dv">6</span><span class="sc">:</span><span class="dv">10</span>], <span class="st">"statcheck"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>We detected possible errors in test statistics</p>
 <table class="caption-top">
@@ -806,7 +1116,7 @@ Use `module_help("module_name")` for help with a specific module</code></pre>
       }</style></aside>
 <p>This module scans the text for all p-values and flags those reported inexactly, such as p &lt; .01, p &lt; .10, or p = n.s.</p>
 <div class="module">
-<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href=""></a><span class="fu">module_run</span>(psychsci[<span class="dv">1</span><span class="sc">:</span><span class="dv">10</span>], <span class="st">"exact_p"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a href=""></a><span class="fu">module_run</span>(psychsci[<span class="dv">1</span><span class="sc">:</span><span class="dv">10</span>], <span class="st">"exact_p"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>You may have reported some imprecise p-values</p>
 <table class="caption-top">
 <thead>
@@ -889,7 +1199,7 @@ Use `module_help("module_name")` for help with a specific module</code></pre>
       }</style></aside>
 <p>This module searches the text for phrases such as “marginally significant” or “borderline significance” and flags them.</p>
 <div class="module">
-<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href=""></a><span class="fu">module_run</span>(psychsci[<span class="dv">8</span>], <span class="st">"marginal"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb18"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb18-1"><a href=""></a><span class="fu">module_run</span>(psychsci[<span class="dv">8</span>], <span class="st">"marginal"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>You described effects as marginally/borderline/close to significant. It is better to write ‘did not reach the threshold alpha for significance’.</p>
 <table class="caption-top">
 <colgroup>
@@ -961,7 +1271,7 @@ Use `module_help("module_name")` for help with a specific module</code></pre>
 <p>This module scans text for references to OSF projects and checks their status, flagging users if any of the links are either broken or lead to inaccessible private projects.</p>
 <div class="module">
 <div class="cell">
-<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href=""></a><span class="fu">module_run</span>(psychsci[<span class="dv">1</span><span class="sc">:</span><span class="dv">10</span>], <span class="st">"osf_check"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb19"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb19-1"><a href=""></a><span class="fu">module_run</span>(psychsci[<span class="dv">1</span><span class="sc">:</span><span class="dv">10</span>], <span class="st">"osf_check"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <div class="cell">
 <div class="cell-output-display">
@@ -1045,7 +1355,7 @@ Use `module_help("module_name")` for help with a specific module</code></pre>
 <h2>Modules: Reference Consistency</h2>
 <p>This modules checks for missing references or citations.</p>
 <div class="module">
-<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a href=""></a><span class="fu">module_run</span>(papers[[<span class="dv">1</span>]], <span class="st">"ref_consistency"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb20"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb20-1"><a href=""></a><span class="fu">module_run</span>(papers[[<span class="dv">1</span>]], <span class="st">"ref_consistency"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>This module relies on Grobid correctly parsing the references. There may be some false positives.</p>
 <p>There are references that are not cited or citations that are not referenced</p>
 <table class="caption-top" style="width:100%;">
@@ -1115,9 +1425,9 @@ Use `module_help("module_name")` for help with a specific module</code></pre>
 <p>This module searches the <a href="https://retractionwatch.com">RetractionWatch</a> database for all cited references in a paper and flags those that have been retracted.</p>
 <div class="module">
 <div class="cell">
-<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a href=""></a>mod <span class="ot">&lt;-</span> <span class="fu">module_run</span>(psychsci, <span class="st">"retractionwatch"</span>)</span>
-<span id="cb17-2"><a href=""></a></span>
-<span id="cb17-3"><a href=""></a>mod<span class="sc">$</span>summary <span class="sc">|&gt;</span> dplyr<span class="sc">::</span><span class="fu">filter</span>(rw_Correction <span class="sc">+</span> rw_Retraction <span class="sc">&gt;</span> <span class="dv">0</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb21"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb21-1"><a href=""></a>mod <span class="ot">&lt;-</span> <span class="fu">module_run</span>(psychsci, <span class="st">"retractionwatch"</span>)</span>
+<span id="cb21-2"><a href=""></a></span>
+<span id="cb21-3"><a href=""></a>mod<span class="sc">$</span>summary <span class="sc">|&gt;</span> dplyr<span class="sc">::</span><span class="fu">filter</span>(rw_Correction <span class="sc">+</span> rw_Retraction <span class="sc">&gt;</span> <span class="dv">0</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>                 id rw_Correction rw_Retraction
 1 09567976221150616             1             0
@@ -1174,6 +1484,20 @@ Use `module_help("module_name")` for help with a specific module</code></pre>
 </div>
 </div>
 </div>
+</section>
+<section id="caveats" class="slide level2">
+<h2>Caveats</h2>
+<div class="columns">
+<div class="column" style="width:30%;">
+<!-- icon credit WEBTECHOPS LLP -->
+<p><img data-src="images/caveat.png"></p>
+</div><div class="column" style="width:30%;">
+<ul>
+<li>Validation</li>
+<li>Sustainability</li>
+<li>Inappropriate Use</li>
+</ul>
+</div></div>
 </section></section>
 <section id="thank-you" class="title-slide slide level1 center">
 <h1>Thank You!</h1>
