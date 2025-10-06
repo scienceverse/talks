@@ -342,17 +342,6 @@ knitr::kable(o)
 
 :::
 
-## Modules: Reference Consistency
-
-This modules checks for missing references or citations.
-
-::: {.module}
-
-```{r, results='asis'}
-module_run(papers[[1]], "ref_consistency")
-```
-
-:::
 
 ## Modules: Retracted Papers
 
@@ -373,7 +362,11 @@ mod$summary |> dplyr::filter(rw_Correction + rw_Retraction > 0)
 :::
 
 
+## Modules: Under development
 
+* Reference Consistency
+* Miscitations
+* Power analysis
 
 
 # Thank You!
