@@ -1,0 +1,55 @@
+/*-- scss:defaults --*/
+
+$body-bg: #FFF;
+
+/*-- scss:rules --*/
+
+:root {
+  --red: #B52824; 
+  --orange: #CB7631; 
+  --yellow: #F7BB44; 
+  --green: #327118;  
+  --blue: #154E80;  
+  --purple: #532A93;
+}
+
+/* rainbow borders */
+.slide-background-content {
+  margin-top: 18px;
+  box-shadow: 0 -3px 0 0px var(--purple),
+              0 -6px 0 0px var(--blue),
+              0 -9px 0 0px var(--green),
+              0 -12px 0 0px var(--yellow),
+              0 -15px 0 0px var(--orange),
+              0 -18px 0 0px var(--red);
+}
+
+/* traffic lights */
+h3.na::before { content: '⚪️ '; }
+h3.fail::before { content: '⚫️ '; }
+h3.info::before { content: '🔵 '; }
+h3.red::before { content: '🔴 '; }
+h3.yellow::before { content: '🟡 '; }
+h3.green::before { content: '🟢 '; }
+
+
+.module p, .module table {
+  font-size: 0.5em;
+}
+
+.module h3 { 
+  font-size: 0.75em;
+  margin-top: 1em; 
+}
+
+.checklist li {
+  list-style: none;
+}
+
+.checklist li::before {
+  content: '';
+  display: inline-block;
+  margin: 0 0 -.25em -1.3em;
+  height: 1.2em;
+  width: 1.2em;
+}

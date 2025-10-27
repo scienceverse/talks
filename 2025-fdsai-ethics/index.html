@@ -1,0 +1,1546 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+<script src="index_files/libs/clipboard/clipboard.min.js"></script>
+<script src="index_files/libs/quarto-html/tabby.min.js"></script>
+<script src="index_files/libs/quarto-html/popper.min.js"></script>
+<script src="index_files/libs/quarto-html/tippy.umd.min.js"></script>
+<link href="index_files/libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="index_files/libs/quarto-html/light-border.css" rel="stylesheet">
+<link href="index_files/libs/quarto-html/quarto-syntax-highlighting-2f5df379a58b258e96c21c0638c20c03.css" rel="stylesheet" id="quarto-text-highlighting-styles"><meta charset="utf-8">
+  <meta name="generator" content="quarto-1.6.42">
+
+  <meta name="author" content="Lisa DeBruine ">
+  <title>Papercheck</title>
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
+  <link rel="stylesheet" href="index_files/libs/revealjs/dist/reset.css">
+  <link rel="stylesheet" href="index_files/libs/revealjs/dist/reveal.css">
+  <style>
+    code{white-space: pre-wrap;}
+    span.smallcaps{font-variant: small-caps;}
+    div.columns{display: flex; gap: min(4vw, 1.5em);}
+    div.column{flex: auto; overflow-x: auto;}
+    div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+    ul.task-list{list-style: none;}
+    ul.task-list li input[type="checkbox"] {
+      width: 0.8em;
+      margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+      vertical-align: middle;
+    }
+    /* CSS for syntax highlighting */
+    pre > code.sourceCode { white-space: pre; position: relative; }
+    pre > code.sourceCode > span { line-height: 1.25; }
+    pre > code.sourceCode > span:empty { height: 1.2em; }
+    .sourceCode { overflow: visible; }
+    code.sourceCode > span { color: inherit; text-decoration: inherit; }
+    div.sourceCode { margin: 1em 0; }
+    pre.sourceCode { margin: 0; }
+    @media screen {
+    div.sourceCode { overflow: auto; }
+    }
+    @media print {
+    pre > code.sourceCode { white-space: pre-wrap; }
+    pre > code.sourceCode > span { display: inline-block; text-indent: -5em; padding-left: 5em; }
+    }
+    pre.numberSource code
+      { counter-reset: source-line 0; }
+    pre.numberSource code > span
+      { position: relative; left: -4em; counter-increment: source-line; }
+    pre.numberSource code > span > a:first-child::before
+      { content: counter(source-line);
+        position: relative; left: -1em; text-align: right; vertical-align: baseline;
+        border: none; display: inline-block;
+        -webkit-touch-callout: none; -webkit-user-select: none;
+        -khtml-user-select: none; -moz-user-select: none;
+        -ms-user-select: none; user-select: none;
+        padding: 0 4px; width: 4em;
+        color: #aaaaaa;
+      }
+    pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+    div.sourceCode
+      { color: #003b4f; background-color: #f1f3f5; }
+    @media screen {
+    pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+    }
+    code span { color: #003b4f; } /* Normal */
+    code span.al { color: #ad0000; } /* Alert */
+    code span.an { color: #5e5e5e; } /* Annotation */
+    code span.at { color: #657422; } /* Attribute */
+    code span.bn { color: #ad0000; } /* BaseN */
+    code span.bu { } /* BuiltIn */
+    code span.cf { color: #003b4f; font-weight: bold; } /* ControlFlow */
+    code span.ch { color: #20794d; } /* Char */
+    code span.cn { color: #8f5902; } /* Constant */
+    code span.co { color: #5e5e5e; } /* Comment */
+    code span.cv { color: #5e5e5e; font-style: italic; } /* CommentVar */
+    code span.do { color: #5e5e5e; font-style: italic; } /* Documentation */
+    code span.dt { color: #ad0000; } /* DataType */
+    code span.dv { color: #ad0000; } /* DecVal */
+    code span.er { color: #ad0000; } /* Error */
+    code span.ex { } /* Extension */
+    code span.fl { color: #ad0000; } /* Float */
+    code span.fu { color: #4758ab; } /* Function */
+    code span.im { color: #00769e; } /* Import */
+    code span.in { color: #5e5e5e; } /* Information */
+    code span.kw { color: #003b4f; font-weight: bold; } /* Keyword */
+    code span.op { color: #5e5e5e; } /* Operator */
+    code span.ot { color: #003b4f; } /* Other */
+    code span.pp { color: #ad0000; } /* Preprocessor */
+    code span.sc { color: #5e5e5e; } /* SpecialChar */
+    code span.ss { color: #20794d; } /* SpecialString */
+    code span.st { color: #20794d; } /* String */
+    code span.va { color: #111111; } /* Variable */
+    code span.vs { color: #20794d; } /* VerbatimString */
+    code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
+  </style>
+  <link rel="stylesheet" href="index_files/libs/revealjs/dist/theme/quarto-ab0c1ed069a72dfc0120e67ab950d3a5.css">
+  <link href="index_files/libs/revealjs/plugin/quarto-line-highlight/line-highlight.css" rel="stylesheet">
+  <link href="index_files/libs/revealjs/plugin/reveal-menu/menu.css" rel="stylesheet">
+  <link href="index_files/libs/revealjs/plugin/reveal-menu/quarto-menu.css" rel="stylesheet">
+  <link href="index_files/libs/revealjs/plugin/quarto-support/footer.css" rel="stylesheet">
+  <style type="text/css">
+    .reveal div.sourceCode {
+      margin: 0;
+      overflow: auto;
+    }
+    .reveal div.hanging-indent {
+      margin-left: 1em;
+      text-indent: -1em;
+    }
+    .reveal .slide:not(.center) {
+      height: 100%;
+    }
+    .reveal .slide.scrollable {
+      overflow-y: auto;
+    }
+    .reveal .footnotes {
+      height: 100%;
+      overflow-y: auto;
+    }
+    .reveal .slide .absolute {
+      position: absolute;
+      display: block;
+    }
+    .reveal .footnotes ol {
+      counter-reset: ol;
+      list-style-type: none; 
+      margin-left: 0;
+    }
+    .reveal .footnotes ol li:before {
+      counter-increment: ol;
+      content: counter(ol) ". "; 
+    }
+    .reveal .footnotes ol li > p:first-child {
+      display: inline-block;
+    }
+    .reveal .slide ul,
+    .reveal .slide ol {
+      margin-bottom: 0.5em;
+    }
+    .reveal .slide ul li,
+    .reveal .slide ol li {
+      margin-top: 0.4em;
+      margin-bottom: 0.2em;
+    }
+    .reveal .slide ul[role="tablist"] li {
+      margin-bottom: 0;
+    }
+    .reveal .slide ul li > *:first-child,
+    .reveal .slide ol li > *:first-child {
+      margin-block-start: 0;
+    }
+    .reveal .slide ul li > *:last-child,
+    .reveal .slide ol li > *:last-child {
+      margin-block-end: 0;
+    }
+    .reveal .slide .columns:nth-child(3) {
+      margin-block-start: 0.8em;
+    }
+    .reveal blockquote {
+      box-shadow: none;
+    }
+    .reveal .tippy-content>* {
+      margin-top: 0.2em;
+      margin-bottom: 0.7em;
+    }
+    .reveal .tippy-content>*:last-child {
+      margin-bottom: 0.2em;
+    }
+    .reveal .slide > img.stretch.quarto-figure-center,
+    .reveal .slide > img.r-stretch.quarto-figure-center {
+      display: block;
+      margin-left: auto;
+      margin-right: auto; 
+    }
+    .reveal .slide > img.stretch.quarto-figure-left,
+    .reveal .slide > img.r-stretch.quarto-figure-left  {
+      display: block;
+      margin-left: 0;
+      margin-right: auto; 
+    }
+    .reveal .slide > img.stretch.quarto-figure-right,
+    .reveal .slide > img.r-stretch.quarto-figure-right  {
+      display: block;
+      margin-left: auto;
+      margin-right: 0; 
+    }
+  </style>
+</head>
+<body class="quarto-light">
+  <div class="reveal">
+    <div class="slides">
+
+<section id="title-slide" class="quarto-title-block center">
+  <h1 class="title">Papercheck</h1>
+  <p class="subtitle"><a href="https://scienceverse.github.io/talks/2025-fdsai-ethics/">https://scienceverse.github.io/talks/2025-fdsai-ethics/</a></p>
+
+<div class="quarto-title-authors">
+<div class="quarto-title-author">
+<div class="quarto-title-author-name">
+Lisa DeBruine<br>
+<img data-src="images/qrcode.svg" width="300"> 
+</div>
+</div>
+</div>
+
+</section>
+<section id="abstract" class="title-slide slide level1 center">
+<h1>Abstract</h1>
+<div style="font-size: smaller">
+<p>Papercheck is a tool that leverages text search, code, and large language models to extract and supplement information from scientific documents (including manuscripts, submitted or published articles, or preregistration documents) and provides automated suggestions for improvement.</p>
+<p>Inspired by practices in software development, where automated checks (e.g., CRAN checks for R packages) are used to identify issues before release, Papercheck aims to screen scientific manuscripts to identify potential issues or areas for improvement and guide researchers in adopting best practices. It can also assist with processing large numbers of papers for metascientific enquiry.</p>
+</div>
+</section>
+
+<section>
+<section id="the-problem" class="title-slide slide level1 center">
+<h1>The Problem</h1>
+
+</section>
+<section id="best-practices-are-rapidly-evolving" class="slide level2">
+<h2>Best Practices are Rapidly Evolving</h2>
+<aside class="notes">
+<ul>
+<li>share data, code, and materials</li>
+<li>correctly apply statistical methods</li>
+<li>declare conflicts of interests</li>
+<li>transparent author contributions</li>
+<li>appropriately cite papers; acknowledge retractions</li>
+<li>avoid overclaiming and inappropriate use of causal language</li>
+</ul>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+<div>
+
+</div>
+<div class="quarto-layout-panel" data-layout="[[2,1,1], [1,2,1]]">
+<div class="quarto-layout-row">
+<div class="quarto-layout-cell" style="flex-basis: 50.0%;justify-content: center;">
+<p><img data-src="images/os-foster.jpg"></p>
+</div>
+<div class="quarto-layout-cell" style="flex-basis: 25.0%;justify-content: center;">
+<p><img data-src="images/os-liber.jpg"></p>
+</div>
+<div class="quarto-layout-cell" style="flex-basis: 25.0%;justify-content: center;">
+<p><img data-src="images/os-opus.png"></p>
+</div>
+</div>
+<div class="quarto-layout-row">
+<div class="quarto-layout-cell" style="flex-basis: 25.0%;justify-content: center;">
+<p><img data-src="images/os-unesco.png"></p>
+</div>
+<div class="quarto-layout-cell" style="flex-basis: 50.0%;justify-content: center;">
+<p><img data-src="images/os-4pillars.jpg"></p>
+</div>
+<div class="quarto-layout-cell" style="flex-basis: 25.0%;justify-content: center;">
+<p><img data-src="images/os-umbrella.png"></p>
+</div>
+</div>
+</div>
+</section>
+<section id="un-fair-meta-data" class="slide level2">
+<h2>Un-FAIR Meta-Data</h2>
+<div class="columns">
+<div class="column" style="width:30%;">
+<div>
+
+</div>
+<div class="quarto-layout-panel" data-layout="[[1], [1]]">
+<div class="quarto-layout-row">
+<div class="quarto-layout-cell" style="flex-basis: 100.0%;justify-content: center;">
+<p><img data-src="images/FAIR.png"></p>
+</div>
+</div>
+<div class="quarto-layout-row">
+<div class="quarto-layout-cell" style="flex-basis: 100.0%;justify-content: center;">
+<p><img data-src="images/pdf-die.png"></p>
+</div>
+</div>
+</div>
+</div><div class="column" style="width:70%;">
+<ul>
+<li>All research outputs should be FAIR</li>
+<li>PDFs are where data goes to die</li>
+<li>Meta-data use cases:
+<ul>
+<li>facilitating meta-analyses</li>
+<li>improving the re-use of reliable measures</li>
+<li>meta-scientific research</li>
+</ul></li>
+</ul>
+</div></div>
+</section></section>
+<section>
+<section id="solutions" class="title-slide slide level1 center">
+<h1>Solutions</h1>
+
+</section>
+<section id="checklists" class="slide level2">
+<h2>Checklists?</h2>
+<div class="columns">
+<div class="column" style="width:50%;">
+<p>Reporting guidelines, such as <a href="https://www.goodreports.org/reporting-checklists/consort/">CONSORT</a>, <a href="https://prisma.shinyapps.io/checklist/">PRISMA</a>, and <a href="https://apastyle.apa.org/jars">JARS</a> often provide extensive checklists.</p>
+<style>
+.checklist li::before {
+  background-image: url('images/checkbox.svg');
+}
+</style>
+<div class="checklist">
+<ul>
+<li>Time-consuming</li>
+<li>Requires expertise</li>
+<li>Can be vague</li>
+<li>Who checks the checklist?</li>
+</ul>
+</div>
+</div><div class="column" style="width:50%;">
+<div class="panel-tabset">
+<ul id="tabset-1" class="panel-tabset-tabby"><li><a data-tabby-default="" href="#tabset-1-1">JARS-1</a></li><li><a href="#tabset-1-2">2</a></li><li><a href="#tabset-1-3">3</a></li></ul>
+<div class="tab-content">
+<div id="tabset-1-1">
+<p><img data-src="images/JARS-quant1.png"></p>
+</div>
+<div id="tabset-1-2">
+<p><img data-src="images/JARS-quant2.png"></p>
+</div>
+<div id="tabset-1-3">
+<p><img data-src="images/JARS-quant3.png"></p>
+</div>
+</div>
+</div>
+</div></div>
+</section>
+<section id="automated-checks" class="slide level2">
+<h2>Automated Checks</h2>
+<div class="checklist">
+<ul>
+<li>Time-efficient</li>
+<li>Requires less expertise</li>
+<li>Reproducible</li>
+<li>Generates machine-readable metadata</li>
+</ul>
+</div>
+</section>
+<section id="automation-strategies" class="slide level2">
+<h2>Automation Strategies</h2>
+<p><a href="grobid.readthedocs.io">Grobid</a>: A machine learning software for extracting structured information from scholarly documents</p>
+<p>And then…</p>
+<div>
+
+</div>
+<div class="quarto-layout-panel" data-layout="[[1,1,1]]">
+<div class="quarto-layout-row">
+<div class="quarto-layout-cell" style="flex-basis: 33.3%;justify-content: flex-start;">
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><img data-src="images/regex.png"></p>
+<figcaption>Text Search</figcaption>
+</figure>
+</div>
+</div>
+<div class="quarto-layout-cell" style="flex-basis: 33.3%;justify-content: flex-start;">
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><img data-src="images/code.png"></p>
+<figcaption>Code</figcaption>
+</figure>
+</div>
+</div>
+<div class="quarto-layout-cell" style="flex-basis: 33.3%;justify-content: flex-start;">
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><img data-src="images/llm.jpg"></p>
+<figcaption>LLM</figcaption>
+</figure>
+</div>
+</div>
+</div>
+</div>
+</section></section>
+<section>
+<section id="r-package" class="title-slide slide level1 center">
+<h1>R Package</h1>
+
+<img data-src="images/papercheck.png" class="r-stretch"></section>
+<section id="paper-import" class="slide level2">
+<h2>Paper Import</h2>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href=""></a>file <span class="ot">&lt;-</span> <span class="st">"papers/debruine-fret.pdf"</span></span>
+<span id="cb1-2"><a href=""></a>xml <span class="ot">&lt;-</span> <span class="fu">pdf2grobid</span>(file, </span>
+<span id="cb1-3"><a href=""></a>                  <span class="at">consolidateCitations =</span> <span class="cn">TRUE</span>, </span>
+<span id="cb1-4"><a href=""></a>                  <span class="at">consolidateHeader =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb1-5"><a href=""></a>paper <span class="ot">&lt;-</span> <span class="fu">read</span>(xml)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell">
+<div class="cell-output cell-output-stdout">
+<pre><code>-------------
+debruine-fret
+-------------
+
+Facial resemblance enhances trust
+
+* Sections: 8
+* Sentences: 174
+* Bibliography: 22
+* X-Refs: 26</code></pre>
+</div>
+</div>
+</section>
+<section id="batch-import" class="slide level2">
+<h2>Batch Import</h2>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href=""></a>papers <span class="ot">&lt;-</span> <span class="fu">read</span>(<span class="st">"papers"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="columns">
+<div class="column" style="width:25%;">
+<div class="cell">
+<div class="cell-output cell-output-stdout">
+<pre><code>--------------
+debruine-child
+--------------
+
+Resemblance to self increases the appeal of child faces to both men and women
+
+* Sections: 14
+* Sentences: 184
+* Bibliography: 23
+* X-Refs: 75</code></pre>
+</div>
+</div>
+</div><div class="column" style="width:25%;">
+<div class="cell">
+<div class="cell-output cell-output-stdout">
+<pre><code>-------------
+debruine-fret
+-------------
+
+Facial resemblance enhances trust
+
+* Sections: 8
+* Sentences: 174
+* Bibliography: 22
+* X-Refs: 26</code></pre>
+</div>
+</div>
+</div><div class="column" style="width:25%;">
+<div class="cell">
+<div class="cell-output cell-output-stdout">
+<pre><code>------------
+debruine-sex
+------------
+
+Facial resemblance increases the attractiveness of same-sex faces more than other-sex faces
+
+* Sections: 11
+* Sentences: 179
+* Bibliography: 40
+* X-Refs: 63</code></pre>
+</div>
+</div>
+</div><div class="column" style="width:25%;">
+<div class="cell">
+<div class="cell-output cell-output-stdout">
+<pre><code>------------
+debruine-tnl
+------------
+
+Trustworthy but not lust-worthy: context-specific effects of facial resemblance
+
+* Sections: 6
+* Sentences: 101
+* Bibliography: 32
+* X-Refs: 49</code></pre>
+</div>
+</div>
+</div></div>
+</section>
+<section id="text-search" class="slide level2">
+<h2>Text Search</h2>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href=""></a><span class="fu">search_text</span>(paper, <span class="st">"Canadian"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="module">
+<div class="cell">
+<div class="cell-output-display">
+<table class="caption-top">
+<colgroup>
+<col style="width: 83%">
+<col style="width: 2%">
+<col style="width: 4%">
+<col style="width: 1%">
+<col style="width: 1%">
+<col style="width: 1%">
+<col style="width: 5%">
+</colgroup>
+<thead>
+<tr class="header">
+<th style="text-align: left;">text</th>
+<th style="text-align: left;">section</th>
+<th style="text-align: left;">header</th>
+<th style="text-align: right;">div</th>
+<th style="text-align: right;">p</th>
+<th style="text-align: right;">s</th>
+<th style="text-align: left;">id</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">The monetary value of X ranged from (Canadian) $2 to $5 and was balanced between self and non-self morph trials.</td>
+<td style="text-align: left;">intro</td>
+<td style="text-align: left;">INTRODUCTION</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">4</td>
+<td style="text-align: right;">5</td>
+<td style="text-align: left;">debruine-fret</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">In the pay-off structure of the current game, the expected effect of such an evolved psychology would be both to raise the incentive to trust from (Canadian) $1 to $(1 ϩ r) and to lower the cost of betrayal from $1 to $(1 Ϫ r).</td>
+<td style="text-align: left;">intro</td>
+<td style="text-align: left;">INTRODUCTION</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">6</td>
+<td style="text-align: right;">2</td>
+<td style="text-align: left;">debruine-fret</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+</section>
+<section id="regex-text-search" class="slide level2">
+<h2>Regex Text Search</h2>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href=""></a><span class="fu">search_text</span>(paper, <span class="st">"</span><span class="sc">\\</span><span class="st">b</span><span class="sc">\\</span><span class="st">S+</span><span class="sc">\\</span><span class="st">s*=</span><span class="sc">\\</span><span class="st">s*</span><span class="sc">\\</span><span class="st">S+</span><span class="sc">\\</span><span class="st">b"</span>, <span class="at">return =</span> <span class="st">"match"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="module">
+<div class="cell">
+<div class="cell-output-display">
+<table class="caption-top" style="width:100%;">
+<colgroup>
+<col style="width: 11%">
+<col style="width: 9%">
+<col style="width: 50%">
+<col style="width: 4%">
+<col style="width: 3%">
+<col style="width: 3%">
+<col style="width: 16%">
+</colgroup>
+<thead>
+<tr class="header">
+<th style="text-align: left;">text</th>
+<th style="text-align: left;">section</th>
+<th style="text-align: left;">header</th>
+<th style="text-align: right;">div</th>
+<th style="text-align: right;">p</th>
+<th style="text-align: right;">s</th>
+<th style="text-align: left;">id</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">n = 11</td>
+<td style="text-align: left;">method</td>
+<td style="text-align: left;">METHODS (a) Preparation of facial stimuli</td>
+<td style="text-align: right;">2</td>
+<td style="text-align: right;">3</td>
+<td style="text-align: right;">4</td>
+<td style="text-align: left;">debruine-fret</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">n = 9</td>
+<td style="text-align: left;">method</td>
+<td style="text-align: left;">METHODS (a) Preparation of facial stimuli</td>
+<td style="text-align: right;">2</td>
+<td style="text-align: right;">3</td>
+<td style="text-align: right;">4</td>
+<td style="text-align: left;">debruine-fret</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">n = 4).</td>
+<td style="text-align: left;">method</td>
+<td style="text-align: left;">METHODS (a) Preparation of facial stimuli</td>
+<td style="text-align: right;">2</td>
+<td style="text-align: right;">3</td>
+<td style="text-align: right;">4</td>
+<td style="text-align: left;">debruine-fret</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">n = 11</td>
+<td style="text-align: left;">results</td>
+<td style="text-align: left;">RESULTS</td>
+<td style="text-align: right;">6</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: left;">debruine-fret</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">n = 13).</td>
+<td style="text-align: left;">results</td>
+<td style="text-align: left;">RESULTS</td>
+<td style="text-align: right;">6</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: left;">debruine-fret</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">10 = 2.63</td>
+<td style="text-align: left;">results</td>
+<td style="text-align: left;">RESULTS</td>
+<td style="text-align: right;">6</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">2</td>
+<td style="text-align: left;">debruine-fret</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">p = 0.013</td>
+<td style="text-align: left;">results</td>
+<td style="text-align: left;">RESULTS</td>
+<td style="text-align: right;">6</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">2</td>
+<td style="text-align: left;">debruine-fret</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">10 = 0.00</td>
+<td style="text-align: left;">results</td>
+<td style="text-align: left;">RESULTS</td>
+<td style="text-align: right;">6</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">2</td>
+<td style="text-align: left;">debruine-fret</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">12 = 2.13</td>
+<td style="text-align: left;">results</td>
+<td style="text-align: left;">RESULTS</td>
+<td style="text-align: right;">6</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">3</td>
+<td style="text-align: left;">debruine-fret</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">p = 0.028</td>
+<td style="text-align: left;">results</td>
+<td style="text-align: left;">RESULTS</td>
+<td style="text-align: right;">6</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">3</td>
+<td style="text-align: left;">debruine-fret</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+</section>
+<section id="llm" class="slide level2">
+<h2>LLM</h2>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href=""></a>query <span class="ot">&lt;-</span> <span class="st">'How many subjects were in the studies in total? </span></span>
+<span id="cb10-2"><a href=""></a><span class="st">Return your answer in JSON format giving the total and </span></span>
+<span id="cb10-3"><a href=""></a><span class="st">any subgroupings by gender, e.g.:</span></span>
+<span id="cb10-4"><a href=""></a><span class="st">{"total": 100, men": 42, "women": 58}, </span></span>
+<span id="cb10-5"><a href=""></a><span class="st">Only return valid JSON, no notes.'</span></span>
+<span id="cb10-6"><a href=""></a></span>
+<span id="cb10-7"><a href=""></a>llm_subjects <span class="ot">&lt;-</span> papers <span class="sc">|&gt;</span> </span>
+<span id="cb10-8"><a href=""></a>  <span class="fu">search_text</span>(<span class="st">"</span><span class="sc">\\</span><span class="st">d+"</span>, <span class="at">section =</span> <span class="st">"method"</span>) <span class="sc">|&gt;</span></span>
+<span id="cb10-9"><a href=""></a>  <span class="fu">search_text</span>(<span class="at">return =</span> <span class="st">"section"</span>) <span class="sc">|&gt;</span></span>
+<span id="cb10-10"><a href=""></a>  <span class="fu">llm</span>(query)</span>
+<span id="cb10-11"><a href=""></a></span>
+<span id="cb10-12"><a href=""></a>llm_subjects <span class="sc">|&gt;</span> <span class="fu">json_expand</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="module">
+<div class="cell">
+<div class="cell-output-display">
+<table class="caption-top">
+<colgroup>
+<col style="width: 21%">
+<col style="width: 55%">
+<col style="width: 8%">
+<col style="width: 5%">
+<col style="width: 8%">
+</colgroup>
+<thead>
+<tr class="header">
+<th style="text-align: left;">id</th>
+<th style="text-align: left;">answer</th>
+<th style="text-align: right;">total</th>
+<th style="text-align: right;">men</th>
+<th style="text-align: right;">women</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">debruine-child</td>
+<td style="text-align: left;">{“total”: 71, “men”: 32, “women”: 39}</td>
+<td style="text-align: right;">71</td>
+<td style="text-align: right;">32</td>
+<td style="text-align: right;">39</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">debruine-fret</td>
+<td style="text-align: left;">{“total”: 48, “men”: 24, “women”: 24}</td>
+<td style="text-align: right;">48</td>
+<td style="text-align: right;">24</td>
+<td style="text-align: right;">24</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">debruine-sex</td>
+<td style="text-align: left;">{“total”: 136, “men”: 86, “women”: 50}</td>
+<td style="text-align: right;">136</td>
+<td style="text-align: right;">86</td>
+<td style="text-align: right;">50</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">debruine-tnl</td>
+<td style="text-align: left;">{“total”: 144, “men”: 66, “women”: 78}</td>
+<td style="text-align: right;">144</td>
+<td style="text-align: right;">66</td>
+<td style="text-align: right;">78</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+</section>
+<section id="modules" class="slide level2">
+<h2>Modules</h2>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href=""></a><span class="fu">module_list</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code> * all_p_values: List all p-values in the text, returning the matched text (e.g., 'p = 0.04') and document location in a table.
+ * all_urls: List all the URLs in the main text.
+ * aspredicted: Get data from AdPredicted pre-regosterations in a structured way
+ * effect_size: Detect t-tests and F-tests with missing effect sizes
+ * exact_p: List any p-values reported with insufficient precision (e.g., p &lt; .05 or p = n.s.)
+ * marginal: List all sentences that describe an effect as 'marginally significant'.
+ * miscitation: Check for frequently miscited papers. This module is just a proof of concept -- the miscite database is not yet populated with real examples.
+ * osf_check: List all OSF links and whether they are open, closed, or do not exist.
+ * power: Find power analyses and return their components.
+ * ref_consistency: Check if all references are cited and all citations are referenced
+ * retractionwatch: Flag any cited papers in the RetractionWatch database
+ * statcheck: Check consistency of p-values and test statistics
+ 
+Use `module_help("module_name")` for help with a specific module</code></pre>
+</div>
+</div>
+</section>
+<section id="modules-effect-sizes" class="slide level2">
+<h2>Modules: Effect Sizes</h2>
+<aside class="notes">
+<p>A JARS guideline that can be automatically checked is whether people report effect sizes alongside their test result. Each test, like a t-test or F-test, should include the corresponding effect size, like a Cohen’s d, or partial eta-squared. Based on a text search that uses regular expressions (regex), we can identify t-tests and F-tests that are not followed by an effect size, and warn researchers accordingly.</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href=""></a>mod <span class="ot">&lt;-</span> <span class="fu">module_run</span>(</span>
+<span id="cb13-2"><a href=""></a>  <span class="at">paper =</span> psychsci,</span>
+<span id="cb13-3"><a href=""></a>  <span class="at">module =</span> <span class="st">"effect_size"</span></span>
+<span id="cb13-4"><a href=""></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="module">
+<div class="cell">
+<div class="cell-output-display">
+<table class="caption-top">
+<colgroup>
+<col style="width: 20%">
+<col style="width: 18%">
+<col style="width: 21%">
+<col style="width: 18%">
+<col style="width: 21%">
+</colgroup>
+<thead>
+<tr class="header">
+<th style="text-align: left;">id</th>
+<th style="text-align: right;">ttests_with_es</th>
+<th style="text-align: right;">ttests_without_es</th>
+<th style="text-align: right;">Ftests_with_es</th>
+<th style="text-align: right;">Ftests_without_es</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">0956797613520608</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">5</td>
+<td style="text-align: right;">0</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">0956797614522816</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">5</td>
+<td style="text-align: right;">20</td>
+<td style="text-align: right;">0</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">0956797614527830</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">0</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">0956797614557697</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">5</td>
+<td style="text-align: right;">0</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">0956797614560771</td>
+<td style="text-align: right;">2</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">0</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">0956797614566469</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">0</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">0956797615569001</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">0</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">0956797615569889</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">12</td>
+<td style="text-align: right;">0</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">0956797615583071</td>
+<td style="text-align: right;">6</td>
+<td style="text-align: right;">4</td>
+<td style="text-align: right;">2</td>
+<td style="text-align: right;">2</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">0956797615588467</td>
+<td style="text-align: right;">4</td>
+<td style="text-align: right;">3</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">1</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+</section>
+<section id="modules-power-module" class="slide level2">
+<h2>Modules:: Power Module</h2>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href=""></a>mod <span class="ot">&lt;-</span> <span class="fu">module_run</span>(</span>
+<span id="cb14-2"><a href=""></a>  <span class="at">paper =</span> psychsci,</span>
+<span id="cb14-3"><a href=""></a>  <span class="at">module =</span> <span class="st">"power"</span></span>
+<span id="cb14-4"><a href=""></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section id="select-relevant-text" class="slide level2">
+<h2>Select relevant text</h2>
+<div class="sourceCode" id="cb15"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href=""></a>sample_llm <span class="ot">&lt;-</span> paper <span class="sc">|&gt;</span></span>
+<span id="cb15-2"><a href=""></a>  <span class="fu">search_text</span>(</span>
+<span id="cb15-3"><a href=""></a>    <span class="at">pattern =</span> <span class="st">"power"</span>,</span>
+<span id="cb15-4"><a href=""></a>    <span class="at">section =</span> <span class="st">"method"</span>, </span>
+<span id="cb15-5"><a href=""></a>    <span class="at">return =</span> <span class="st">"paragraph"</span></span>
+<span id="cb15-6"><a href=""></a>  ) <span class="sc">|&gt;</span> </span>
+<span id="cb15-7"><a href=""></a>  <span class="fu">search_text</span>(</span>
+<span id="cb15-8"><a href=""></a>    <span class="at">pattern =</span> <span class="st">"[0-9], </span></span>
+<span id="cb15-9"><a href=""></a><span class="st">    return = "</span>paragraph<span class="st">"</span></span>
+<span id="cb15-10"><a href=""></a><span class="st">  ) |&gt; </span></span>
+<span id="cb15-11"><a href=""></a><span class="st">  distinct(id, .keep_all = TRUE)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+<section id="llm-instructions" class="slide level2">
+<h2>LLM Instructions</h2>
+<p>An a priori power analysis is used to estimate the required sample size to achieve a desired level of statistical power given an effect size, statistical test and alpha level.</p>
+<p>If the paragraph DOES describe an a priori power analysis, extract ONLY the following information and return it as JSON, use this exact schema:</p>
+<pre><code>{
+  "apriori": true,
+  "test": "one-way ANOVA",
+  "sample": 64,
+  "alpha": 0.05,
+  "power": 0.8,
+  "es": 0.4,
+  "es_metric": "Cohen\'s f"
+}</code></pre>
+</section>
+<section id="llms-need-specific-rules" class="slide level2">
+<h2>LLMs Need Specific Rules</h2>
+<ul>
+<li>Return “apriori”: false if this is NOT an a priori power analysis, true if it is.</li>
+<li>Do NOT classify paragraphs as a priori if they only report achieved power for an existing sample size.</li>
+<li>If information is missing or unclear, leave it empty.</li>
+<li>Use only the exact labels listed for “test” and “es_metric”.</li>
+</ul>
+</section>
+<section id="rules" class="slide level2">
+<h2>Rules</h2>
+<ul>
+<li>For “test”: Use ONLY these exact strings (case-sensitive). Choose the closest match or null if unclear/unsupported. Ignore one-sided vs.&nbsp;two-sided.</li>
+</ul>
+<div class="smaller">
+<pre><code>- "paired t-test"
+- "unpaired t-test"
+- "one-sample t-test"
+- "one-way ANOVA"
+- "two-way ANOVA"
+- "MANOVA"
+- "regression"
+- "chi-square"
+- "correlation"
+- "other"
+- null (if no test mentioned or unclear)</code></pre>
+</div>
+</section>
+<section id="rules-1" class="slide level2">
+<h2>Rules</h2>
+<ul>
+<li>For “es_metric”: Use ONLY these exact strings (case-sensitive) or “unstandardised” for raw/non-standardized effects (e.g., means, proportions). Use null if missing/unclear.</li>
+</ul>
+<div class="smaller">
+<pre><code>- "Cohen\'s d"
+- "Hedges\' g"
+- "Cohen\'s f"
+- "partial eta squared"
+- "eta squared"
+- "unstandardised"
+- null</code></pre>
+</div>
+<ul>
+<li>Do NOT guess values.</li>
+<li>Ignore whether the test is one-sided or two-sided.</li>
+<li>If ANOVA is used, specify one-way or two-way.</li>
+</ul>
+<p>Return only valid JSON format, starting with { and ending with }.</p>
+</section>
+<section id="results" class="slide level2">
+<h2>Results</h2>
+<div class="module">
+<div class="cell">
+<div class="cell-output-display">
+<table class="caption-top">
+<thead>
+<tr class="header">
+<th style="text-align: left;"></th>
+<th style="text-align: left;">test</th>
+<th style="text-align: right;">sample</th>
+<th style="text-align: right;">alpha</th>
+<th style="text-align: right;">power</th>
+<th style="text-align: right;">es</th>
+<th style="text-align: left;">es_metric</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">2</td>
+<td style="text-align: left;"></td>
+<td style="text-align: right;">12</td>
+<td style="text-align: right;">0.05</td>
+<td style="text-align: right;">0.95</td>
+<td style="text-align: right;">1.15</td>
+<td style="text-align: left;">unstandardised</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">3</td>
+<td style="text-align: left;"></td>
+<td style="text-align: right;">16</td>
+<td style="text-align: right;">0.05</td>
+<td style="text-align: right;">0.80</td>
+<td style="text-align: right;">0.76</td>
+<td style="text-align: left;"></td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">4</td>
+<td style="text-align: left;">unpaired t-test</td>
+<td style="text-align: right;">24</td>
+<td style="text-align: right;">0.05</td>
+<td style="text-align: right;">0.80</td>
+<td style="text-align: right;">0.60</td>
+<td style="text-align: left;">unstandardised</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">5</td>
+<td style="text-align: left;"></td>
+<td style="text-align: right;">NA</td>
+<td style="text-align: right;">NA</td>
+<td style="text-align: right;">NA</td>
+<td style="text-align: right;">1.10</td>
+<td style="text-align: left;">Cohen’s d</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">7</td>
+<td style="text-align: left;"></td>
+<td style="text-align: right;">15</td>
+<td style="text-align: right;">NA</td>
+<td style="text-align: right;">0.90</td>
+<td style="text-align: right;">0.25</td>
+<td style="text-align: left;">Cohen’s d</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">8</td>
+<td style="text-align: left;">one-way ANOVA</td>
+<td style="text-align: right;">24</td>
+<td style="text-align: right;">0.05</td>
+<td style="text-align: right;">0.80</td>
+<td style="text-align: right;">NA</td>
+<td style="text-align: left;"></td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">10</td>
+<td style="text-align: left;"></td>
+<td style="text-align: right;">10</td>
+<td style="text-align: right;">0.05</td>
+<td style="text-align: right;">0.95</td>
+<td style="text-align: right;">1.36</td>
+<td style="text-align: left;"></td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">11</td>
+<td style="text-align: left;"></td>
+<td style="text-align: right;">15</td>
+<td style="text-align: right;">NA</td>
+<td style="text-align: right;">0.80</td>
+<td style="text-align: right;">0.40</td>
+<td style="text-align: left;">Cohen’s d</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">12</td>
+<td style="text-align: left;">two-way ANOVA</td>
+<td style="text-align: right;">NA</td>
+<td style="text-align: right;">0.05</td>
+<td style="text-align: right;">0.80</td>
+<td style="text-align: right;">NA</td>
+<td style="text-align: left;"></td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">13</td>
+<td style="text-align: left;"></td>
+<td style="text-align: right;">52</td>
+<td style="text-align: right;">0.05</td>
+<td style="text-align: right;">0.80</td>
+<td style="text-align: right;">0.40</td>
+<td style="text-align: left;">unstandardised</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+</section></section>
+<section>
+<section id="promoting-adoption" class="title-slide slide level1 center">
+<h1>Promoting Adoption</h1>
+
+<img data-src="images/cos_triangle_text.webp" class="r-stretch quarto-figure-center"><p class="caption">Center for Open Science</p></section>
+<section id="caveats" class="slide level2">
+<h2>Caveats</h2>
+<div class="columns">
+<div class="column" style="width:30%;">
+<!-- icon credit WEBTECHOPS LLP -->
+<p><img data-src="images/caveat.png"></p>
+</div><div class="column" style="width:70%;">
+<ul>
+<li>Validation</li>
+<li>Sustainability</li>
+<li>AI Reproducibility</li>
+<li>Inappropriate Use</li>
+</ul>
+</div></div>
+</section></section>
+<section id="thank-you" class="title-slide slide level1 center">
+<h1>Thank You!</h1>
+<p><img data-src="images/papercheck.png" style="vertical-align:middle;" width="120"> <a href="https://scienceverse.github.io/papercheck/">papercheck</a> - download the package or submit issues</p>
+<p><img data-src="images/verisci.png" style="vertical-align:middle;" width="120"> <a href="https://github.com/VeriSci/">VeriSci</a> - join a community to create or test modules</p>
+<p><img data-src="images/rainbow.png" style="vertical-align:middle;" width="120"> <a href="https://debruine.github.io"><span class="citation" data-cites="debruine">@debruine</span></a> - see what else I’m up to</p>
+
+</section>
+    </div>
+  <div class="quarto-auto-generated-content" style="display: none;">
+<p><img src="images/papercheck.png" class="slide-logo"></p>
+<div class="footer footer-default">
+
+</div>
+</div></div>
+
+  <script>window.backupDefine = window.define; window.define = undefined;</script>
+  <script src="index_files/libs/revealjs/dist/reveal.js"></script>
+  <!-- reveal.js plugins -->
+  <script src="index_files/libs/revealjs/plugin/quarto-line-highlight/line-highlight.js"></script>
+  <script src="index_files/libs/revealjs/plugin/pdf-export/pdfexport.js"></script>
+  <script src="index_files/libs/revealjs/plugin/reveal-menu/menu.js"></script>
+  <script src="index_files/libs/revealjs/plugin/reveal-menu/quarto-menu.js"></script>
+  <script src="index_files/libs/revealjs/plugin/quarto-support/support.js"></script>
+  
+
+  <script src="index_files/libs/revealjs/plugin/notes/notes.js"></script>
+  <script src="index_files/libs/revealjs/plugin/search/search.js"></script>
+  <script src="index_files/libs/revealjs/plugin/zoom/zoom.js"></script>
+  <script src="index_files/libs/revealjs/plugin/math/math.js"></script>
+  <script>window.define = window.backupDefine; window.backupDefine = undefined;</script>
+
+  <script>
+
+      // Full list of configuration options available at:
+      // https://revealjs.com/config/
+      Reveal.initialize({
+'controlsAuto': true,
+'previewLinksAuto': false,
+'pdfSeparateFragments': false,
+'autoAnimateEasing': "ease",
+'autoAnimateDuration': 1,
+'autoAnimateUnmatched': true,
+'jumpToSlide': true,
+'menu': {"side":"left","useTextContentForMissingTitles":true,"markers":false,"loadIcons":false,"custom":[{"title":"Tools","icon":"<i class=\"fas fa-gear\"></i>","content":"<ul class=\"slide-menu-items\">\n<li class=\"slide-tool-item active\" data-item=\"0\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.fullscreen(event)\"><kbd>f</kbd> Fullscreen</a></li>\n<li class=\"slide-tool-item\" data-item=\"1\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.speakerMode(event)\"><kbd>s</kbd> Speaker View</a></li>\n<li class=\"slide-tool-item\" data-item=\"2\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.overview(event)\"><kbd>o</kbd> Slide Overview</a></li>\n<li class=\"slide-tool-item\" data-item=\"3\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.togglePdfExport(event)\"><kbd>e</kbd> PDF Export Mode</a></li>\n<li class=\"slide-tool-item\" data-item=\"4\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.toggleScrollView(event)\"><kbd>r</kbd> Scroll View Mode</a></li>\n<li class=\"slide-tool-item\" data-item=\"5\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.keyboardHelp(event)\"><kbd>?</kbd> Keyboard Help</a></li>\n</ul>"}],"openButton":true},
+'smaller': false,
+ 
+        // Display controls in the bottom right corner
+        controls: false,
+
+        // Help the user learn the controls by providing hints, for example by
+        // bouncing the down arrow when they first encounter a vertical slide
+        controlsTutorial: false,
+
+        // Determines where controls appear, "edges" or "bottom-right"
+        controlsLayout: 'edges',
+
+        // Visibility rule for backwards navigation arrows; "faded", "hidden"
+        // or "visible"
+        controlsBackArrows: 'faded',
+
+        // Display a presentation progress bar
+        progress: true,
+
+        // Display the page number of the current slide
+        slideNumber: false,
+
+        // 'all', 'print', or 'speaker'
+        showSlideNumber: 'all',
+
+        // Add the current slide number to the URL hash so that reloading the
+        // page/copying the URL will return you to the same slide
+        hash: true,
+
+        // Start with 1 for the hash rather than 0
+        hashOneBasedIndex: false,
+
+        // Flags if we should monitor the hash and change slides accordingly
+        respondToHashChanges: true,
+
+        // Push each slide change to the browser history
+        history: true,
+
+        // Enable keyboard shortcuts for navigation
+        keyboard: true,
+
+        // Enable the slide overview mode
+        overview: true,
+
+        // Disables the default reveal.js slide layout (scaling and centering)
+        // so that you can use custom CSS layout
+        disableLayout: false,
+
+        // Vertical centering of slides
+        center: false,
+
+        // Enables touch navigation on devices with touch input
+        touch: true,
+
+        // Loop the presentation
+        loop: false,
+
+        // Change the presentation direction to be RTL
+        rtl: false,
+
+        // see https://revealjs.com/vertical-slides/#navigation-mode
+        navigationMode: 'linear',
+
+        // Randomizes the order of slides each time the presentation loads
+        shuffle: false,
+
+        // Turns fragments on and off globally
+        fragments: true,
+
+        // Flags whether to include the current fragment in the URL,
+        // so that reloading brings you to the same fragment position
+        fragmentInURL: false,
+
+        // Flags if the presentation is running in an embedded mode,
+        // i.e. contained within a limited portion of the screen
+        embedded: false,
+
+        // Flags if we should show a help overlay when the questionmark
+        // key is pressed
+        help: true,
+
+        // Flags if it should be possible to pause the presentation (blackout)
+        pause: true,
+
+        // Flags if speaker notes should be visible to all viewers
+        showNotes: false,
+
+        // Global override for autoplaying embedded media (null/true/false)
+        autoPlayMedia: null,
+
+        // Global override for preloading lazy-loaded iframes (null/true/false)
+        preloadIframes: null,
+
+        // Number of milliseconds between automatically proceeding to the
+        // next slide, disabled when set to 0, this value can be overwritten
+        // by using a data-autoslide attribute on your slides
+        autoSlide: 0,
+
+        // Stop auto-sliding after user input
+        autoSlideStoppable: true,
+
+        // Use this method for navigation when auto-sliding
+        autoSlideMethod: null,
+
+        // Specify the average time in seconds that you think you will spend
+        // presenting each slide. This is used to show a pacing timer in the
+        // speaker view
+        defaultTiming: null,
+
+        // Enable slide navigation via mouse wheel
+        mouseWheel: false,
+
+        // The display mode that will be used to show slides
+        display: 'block',
+
+        // Hide cursor if inactive
+        hideInactiveCursor: true,
+
+        // Time before the cursor is hidden (in ms)
+        hideCursorTime: 5000,
+
+        // Opens links in an iframe preview overlay
+        previewLinks: false,
+
+        // Transition style (none/fade/slide/convex/concave/zoom)
+        transition: 'none',
+
+        // Transition speed (default/fast/slow)
+        transitionSpeed: 'fast',
+
+        // Transition style for full page slide backgrounds
+        // (none/fade/slide/convex/concave/zoom)
+        backgroundTransition: 'none',
+
+        // Number of slides away from the current that are visible
+        viewDistance: 3,
+
+        // Number of slides away from the current that are visible on mobile
+        // devices. It is advisable to set this to a lower number than
+        // viewDistance in order to save resources.
+        mobileViewDistance: 2,
+
+        // The "normal" size of the presentation, aspect ratio will be preserved
+        // when the presentation is scaled to fit different resolutions. Can be
+        // specified using percentage units.
+        width: 1050,
+
+        height: 700,
+
+        // Factor of the display size that should remain empty around the content
+        margin: 0.1,
+
+        math: {
+          mathjax: 'https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.9/MathJax.js',
+          config: 'TeX-AMS_HTML-full',
+          tex2jax: {
+            inlineMath: [['\\(','\\)']],
+            displayMath: [['\\[','\\]']],
+            balanceBraces: true,
+            processEscapes: false,
+            processRefs: true,
+            processEnvironments: true,
+            preview: 'TeX',
+            skipTags: ['script','noscript','style','textarea','pre','code'],
+            ignoreClass: 'tex2jax_ignore',
+            processClass: 'tex2jax_process'
+          },
+        },
+
+        // reveal.js plugins
+        plugins: [QuartoLineHighlight, PdfExport, RevealMenu, QuartoSupport,
+
+          RevealMath,
+          RevealNotes,
+          RevealSearch,
+          RevealZoom
+        ]
+      });
+    </script>
+    
+    <script>
+      // htmlwidgets need to know to resize themselves when slides are shown/hidden.
+      // Fire the "slideenter" event (handled by htmlwidgets.js) when the current
+      // slide changes (different for each slide format).
+      (function () {
+        // dispatch for htmlwidgets
+        function fireSlideEnter() {
+          const event = window.document.createEvent("Event");
+          event.initEvent("slideenter", true, true);
+          window.document.dispatchEvent(event);
+        }
+
+        function fireSlideChanged(previousSlide, currentSlide) {
+          fireSlideEnter();
+
+          // dispatch for shiny
+          if (window.jQuery) {
+            if (previousSlide) {
+              window.jQuery(previousSlide).trigger("hidden");
+            }
+            if (currentSlide) {
+              window.jQuery(currentSlide).trigger("shown");
+            }
+          }
+        }
+
+        // hookup for slidy
+        if (window.w3c_slidy) {
+          window.w3c_slidy.add_observer(function (slide_num) {
+            // slide_num starts at position 1
+            fireSlideChanged(null, w3c_slidy.slides[slide_num - 1]);
+          });
+        }
+
+      })();
+    </script>
+
+    <script id="quarto-html-after-body" type="application/javascript">
+    window.document.addEventListener("DOMContentLoaded", function (event) {
+      const toggleBodyColorMode = (bsSheetEl) => {
+        const mode = bsSheetEl.getAttribute("data-mode");
+        const bodyEl = window.document.querySelector("body");
+        if (mode === "dark") {
+          bodyEl.classList.add("quarto-dark");
+          bodyEl.classList.remove("quarto-light");
+        } else {
+          bodyEl.classList.add("quarto-light");
+          bodyEl.classList.remove("quarto-dark");
+        }
+      }
+      const toggleBodyColorPrimary = () => {
+        const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+        if (bsSheetEl) {
+          toggleBodyColorMode(bsSheetEl);
+        }
+      }
+      toggleBodyColorPrimary();  
+      const tabsets =  window.document.querySelectorAll(".panel-tabset-tabby")
+      tabsets.forEach(function(tabset) {
+        const tabby = new Tabby('#' + tabset.id);
+      });
+      const isCodeAnnotation = (el) => {
+        for (const clz of el.classList) {
+          if (clz.startsWith('code-annotation-')) {                     
+            return true;
+          }
+        }
+        return false;
+      }
+      const onCopySuccess = function(e) {
+        // button target
+        const button = e.trigger;
+        // don't keep focus
+        button.blur();
+        // flash "checked"
+        button.classList.add('code-copy-button-checked');
+        var currentTitle = button.getAttribute("title");
+        button.setAttribute("title", "Copied!");
+        let tooltip;
+        if (window.bootstrap) {
+          button.setAttribute("data-bs-toggle", "tooltip");
+          button.setAttribute("data-bs-placement", "left");
+          button.setAttribute("data-bs-title", "Copied!");
+          tooltip = new bootstrap.Tooltip(button, 
+            { trigger: "manual", 
+              customClass: "code-copy-button-tooltip",
+              offset: [0, -8]});
+          tooltip.show();    
+        }
+        setTimeout(function() {
+          if (tooltip) {
+            tooltip.hide();
+            button.removeAttribute("data-bs-title");
+            button.removeAttribute("data-bs-toggle");
+            button.removeAttribute("data-bs-placement");
+          }
+          button.setAttribute("title", currentTitle);
+          button.classList.remove('code-copy-button-checked');
+        }, 1000);
+        // clear code selection
+        e.clearSelection();
+      }
+      const getTextToCopy = function(trigger) {
+          const codeEl = trigger.previousElementSibling.cloneNode(true);
+          for (const childEl of codeEl.children) {
+            if (isCodeAnnotation(childEl)) {
+              childEl.remove();
+            }
+          }
+          return codeEl.innerText;
+      }
+      const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+        text: getTextToCopy
+      });
+      clipboard.on('success', onCopySuccess);
+      if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+        const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+          text: getTextToCopy,
+          container: window.document.getElementById('quarto-embedded-source-code-modal')
+        });
+        clipboardModal.on('success', onCopySuccess);
+      }
+        var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+        var mailtoRegex = new RegExp(/^mailto:/);
+          var filterRegex = new RegExp('/' + window.location.host + '/');
+        var isInternal = (href) => {
+            return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+        }
+        // Inspect non-navigation links and adorn them if external
+     	var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+        for (var i=0; i<links.length; i++) {
+          const link = links[i];
+          if (!isInternal(link.href)) {
+            // undo the damage that might have been done by quarto-nav.js in the case of
+            // links that we want to consider external
+            if (link.dataset.originalHref !== undefined) {
+              link.href = link.dataset.originalHref;
+            }
+          }
+        }
+      function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+        const config = {
+          allowHTML: true,
+          maxWidth: 500,
+          delay: 100,
+          arrow: false,
+          appendTo: function(el) {
+              return el.closest('section.slide') || el.parentElement;
+          },
+          interactive: true,
+          interactiveBorder: 10,
+          theme: 'light-border',
+          placement: 'bottom-start',
+        };
+        if (contentFn) {
+          config.content = contentFn;
+        }
+        if (onTriggerFn) {
+          config.onTrigger = onTriggerFn;
+        }
+        if (onUntriggerFn) {
+          config.onUntrigger = onUntriggerFn;
+        }
+          config['offset'] = [0,0];
+          config['maxWidth'] = 700;
+        window.tippy(el, config); 
+      }
+      const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+      for (var i=0; i<noterefs.length; i++) {
+        const ref = noterefs[i];
+        tippyHover(ref, function() {
+          // use id or data attribute instead here
+          let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+          try { href = new URL(href).hash; } catch {}
+          const id = href.replace(/^#\/?/, "");
+          const note = window.document.getElementById(id);
+          if (note) {
+            return note.innerHTML;
+          } else {
+            return "";
+          }
+        });
+      }
+      const findCites = (el) => {
+        const parentEl = el.parentElement;
+        if (parentEl) {
+          const cites = parentEl.dataset.cites;
+          if (cites) {
+            return {
+              el,
+              cites: cites.split(' ')
+            };
+          } else {
+            return findCites(el.parentElement)
+          }
+        } else {
+          return undefined;
+        }
+      };
+      var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+      for (var i=0; i<bibliorefs.length; i++) {
+        const ref = bibliorefs[i];
+        const citeInfo = findCites(ref);
+        if (citeInfo) {
+          tippyHover(citeInfo.el, function() {
+            var popup = window.document.createElement('div');
+            citeInfo.cites.forEach(function(cite) {
+              var citeDiv = window.document.createElement('div');
+              citeDiv.classList.add('hanging-indent');
+              citeDiv.classList.add('csl-entry');
+              var biblioDiv = window.document.getElementById('ref-' + cite);
+              if (biblioDiv) {
+                citeDiv.innerHTML = biblioDiv.innerHTML;
+              }
+              popup.appendChild(citeDiv);
+            });
+            return popup.innerHTML;
+          });
+        }
+      }
+    });
+    </script>
+    
+
+</body></html>

@@ -5,6 +5,7 @@ format:
     css: 2025-module-demo/style.scss
 ---
 
+* [Spotlight AI for Research](2025-fdsai-ethics) for Using AI Ethically for Research at Festival of DSata Science and AI 2025-10-27
 * [Papercheck Module Demo](2025-module-demo) for Transparency Check kickoff 2025-10-06
 * [Papercheck](/2025-papercheck-intro)
  for University of Glasgow School of Psychology & Neuroscience Seminar Series 2025-07-25
