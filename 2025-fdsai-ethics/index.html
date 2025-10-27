@@ -392,102 +392,11 @@ Lisa DeBruine<br>
 <h1>R Package</h1>
 
 <img data-src="images/papercheck.png" class="r-stretch"></section>
-<section id="paper-import" class="slide level2">
-<h2>Paper Import</h2>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href=""></a>file <span class="ot">&lt;-</span> <span class="st">"papers/debruine-fret.pdf"</span></span>
-<span id="cb1-2"><a href=""></a>xml <span class="ot">&lt;-</span> <span class="fu">pdf2grobid</span>(file, </span>
-<span id="cb1-3"><a href=""></a>                  <span class="at">consolidateCitations =</span> <span class="cn">TRUE</span>, </span>
-<span id="cb1-4"><a href=""></a>                  <span class="at">consolidateHeader =</span> <span class="cn">TRUE</span>)</span>
-<span id="cb1-5"><a href=""></a>paper <span class="ot">&lt;-</span> <span class="fu">read</span>(xml)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-<div class="cell">
-<div class="cell-output cell-output-stdout">
-<pre><code>-------------
-debruine-fret
--------------
-
-Facial resemblance enhances trust
-
-* Sections: 8
-* Sentences: 174
-* Bibliography: 22
-* X-Refs: 26</code></pre>
-</div>
-</div>
-</section>
-<section id="batch-import" class="slide level2">
-<h2>Batch Import</h2>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href=""></a>papers <span class="ot">&lt;-</span> <span class="fu">read</span>(<span class="st">"papers"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-<div class="columns">
-<div class="column" style="width:25%;">
-<div class="cell">
-<div class="cell-output cell-output-stdout">
-<pre><code>--------------
-debruine-child
---------------
-
-Resemblance to self increases the appeal of child faces to both men and women
-
-* Sections: 14
-* Sentences: 184
-* Bibliography: 23
-* X-Refs: 75</code></pre>
-</div>
-</div>
-</div><div class="column" style="width:25%;">
-<div class="cell">
-<div class="cell-output cell-output-stdout">
-<pre><code>-------------
-debruine-fret
--------------
-
-Facial resemblance enhances trust
-
-* Sections: 8
-* Sentences: 174
-* Bibliography: 22
-* X-Refs: 26</code></pre>
-</div>
-</div>
-</div><div class="column" style="width:25%;">
-<div class="cell">
-<div class="cell-output cell-output-stdout">
-<pre><code>------------
-debruine-sex
-------------
-
-Facial resemblance increases the attractiveness of same-sex faces more than other-sex faces
-
-* Sections: 11
-* Sentences: 179
-* Bibliography: 40
-* X-Refs: 63</code></pre>
-</div>
-</div>
-</div><div class="column" style="width:25%;">
-<div class="cell">
-<div class="cell-output cell-output-stdout">
-<pre><code>------------
-debruine-tnl
-------------
-
-Trustworthy but not lust-worthy: context-specific effects of facial resemblance
-
-* Sections: 6
-* Sentences: 101
-* Bibliography: 32
-* X-Refs: 49</code></pre>
-</div>
-</div>
-</div></div>
-</section>
 <section id="text-search" class="slide level2">
 <h2>Text Search</h2>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href=""></a><span class="fu">search_text</span>(paper, <span class="st">"Canadian"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href=""></a>papers <span class="ot">&lt;-</span> <span class="fu">read</span>(<span class="st">"papers"</span>)</span>
+<span id="cb1-2"><a href=""></a><span class="fu">search_text</span>(papers, <span class="st">"Canadian"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <div class="module">
 <div class="cell">
@@ -541,20 +450,20 @@ Trustworthy but not lust-worthy: context-specific effects of facial resemblance
 <section id="regex-text-search" class="slide level2">
 <h2>Regex Text Search</h2>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href=""></a><span class="fu">search_text</span>(paper, <span class="st">"</span><span class="sc">\\</span><span class="st">b</span><span class="sc">\\</span><span class="st">S+</span><span class="sc">\\</span><span class="st">s*=</span><span class="sc">\\</span><span class="st">s*</span><span class="sc">\\</span><span class="st">S+</span><span class="sc">\\</span><span class="st">b"</span>, <span class="at">return =</span> <span class="st">"match"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href=""></a><span class="fu">search_text</span>(papers, <span class="st">"</span><span class="sc">\\</span><span class="st">b</span><span class="sc">\\</span><span class="st">S+</span><span class="sc">\\</span><span class="st">s*=</span><span class="sc">\\</span><span class="st">s*</span><span class="sc">\\</span><span class="st">S+</span><span class="sc">\\</span><span class="st">b"</span>, <span class="at">return =</span> <span class="st">"match"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <div class="module">
 <div class="cell">
 <div class="cell-output-display">
-<table class="caption-top" style="width:100%;">
+<table class="caption-top">
 <colgroup>
-<col style="width: 11%">
+<col style="width: 18%">
 <col style="width: 9%">
-<col style="width: 50%">
+<col style="width: 41%">
 <col style="width: 4%">
 <col style="width: 3%">
 <col style="width: 3%">
-<col style="width: 16%">
+<col style="width: 18%">
 </colgroup>
 <thead>
 <tr class="header">
@@ -569,94 +478,94 @@ Trustworthy but not lust-worthy: context-specific effects of facial resemblance
 </thead>
 <tbody>
 <tr class="odd">
-<td style="text-align: left;">n = 11</td>
+<td style="text-align: left;">age = 19</td>
 <td style="text-align: left;">method</td>
-<td style="text-align: left;">METHODS (a) Preparation of facial stimuli</td>
-<td style="text-align: right;">2</td>
-<td style="text-align: right;">3</td>
-<td style="text-align: right;">4</td>
-<td style="text-align: left;">debruine-fret</td>
+<td style="text-align: left;">Participants</td>
+<td style="text-align: right;">5</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: left;">debruine-child</td>
 </tr>
 <tr class="even">
-<td style="text-align: left;">n = 9</td>
+<td style="text-align: left;">age = 19</td>
 <td style="text-align: left;">method</td>
-<td style="text-align: left;">METHODS (a) Preparation of facial stimuli</td>
+<td style="text-align: left;">Participants</td>
+<td style="text-align: right;">5</td>
 <td style="text-align: right;">2</td>
-<td style="text-align: right;">3</td>
-<td style="text-align: right;">4</td>
-<td style="text-align: left;">debruine-fret</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: left;">debruine-child</td>
 </tr>
 <tr class="odd">
-<td style="text-align: left;">n = 4).</td>
+<td style="text-align: left;">M = 5.6</td>
 <td style="text-align: left;">method</td>
-<td style="text-align: left;">METHODS (a) Preparation of facial stimuli</td>
+<td style="text-align: left;">Participants</td>
+<td style="text-align: right;">5</td>
 <td style="text-align: right;">2</td>
 <td style="text-align: right;">3</td>
-<td style="text-align: right;">4</td>
-<td style="text-align: left;">debruine-fret</td>
+<td style="text-align: left;">debruine-child</td>
 </tr>
 <tr class="even">
-<td style="text-align: left;">n = 11</td>
-<td style="text-align: left;">results</td>
-<td style="text-align: left;">RESULTS</td>
-<td style="text-align: right;">6</td>
-<td style="text-align: right;">1</td>
-<td style="text-align: right;">1</td>
-<td style="text-align: left;">debruine-fret</td>
-</tr>
-<tr class="odd">
-<td style="text-align: left;">n = 13).</td>
-<td style="text-align: left;">results</td>
-<td style="text-align: left;">RESULTS</td>
-<td style="text-align: right;">6</td>
-<td style="text-align: right;">1</td>
-<td style="text-align: right;">1</td>
-<td style="text-align: left;">debruine-fret</td>
-</tr>
-<tr class="even">
-<td style="text-align: left;">10 = 2.63</td>
-<td style="text-align: left;">results</td>
-<td style="text-align: left;">RESULTS</td>
-<td style="text-align: right;">6</td>
-<td style="text-align: right;">1</td>
+<td style="text-align: left;">SD = 2.3).</td>
+<td style="text-align: left;">method</td>
+<td style="text-align: left;">Participants</td>
+<td style="text-align: right;">5</td>
 <td style="text-align: right;">2</td>
-<td style="text-align: left;">debruine-fret</td>
-</tr>
-<tr class="odd">
-<td style="text-align: left;">p = 0.013</td>
-<td style="text-align: left;">results</td>
-<td style="text-align: left;">RESULTS</td>
-<td style="text-align: right;">6</td>
-<td style="text-align: right;">1</td>
-<td style="text-align: right;">2</td>
-<td style="text-align: left;">debruine-fret</td>
-</tr>
-<tr class="even">
-<td style="text-align: left;">10 = 0.00</td>
-<td style="text-align: left;">results</td>
-<td style="text-align: left;">RESULTS</td>
-<td style="text-align: right;">6</td>
-<td style="text-align: right;">1</td>
-<td style="text-align: right;">2</td>
-<td style="text-align: left;">debruine-fret</td>
-</tr>
-<tr class="odd">
-<td style="text-align: left;">12 = 2.13</td>
-<td style="text-align: left;">results</td>
-<td style="text-align: left;">RESULTS</td>
-<td style="text-align: right;">6</td>
-<td style="text-align: right;">1</td>
 <td style="text-align: right;">3</td>
-<td style="text-align: left;">debruine-fret</td>
+<td style="text-align: left;">debruine-child</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">F(1,51) = 7.24</td>
+<td style="text-align: left;">results</td>
+<td style="text-align: left;">Hypothetical investment decisions</td>
+<td style="text-align: right;">11</td>
+<td style="text-align: right;">2</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: left;">debruine-child</td>
 </tr>
 <tr class="even">
-<td style="text-align: left;">p = 0.028</td>
+<td style="text-align: left;">P = .01</td>
 <td style="text-align: left;">results</td>
-<td style="text-align: left;">RESULTS</td>
-<td style="text-align: right;">6</td>
+<td style="text-align: left;">Hypothetical investment decisions</td>
+<td style="text-align: right;">11</td>
+<td style="text-align: right;">2</td>
 <td style="text-align: right;">1</td>
-<td style="text-align: right;">3</td>
-<td style="text-align: left;">debruine-fret</td>
+<td style="text-align: left;">debruine-child</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">F(1,51) = 0.52</td>
+<td style="text-align: left;">results</td>
+<td style="text-align: left;">Hypothetical investment decisions</td>
+<td style="text-align: right;">11</td>
+<td style="text-align: right;">2</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: left;">debruine-child</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">P = .48</td>
+<td style="text-align: left;">results</td>
+<td style="text-align: left;">Hypothetical investment decisions</td>
+<td style="text-align: right;">11</td>
+<td style="text-align: right;">2</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: left;">debruine-child</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">M = 1.26</td>
+<td style="text-align: left;">results</td>
+<td style="text-align: left;">Hypothetical investment decisions</td>
+<td style="text-align: right;">11</td>
+<td style="text-align: right;">2</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: left;">debruine-child</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">SD = 1.25</td>
+<td style="text-align: left;">results</td>
+<td style="text-align: left;">Hypothetical investment decisions</td>
+<td style="text-align: right;">11</td>
+<td style="text-align: right;">2</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: left;">debruine-child</td>
 </tr>
 </tbody>
 </table>
@@ -667,18 +576,18 @@ Trustworthy but not lust-worthy: context-specific effects of facial resemblance
 <section id="llm" class="slide level2">
 <h2>LLM</h2>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href=""></a>query <span class="ot">&lt;-</span> <span class="st">'How many subjects were in the studies in total? </span></span>
-<span id="cb10-2"><a href=""></a><span class="st">Return your answer in JSON format giving the total and </span></span>
-<span id="cb10-3"><a href=""></a><span class="st">any subgroupings by gender, e.g.:</span></span>
-<span id="cb10-4"><a href=""></a><span class="st">{"total": 100, men": 42, "women": 58}, </span></span>
-<span id="cb10-5"><a href=""></a><span class="st">Only return valid JSON, no notes.'</span></span>
-<span id="cb10-6"><a href=""></a></span>
-<span id="cb10-7"><a href=""></a>llm_subjects <span class="ot">&lt;-</span> papers <span class="sc">|&gt;</span> </span>
-<span id="cb10-8"><a href=""></a>  <span class="fu">search_text</span>(<span class="st">"</span><span class="sc">\\</span><span class="st">d+"</span>, <span class="at">section =</span> <span class="st">"method"</span>) <span class="sc">|&gt;</span></span>
-<span id="cb10-9"><a href=""></a>  <span class="fu">search_text</span>(<span class="at">return =</span> <span class="st">"section"</span>) <span class="sc">|&gt;</span></span>
-<span id="cb10-10"><a href=""></a>  <span class="fu">llm</span>(query)</span>
-<span id="cb10-11"><a href=""></a></span>
-<span id="cb10-12"><a href=""></a>llm_subjects <span class="sc">|&gt;</span> <span class="fu">json_expand</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href=""></a>query <span class="ot">&lt;-</span> <span class="st">'How many subjects were in the studies in total? </span></span>
+<span id="cb3-2"><a href=""></a><span class="st">Return your answer in JSON format giving the total and </span></span>
+<span id="cb3-3"><a href=""></a><span class="st">any subgroupings by gender, e.g.:</span></span>
+<span id="cb3-4"><a href=""></a><span class="st">{"total": 100, men": 42, "women": 58}, </span></span>
+<span id="cb3-5"><a href=""></a><span class="st">Only return valid JSON, no notes.'</span></span>
+<span id="cb3-6"><a href=""></a></span>
+<span id="cb3-7"><a href=""></a>llm_subjects <span class="ot">&lt;-</span> papers <span class="sc">|&gt;</span> </span>
+<span id="cb3-8"><a href=""></a>  <span class="fu">search_text</span>(<span class="st">"</span><span class="sc">\\</span><span class="st">d+"</span>, <span class="at">section =</span> <span class="st">"method"</span>) <span class="sc">|&gt;</span></span>
+<span id="cb3-9"><a href=""></a>  <span class="fu">search_text</span>(<span class="at">return =</span> <span class="st">"section"</span>) <span class="sc">|&gt;</span></span>
+<span id="cb3-10"><a href=""></a>  <span class="fu">llm</span>(query)</span>
+<span id="cb3-11"><a href=""></a></span>
+<span id="cb3-12"><a href=""></a>llm_subjects <span class="sc">|&gt;</span> <span class="fu">json_expand</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <div class="module">
 <div class="cell">
@@ -738,7 +647,7 @@ Trustworthy but not lust-worthy: context-specific effects of facial resemblance
 <section id="modules" class="slide level2">
 <h2>Modules</h2>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href=""></a><span class="fu">module_list</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href=""></a><span class="fu">module_list</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code> * all_p_values: List all p-values in the text, returning the matched text (e.g., 'p = 0.04') and document location in a table.
  * all_urls: List all the URLs in the main text.
@@ -773,10 +682,10 @@ Use `module_help("module_name")` for help with a specific module</code></pre>
           display:block!important;
       }</style></aside>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href=""></a>mod <span class="ot">&lt;-</span> <span class="fu">module_run</span>(</span>
-<span id="cb13-2"><a href=""></a>  <span class="at">paper =</span> psychsci,</span>
-<span id="cb13-3"><a href=""></a>  <span class="at">module =</span> <span class="st">"effect_size"</span></span>
-<span id="cb13-4"><a href=""></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href=""></a>mod <span class="ot">&lt;-</span> <span class="fu">module_run</span>(</span>
+<span id="cb6-2"><a href=""></a>  <span class="at">paper =</span> psychsci,</span>
+<span id="cb6-3"><a href=""></a>  <span class="at">module =</span> <span class="st">"effect_size"</span></span>
+<span id="cb6-4"><a href=""></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <div class="module">
 <div class="cell">
@@ -878,91 +787,11 @@ Use `module_help("module_name")` for help with a specific module</code></pre>
 <section id="modules-power-module" class="slide level2">
 <h2>Modules:: Power Module</h2>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href=""></a>mod <span class="ot">&lt;-</span> <span class="fu">module_run</span>(</span>
-<span id="cb14-2"><a href=""></a>  <span class="at">paper =</span> psychsci,</span>
-<span id="cb14-3"><a href=""></a>  <span class="at">module =</span> <span class="st">"power"</span></span>
-<span id="cb14-4"><a href=""></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href=""></a>mod <span class="ot">&lt;-</span> <span class="fu">module_run</span>(</span>
+<span id="cb7-2"><a href=""></a>  <span class="at">paper =</span> psychsci,</span>
+<span id="cb7-3"><a href=""></a>  <span class="at">module =</span> <span class="st">"power"</span></span>
+<span id="cb7-4"><a href=""></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-</section>
-<section id="select-relevant-text" class="slide level2">
-<h2>Select relevant text</h2>
-<div class="sourceCode" id="cb15"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href=""></a>sample_llm <span class="ot">&lt;-</span> paper <span class="sc">|&gt;</span></span>
-<span id="cb15-2"><a href=""></a>  <span class="fu">search_text</span>(</span>
-<span id="cb15-3"><a href=""></a>    <span class="at">pattern =</span> <span class="st">"power"</span>,</span>
-<span id="cb15-4"><a href=""></a>    <span class="at">section =</span> <span class="st">"method"</span>, </span>
-<span id="cb15-5"><a href=""></a>    <span class="at">return =</span> <span class="st">"paragraph"</span></span>
-<span id="cb15-6"><a href=""></a>  ) <span class="sc">|&gt;</span> </span>
-<span id="cb15-7"><a href=""></a>  <span class="fu">search_text</span>(</span>
-<span id="cb15-8"><a href=""></a>    <span class="at">pattern =</span> <span class="st">"[0-9], </span></span>
-<span id="cb15-9"><a href=""></a><span class="st">    return = "</span>paragraph<span class="st">"</span></span>
-<span id="cb15-10"><a href=""></a><span class="st">  ) |&gt; </span></span>
-<span id="cb15-11"><a href=""></a><span class="st">  distinct(id, .keep_all = TRUE)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</section>
-<section id="llm-instructions" class="slide level2">
-<h2>LLM Instructions</h2>
-<p>An a priori power analysis is used to estimate the required sample size to achieve a desired level of statistical power given an effect size, statistical test and alpha level.</p>
-<p>If the paragraph DOES describe an a priori power analysis, extract ONLY the following information and return it as JSON, use this exact schema:</p>
-<pre><code>{
-  "apriori": true,
-  "test": "one-way ANOVA",
-  "sample": 64,
-  "alpha": 0.05,
-  "power": 0.8,
-  "es": 0.4,
-  "es_metric": "Cohen\'s f"
-}</code></pre>
-</section>
-<section id="llms-need-specific-rules" class="slide level2">
-<h2>LLMs Need Specific Rules</h2>
-<ul>
-<li>Return “apriori”: false if this is NOT an a priori power analysis, true if it is.</li>
-<li>Do NOT classify paragraphs as a priori if they only report achieved power for an existing sample size.</li>
-<li>If information is missing or unclear, leave it empty.</li>
-<li>Use only the exact labels listed for “test” and “es_metric”.</li>
-</ul>
-</section>
-<section id="rules" class="slide level2">
-<h2>Rules</h2>
-<ul>
-<li>For “test”: Use ONLY these exact strings (case-sensitive). Choose the closest match or null if unclear/unsupported. Ignore one-sided vs.&nbsp;two-sided.</li>
-</ul>
-<div class="smaller">
-<pre><code>- "paired t-test"
-- "unpaired t-test"
-- "one-sample t-test"
-- "one-way ANOVA"
-- "two-way ANOVA"
-- "MANOVA"
-- "regression"
-- "chi-square"
-- "correlation"
-- "other"
-- null (if no test mentioned or unclear)</code></pre>
-</div>
-</section>
-<section id="rules-1" class="slide level2">
-<h2>Rules</h2>
-<ul>
-<li>For “es_metric”: Use ONLY these exact strings (case-sensitive) or “unstandardised” for raw/non-standardized effects (e.g., means, proportions). Use null if missing/unclear.</li>
-</ul>
-<div class="smaller">
-<pre><code>- "Cohen\'s d"
-- "Hedges\' g"
-- "Cohen\'s f"
-- "partial eta squared"
-- "eta squared"
-- "unstandardised"
-- null</code></pre>
-</div>
-<ul>
-<li>Do NOT guess values.</li>
-<li>Ignore whether the test is one-sided or two-sided.</li>
-<li>If ANOVA is used, specify one-way or two-way.</li>
-</ul>
-<p>Return only valid JSON format, starting with { and ending with }.</p>
-</section>
-<section id="results" class="slide level2">
-<h2>Results</h2>
 <div class="module">
 <div class="cell">
 <div class="cell-output-display">
@@ -1074,6 +903,72 @@ Use `module_help("module_name")` for help with a specific module</code></pre>
 </div>
 </div>
 </div>
+</section>
+<section id="select-relevant-text" class="slide level2">
+<h2>Select relevant text</h2>
+<div class="sourceCode" id="cb8"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href=""></a>sample_llm <span class="ot">&lt;-</span> paper <span class="sc">|&gt;</span></span>
+<span id="cb8-2"><a href=""></a>  <span class="fu">search_text</span>(</span>
+<span id="cb8-3"><a href=""></a>    <span class="at">pattern =</span> <span class="st">"power"</span>,</span>
+<span id="cb8-4"><a href=""></a>    <span class="at">section =</span> <span class="st">"method"</span>, </span>
+<span id="cb8-5"><a href=""></a>    <span class="at">return =</span> <span class="st">"paragraph"</span></span>
+<span id="cb8-6"><a href=""></a>  ) <span class="sc">|&gt;</span> </span>
+<span id="cb8-7"><a href=""></a>  <span class="fu">search_text</span>(</span>
+<span id="cb8-8"><a href=""></a>    <span class="at">pattern =</span> <span class="st">"[0-9], </span></span>
+<span id="cb8-9"><a href=""></a><span class="st">    return = "</span>paragraph<span class="st">"</span></span>
+<span id="cb8-10"><a href=""></a><span class="st">  ) |&gt; </span></span>
+<span id="cb8-11"><a href=""></a><span class="st">  distinct(id, .keep_all = TRUE)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+<section id="llm-instructions" class="slide level2">
+<h2>LLM Instructions</h2>
+<p>An a priori power analysis is used to estimate the required sample size to achieve a desired level of statistical power given an effect size, statistical test and alpha level.</p>
+<p>If the paragraph DOES describe an a priori power analysis, extract ONLY the following information and return it as JSON, use this exact schema:</p>
+<pre><code>{
+  "apriori": true,
+  "test": "one-way ANOVA",
+  "sample": 64,
+  "alpha": 0.05,
+  "power": 0.8,
+  "es": 0.4,
+  "es_metric": "Cohen\'s f"
+}</code></pre>
+</section>
+<section id="llms-need-specific-rules" class="slide level2">
+<h2>LLMs Need Specific Rules</h2>
+<ul>
+<li>Return “apriori”: false if this is NOT an a priori power analysis, true if it is.</li>
+<li>Do NOT classify paragraphs as a priori if they only report achieved power for an existing sample size.</li>
+<li>If information is missing or unclear, leave it empty.</li>
+<li>Use only the exact labels listed for “test” and “es_metric”.</li>
+<li>Ignore whether the test is one-sided or two-sided.</li>
+<li>If ANOVA is used, specify one-way or two-way.</li>
+</ul>
+</section>
+<section id="rules" class="slide level2">
+<h2>Rules</h2>
+<ul>
+<li>For “test”: Use ONLY these exact strings (case-sensitive). Choose the closest match or null if unclear/unsupported. Ignore one-sided vs.&nbsp;two-sided.</li>
+</ul>
+<div class="smaller">
+<pre><code>- "paired t-test"
+- "unpaired t-test"
+- "one-sample t-test"
+- "one-way ANOVA"
+- "two-way ANOVA"
+- "MANOVA"
+- "regression"
+- "chi-square"
+- "correlation"
+- "other"
+- null (if no test mentioned or unclear)</code></pre>
+</div>
+</section>
+<section id="rules-1" class="slide level2">
+<h2>Rules</h2>
+<ul>
+<li>For “es_metric”: Use ONLY these exact strings (case-sensitive) or “unstandardised” for raw/non-standardized effects (e.g., means, proportions). Use null if missing/unclear: “Cohen's d”, “Hedges' g”, “Cohen's f”, “partial eta squared”, “eta squared”, “unstandardised”</li>
+<li>Do NOT guess values.</li>
+</ul>
+<p>Return only valid JSON format, starting with { and ending with }.</p>
 </section></section>
 <section>
 <section id="promoting-adoption" class="title-slide slide level1 center">

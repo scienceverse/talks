@@ -161,63 +161,19 @@ And then...
 
 ![](images/papercheck.png)
 
-## Paper Import
-
-```{r, eval = FALSE}
-file <- "papers/debruine-fret.pdf"
-xml <- pdf2grobid(file, 
-                  consolidateCitations = TRUE, 
-                  consolidateHeader = TRUE)
-paper <- read(xml)
-```
-
-```{r, echo = FALSE}
-paper <- read("papers/debruine-fret.xml")
-paper
-```
-
-
-
-
-## Batch Import
-
-```{r}
-papers <- read("papers")
-```
-
-:::: columns
-::: {.column width="25%"}
-```{r, echo = FALSE}
-papers[[1]]
-```
-:::
-::: {.column width="25%"}
-```{r, echo = FALSE}
-papers[[2]]
-```
-:::
-::: {.column width="25%"}
-```{r, echo = FALSE}
-papers[[3]]
-```
-:::
-::: {.column width="25%"}
-```{r, echo = FALSE}
-papers[[4]]
-```
-:::
-::::
 
 
 ## Text Search
 
 ```{r, eval = FALSE}
-search_text(paper, "Canadian")
+papers <- read("papers")
+search_text(papers, "Canadian")
 ```
 ::: {.module}
 
 ```{r, echo = FALSE}
-search_text(paper, "Canadian") |> knitr::kable()
+papers <- read("papers")
+search_text(papers, "Canadian") |> knitr::kable()
 ```
 
 :::
@@ -225,13 +181,13 @@ search_text(paper, "Canadian") |> knitr::kable()
 ## Regex Text Search
 
 ```{r, eval = FALSE}
-search_text(paper, "\\b\\S+\\s*=\\s*\\S+\\b", return = "match")
+search_text(papers, "\\b\\S+\\s*=\\s*\\S+\\b", return = "match")
 ```
 
 ::: {.module}
 
 ```{r, echo = FALSE}
-search_text(paper, "\\b\\S+\\s*=\\s*\\S+\\b", return = "match") |> head(10) |> knitr::kable()
+search_text(papers, "\\b\\S+\\s*=\\s*\\S+\\b", return = "match") |> head(10) |> knitr::kable()
 ```
 
 :::
@@ -312,6 +268,24 @@ mod <- module_run(
 )
 ```
 
+::: {.module}
+
+```{r}
+#| echo: false
+structure(list(test = c("", "", "unpaired t-test", "", "", "one-way ANOVA", 
+"", "", "two-way ANOVA", ""), sample = c(12L, 16L, 24L, NA, 15L, 
+24L, 10L, 15L, NA, 52L), alpha = c(0.05, 0.05, 0.05, NA, NA, 
+0.05, 0.05, NA, 0.05, 0.05), power = c(0.95, 0.8, 0.8, NA, 0.9, 
+0.8, 0.95, 0.8, 0.8, 0.8), es = c(1.15, 0.76, 0.6, 1.1, 0.25, 
+NA, 1.36, 0.4, NA, 0.4), es_metric = c("unstandardised", "", 
+"unstandardised", "Cohen's d", "Cohen's d", "", "", "Cohen's d", 
+"", "unstandardised")), row.names = c("2", "3", "4", "5", "7", 
+"8", "10", "11", "12", "13"), class = c("ppchk_llm", "data.frame"
+)) |> knitr::kable()
+```
+
+:::
+
 
 ## Select relevant text
 
@@ -353,6 +327,8 @@ If the paragraph DOES describe an a priori power analysis, extract ONLY the foll
 - Do NOT classify paragraphs as a priori if they only report achieved power for an existing sample size. 
 - If information is missing or unclear, leave it empty. 
 - Use only the exact labels listed for "test" and "es_metric".
+- Ignore whether the test is one-sided or two-sided. 
+- If ANOVA is used, specify one-way or two-way. 
 
 ## Rules
 
@@ -374,43 +350,11 @@ If the paragraph DOES describe an a priori power analysis, extract ONLY the foll
     
 ## Rules
 
-- For "es_metric": Use ONLY these exact strings (case-sensitive) or "unstandardised" for raw/non-standardized effects (e.g., means, proportions). Use null if missing/unclear.
-
-::: {.smaller}
-    - "Cohen\'s d"
-    - "Hedges\' g"
-    - "Cohen\'s f"
-    - "partial eta squared"
-    - "eta squared"
-    - "unstandardised"
-    - null
-::: 
-
+- For "es_metric": Use ONLY these exact strings (case-sensitive) or "unstandardised" for raw/non-standardized effects (e.g., means, proportions). Use null if missing/unclear: "Cohen\'s d", "Hedges\' g", "Cohen\'s f", "partial eta squared", "eta squared", "unstandardised"
 - Do NOT guess values. 
-- Ignore whether the test is one-sided or two-sided. 
-- If ANOVA is used, specify one-way or two-way. 
 
 Return only valid JSON format, starting with { and ending with }.
 
-## Results
-
-::: {.module}
-
-```{r}
-#| echo: false
-structure(list(test = c("", "", "unpaired t-test", "", "", "one-way ANOVA", 
-"", "", "two-way ANOVA", ""), sample = c(12L, 16L, 24L, NA, 15L, 
-24L, 10L, 15L, NA, 52L), alpha = c(0.05, 0.05, 0.05, NA, NA, 
-0.05, 0.05, NA, 0.05, 0.05), power = c(0.95, 0.8, 0.8, NA, 0.9, 
-0.8, 0.95, 0.8, 0.8, 0.8), es = c(1.15, 0.76, 0.6, 1.1, 0.25, 
-NA, 1.36, 0.4, NA, 0.4), es_metric = c("unstandardised", "", 
-"unstandardised", "Cohen's d", "Cohen's d", "", "", "Cohen's d", 
-"", "unstandardised")), row.names = c("2", "3", "4", "5", "7", 
-"8", "10", "11", "12", "13"), class = c("ppchk_llm", "data.frame"
-)) |> knitr::kable()
-```
-
-:::
 
 # Promoting Adoption
 
