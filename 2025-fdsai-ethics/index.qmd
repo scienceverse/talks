@@ -231,7 +231,20 @@ data.frame(
 
 :::
 
+## LLM Models
 
+```{r}
+#| eval: false
+papercheck::llm_model_list()
+```
+::: {.module}
+
+```{r}
+#| echo: false
+papercheck::llm_model_list() |> knitr::kable()
+```
+
+:::
 
 ## Modules
 

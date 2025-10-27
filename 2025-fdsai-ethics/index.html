@@ -644,10 +644,161 @@ Lisa DeBruine<br>
 </div>
 </div>
 </section>
+<section id="llm-models" class="slide level2">
+<h2>LLM Models</h2>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href=""></a>papercheck<span class="sc">::</span><span class="fu">llm_model_list</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="module">
+<div class="cell">
+<div class="cell-output-display">
+<table class="caption-top" style="width:100%;">
+<colgroup>
+<col style="width: 3%">
+<col style="width: 51%">
+<col style="width: 15%">
+<col style="width: 12%">
+<col style="width: 16%">
+</colgroup>
+<thead>
+<tr class="header">
+<th style="text-align: left;"></th>
+<th style="text-align: left;">id</th>
+<th style="text-align: left;">owned_by</th>
+<th style="text-align: left;">created</th>
+<th style="text-align: right;">context_window</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">1</td>
+<td style="text-align: left;">meta-llama/llama-4-scout-17b-16e-instruct</td>
+<td style="text-align: left;">Meta</td>
+<td style="text-align: left;">2025-04-05</td>
+<td style="text-align: right;">131072</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">3</td>
+<td style="text-align: left;">llama-3.1-8b-instant</td>
+<td style="text-align: left;">Meta</td>
+<td style="text-align: left;">2023-09-03</td>
+<td style="text-align: right;">131072</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">4</td>
+<td style="text-align: left;">meta-llama/llama-prompt-guard-2-22m</td>
+<td style="text-align: left;">Meta</td>
+<td style="text-align: left;">2025-05-30</td>
+<td style="text-align: right;">512</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">5</td>
+<td style="text-align: left;">meta-llama/llama-4-maverick-17b-128e-instruct</td>
+<td style="text-align: left;">Meta</td>
+<td style="text-align: left;">2025-04-05</td>
+<td style="text-align: right;">131072</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">6</td>
+<td style="text-align: left;">meta-llama/llama-prompt-guard-2-86m</td>
+<td style="text-align: left;">Meta</td>
+<td style="text-align: left;">2025-05-30</td>
+<td style="text-align: right;">512</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">7</td>
+<td style="text-align: left;">meta-llama/llama-guard-4-12b</td>
+<td style="text-align: left;">Meta</td>
+<td style="text-align: left;">2025-05-08</td>
+<td style="text-align: right;">131072</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">9</td>
+<td style="text-align: left;">llama-3.3-70b-versatile</td>
+<td style="text-align: left;">Meta</td>
+<td style="text-align: left;">2024-12-06</td>
+<td style="text-align: right;">131072</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">10</td>
+<td style="text-align: left;">qwen/qwen3-32b</td>
+<td style="text-align: left;">Alibaba Cloud</td>
+<td style="text-align: left;">2025-05-28</td>
+<td style="text-align: right;">131072</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">11</td>
+<td style="text-align: left;">moonshotai/kimi-k2-instruct</td>
+<td style="text-align: left;">Moonshot AI</td>
+<td style="text-align: left;">2025-07-13</td>
+<td style="text-align: right;">131072</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">12</td>
+<td style="text-align: left;">openai/gpt-oss-20b</td>
+<td style="text-align: left;">OpenAI</td>
+<td style="text-align: left;">2025-08-05</td>
+<td style="text-align: right;">131072</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">13</td>
+<td style="text-align: left;">playai-tts-arabic</td>
+<td style="text-align: left;">PlayAI</td>
+<td style="text-align: left;">2025-02-27</td>
+<td style="text-align: right;">8192</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">14</td>
+<td style="text-align: left;">groq/compound-mini</td>
+<td style="text-align: left;">Groq</td>
+<td style="text-align: left;">2025-09-04</td>
+<td style="text-align: right;">131072</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">15</td>
+<td style="text-align: left;">playai-tts</td>
+<td style="text-align: left;">PlayAI</td>
+<td style="text-align: left;">2025-02-27</td>
+<td style="text-align: right;">8192</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">16</td>
+<td style="text-align: left;">openai/gpt-oss-120b</td>
+<td style="text-align: left;">OpenAI</td>
+<td style="text-align: left;">2025-08-05</td>
+<td style="text-align: right;">131072</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">17</td>
+<td style="text-align: left;">allam-2-7b</td>
+<td style="text-align: left;">SDAIA</td>
+<td style="text-align: left;">2025-01-23</td>
+<td style="text-align: right;">4096</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">18</td>
+<td style="text-align: left;">moonshotai/kimi-k2-instruct-0905</td>
+<td style="text-align: left;">Moonshot AI</td>
+<td style="text-align: left;">2025-09-05</td>
+<td style="text-align: right;">262144</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">19</td>
+<td style="text-align: left;">groq/compound</td>
+<td style="text-align: left;">Groq</td>
+<td style="text-align: left;">2025-09-04</td>
+<td style="text-align: right;">131072</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+</section>
 <section id="modules" class="slide level2">
 <h2>Modules</h2>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href=""></a><span class="fu">module_list</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href=""></a><span class="fu">module_list</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code> * all_p_values: List all p-values in the text, returning the matched text (e.g., 'p = 0.04') and document location in a table.
  * all_urls: List all the URLs in the main text.
@@ -682,10 +833,10 @@ Use `module_help("module_name")` for help with a specific module</code></pre>
           display:block!important;
       }</style></aside>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href=""></a>mod <span class="ot">&lt;-</span> <span class="fu">module_run</span>(</span>
-<span id="cb6-2"><a href=""></a>  <span class="at">paper =</span> psychsci,</span>
-<span id="cb6-3"><a href=""></a>  <span class="at">module =</span> <span class="st">"effect_size"</span></span>
-<span id="cb6-4"><a href=""></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href=""></a>mod <span class="ot">&lt;-</span> <span class="fu">module_run</span>(</span>
+<span id="cb7-2"><a href=""></a>  <span class="at">paper =</span> psychsci,</span>
+<span id="cb7-3"><a href=""></a>  <span class="at">module =</span> <span class="st">"effect_size"</span></span>
+<span id="cb7-4"><a href=""></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <div class="module">
 <div class="cell">
@@ -787,10 +938,10 @@ Use `module_help("module_name")` for help with a specific module</code></pre>
 <section id="modules-power-module" class="slide level2">
 <h2>Modules:: Power Module</h2>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href=""></a>mod <span class="ot">&lt;-</span> <span class="fu">module_run</span>(</span>
-<span id="cb7-2"><a href=""></a>  <span class="at">paper =</span> psychsci,</span>
-<span id="cb7-3"><a href=""></a>  <span class="at">module =</span> <span class="st">"power"</span></span>
-<span id="cb7-4"><a href=""></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href=""></a>mod <span class="ot">&lt;-</span> <span class="fu">module_run</span>(</span>
+<span id="cb8-2"><a href=""></a>  <span class="at">paper =</span> psychsci,</span>
+<span id="cb8-3"><a href=""></a>  <span class="at">module =</span> <span class="st">"power"</span></span>
+<span id="cb8-4"><a href=""></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <div class="module">
 <div class="cell">
@@ -906,17 +1057,17 @@ Use `module_help("module_name")` for help with a specific module</code></pre>
 </section>
 <section id="select-relevant-text" class="slide level2">
 <h2>Select relevant text</h2>
-<div class="sourceCode" id="cb8"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href=""></a>sample_llm <span class="ot">&lt;-</span> paper <span class="sc">|&gt;</span></span>
-<span id="cb8-2"><a href=""></a>  <span class="fu">search_text</span>(</span>
-<span id="cb8-3"><a href=""></a>    <span class="at">pattern =</span> <span class="st">"power"</span>,</span>
-<span id="cb8-4"><a href=""></a>    <span class="at">section =</span> <span class="st">"method"</span>, </span>
-<span id="cb8-5"><a href=""></a>    <span class="at">return =</span> <span class="st">"paragraph"</span></span>
-<span id="cb8-6"><a href=""></a>  ) <span class="sc">|&gt;</span> </span>
-<span id="cb8-7"><a href=""></a>  <span class="fu">search_text</span>(</span>
-<span id="cb8-8"><a href=""></a>    <span class="at">pattern =</span> <span class="st">"[0-9], </span></span>
-<span id="cb8-9"><a href=""></a><span class="st">    return = "</span>paragraph<span class="st">"</span></span>
-<span id="cb8-10"><a href=""></a><span class="st">  ) |&gt; </span></span>
-<span id="cb8-11"><a href=""></a><span class="st">  distinct(id, .keep_all = TRUE)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb9"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href=""></a>sample_llm <span class="ot">&lt;-</span> paper <span class="sc">|&gt;</span></span>
+<span id="cb9-2"><a href=""></a>  <span class="fu">search_text</span>(</span>
+<span id="cb9-3"><a href=""></a>    <span class="at">pattern =</span> <span class="st">"power"</span>,</span>
+<span id="cb9-4"><a href=""></a>    <span class="at">section =</span> <span class="st">"method"</span>, </span>
+<span id="cb9-5"><a href=""></a>    <span class="at">return =</span> <span class="st">"paragraph"</span></span>
+<span id="cb9-6"><a href=""></a>  ) <span class="sc">|&gt;</span> </span>
+<span id="cb9-7"><a href=""></a>  <span class="fu">search_text</span>(</span>
+<span id="cb9-8"><a href=""></a>    <span class="at">pattern =</span> <span class="st">"[0-9], </span></span>
+<span id="cb9-9"><a href=""></a><span class="st">    return = "</span>paragraph<span class="st">"</span></span>
+<span id="cb9-10"><a href=""></a><span class="st">  ) |&gt; </span></span>
+<span id="cb9-11"><a href=""></a><span class="st">  distinct(id, .keep_all = TRUE)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </section>
 <section id="llm-instructions" class="slide level2">
 <h2>LLM Instructions</h2>
