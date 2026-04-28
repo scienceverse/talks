@@ -11,14 +11,3 @@ format:
  for University of Glasgow School of Psychology & Neuroscience Seminar Series 2025-07-25
 * [Automated assessment of scientific papers](/2024-EAISI-papercheck) for EAISI Visiting Professorship seminar 2024-06-25
 
-
-::: {layout-ncol=3}
-
-![](2025-module-demo/images/scienceverse.png){width=200}
-
-![](2025-module-demo/images/papercheck.png){width=200}
-
-![](2025-module-demo/images/verisci.png){width=200}
-
-:::
-
