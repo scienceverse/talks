@@ -39,9 +39,21 @@ Power analyses help us to plan studies and interpret findings. The statistical p
 
 # Power
 
-![Power and Sensitivity](images/lego-power-sensitivity.png)
+::: {style="font-size: 90%;"}
+* **false positive rate**: the probability a test concludes there is an effect when there is no effect; Type I Error Rate
+* **<i class="a">alpha</i> **: the false positive rate we accept for a test
+* **false negative rate**: the probability a test concludes there is no effect when there is one; Type II Error Rate
+* **beta**: the false negative rate we accept for a test
+* **true positive rate**: the probability a test concludes there is an effect when there is one
+* **<i class="power">power</i>**: the true positive rate (1-beta), given a specific <i class="es">effect size</i>, <i class="ss">sample size</i>, and <i class="a">alpha</i> 
+:::
+
 
 ## Types of Power Analysis
+
+:::: {.columns}
+
+::: {.column width="80%"}
 
 * <i class="pt">**A Priori**</i>:  calculates the <i class="ss">sample size</i> required to achieved a pre-specified <i class="power">power</i> for a pre-specified <i class="es">effect size</i>
 
@@ -50,6 +62,18 @@ Power analyses help us to plan studies and interpret findings. The statistical p
 * <i class="pt">**Sensitivity (Power)**</i>: calculates <i class="power">power</i> given a pre-specified <i class="es">effect size</i> and <i class="ss">sample size</i>
 
 * <i class="pt">**Post Hoc**</i>: calculates the <i class="power">power</i> associated with the observed <i class="es">effect size</i> and the <i class="ss">sample size</i> actually obtained
+
+:::
+
+::: {.column width="20%"}
+
+![](images/lego-power.png)
+
+![](images/lego-sensitivity.png)
+
+:::
+
+::::
 
 ## Reporting
 
@@ -116,7 +140,7 @@ Only 11% of 1295 power analyses from 1937 *Psychological Science* papers publish
 
 How do you calculate power for a design where we think we will only be able to recruit twice as many younger people as older people, and expect the older subjects to have a lower score with more variance?
 
-## Replicate Data
+## Simulate Data Sets
 
 ```{r}
 #| echo: true
@@ -136,6 +160,21 @@ sim_data_func <- function(n, rep = 100) {
 sim_data <- sim_data_func(n = 30)
 ```
 
+```{r}
+sim_data$data[[1]] |>
+  mutate(rep = 1) |>
+  bind_rows(sim_data$data[[2]] |> mutate(rep = 2)) |>
+  
+  summarise(n = n(),
+            mean = mean(score), 
+            sd = sd(score), 
+            .by = c(rep, age_group)) |>
+  flextable() |>
+  colformat_double(j = 4:5, digits = 1) |>
+  theme_vader()
+```
+
+
 ## Analysis Function
 
 ```{r}
@@ -145,7 +184,7 @@ analysis_func <- function(data) {
   tt <- t.test(score ~ age_group, data = data, 
                alternative = "greater", 
                var.equal = FALSE)
-  broom::tidy(tt)
+  broom::tidy(tt)[, 1:8]
 }
 ```
 
@@ -244,7 +283,7 @@ ggplot(pwr, aes(x = n, y = power)) +
 
 ## Write Up
 
-We conducted an <i class="pt">a priori analysis</i> to determine the sample size with <i class="power">80%</i> power to detect the smallest effect size of interest (SESOI), which was a <i class="es">10</i>-<i class="esm">point raw difference in score</i> between younger and older subjects, where <i class="st">younger subjects had an SD of 20 and older subject had an SD of 25</i>. We used a custom <i class="sw">data simulation script in R (see shared code)</i> for a <i class="st">Welch two-sample t-test using a one-tailed prediction</i>, with a critical alpha of <i class="a">0.05</i>. This determined that we would need approximately <i class="ss">51</i> subjects in the older group and <i class="ss">102</i> subjects in the younger group. 
+We conducted an <i class="pt">a priori analysis</i> to determine the sample size with <i class="power">80%</i> power to detect the smallest effect size of interest (SESOI), which was a <i class="es">10</i>-<i class="esm">point raw difference in score</i> between younger and older subjects, where <i class="st">younger subjects had an SD of 20 and older subject had an SD of 25</i>. We used a custom <i class="sw">data simulation script in R (see shared code)</i> with <i class="sw">250 replications</i> for a <i class="st">Welch two-sample t-test using a one-tailed prediction</i>, with a critical alpha of <i class="a">0.05</i>. This determined that we would need approximately <i class="ss">51</i> subjects in the older group and <i class="ss">102</i> subjects in the younger group. 
 
 # Mixed Effects
 
@@ -652,12 +691,31 @@ sim_results |>
 ```
 
 ```{r}
-sim_results |>
-  summarise(power = mean(p.value < 0.05), .by = term) |>
+power_table <- sim_results |>
+  summarise(power = mean(p.value < 0.05), .by = term) 
+
+power_table |>
   flextable() |>
   theme_vader()
 ```
 
+
+## Write Up {.smaller}
+
+We conducted a <i class="pt">sensitivity power analysis</i> using <i class="sw">custom simulation code and the R packages faux (DeBruine, 2026) and lme4 (Bates, Maechler, Bolker & Walker ,2015)</i> to determine the power for our <i class="st">expected parameters (@tbl-model-params)</i> using a <i class="a">critical alpha of 0.05</i>. With <i class="ss">100 subjects and 20 items</i>, and an effect of condition of <i class="es">10</i> <i class="esm">milliseconds</i>, simulation using <i class="sw">10 replications</i> determined a power of <i class="power">`r power_table$power[[2]]*100`%</i>.
+
+
+| Model Parameter                    | Value |
+|:--------------------------------------|------:|
+| SD of residuals                              |  20   |
+| SD of subject-level intercepts               |   8   |
+| SD of item-level intercepts                  |   4   |
+| SD of subject-level condition effect         |   5   |
+| SD of item-level condition effect            |  15   |
+| Correlation between subject-level intercept and condition effect |   0.5 |
+| Correlation between item-level intercept and condition effect    |  -0.5 |
+
+: Model parameters for simulation were guessed at random {#tbl-model-params}
 
 # Further Resources
 
