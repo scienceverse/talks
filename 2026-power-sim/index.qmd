@@ -743,9 +743,84 @@ power_table |>
 ```
 
 
+## Change Parameters
+
+Try increasing the SD for subject and item intercepts and slopes by 20%.
+
+```{r, echo = TRUE, eval=FALSE}
+sim_func2 <- function(iteration = 0, subj_n = 100, item_n = 20, cond_eff = 0) {
+  # variables not in function arguments
+  intercept    <- 600
+  error_sd     <-  20
+  subj_sd      <-   8 * 1.2
+  item_sd      <-   4 * 1.2
+  subj_cond_sd <-   5 * 1.2
+  item_cond_sd <-  15 * 1.2
+  subj_cors    <-   0.5
+  item_cors    <-  -0.5
+
+  # continue the function as before...
+}
+```
+
+```{r}
+
+sim_func2 <- function(iteration = 0, subj_n = 100, item_n = 20, cond_eff = 0) {
+  # variables not in function arguments
+  intercept    <- 600
+  error_sd     <-  20
+  subj_sd      <-   8 * 1.2
+  item_sd      <-   4 * 1.2
+  subj_cond_sd <-   5 * 1.2
+  item_cond_sd <-  15 * 1.2
+  subj_cors    <-   0.5
+  item_cors    <-  -0.5
+
+  # simulate the data
+  lmem_dat <- add_random(subj = subj_n) |>
+    add_random(item = item_n) |>
+    add_within(condition = c("control", "experimental")) |>
+    add_contrast("condition", "treatment", colnames = "cond") |>
+    add_ranef(err = error_sd) |>
+    add_ranef(.by = "subj", 
+              subj_i = subj_sd, 
+              subj_cond = subj_cond_sd, 
+              .cors = subj_cors) |>
+    add_ranef(.by = "item", 
+              item_i = item_sd, 
+              item_cond = item_cond_sd, 
+              .cors = item_cors) |>
+    mutate(dv = intercept + subj_i + item_i + err +
+             cond * (cond_eff + subj_cond + item_cond))
+  
+  # run the analysis
+  mod <- lmer(dv ~ cond + 
+       (1 + cond | subj) + 
+       (1 + cond | item),
+     data = lmem_dat)
+  
+  # return a table of fixed effects only
+  broom.mixed::tidy(mod, effects = "fixed") |>
+    mutate(iteration = iteration)
+}
+
+set.seed(8675309)
+
+sim_results2 <- map_df(1:10, sim_func2, cond_eff = 10)
+
+alpha <- 0.05
+power_table2 <- sim_results2 |>
+  summarise(power = mean(p.value < alpha), .by = term) 
+
+power_table2 |>
+  flextable() |>
+  theme_vader()
+```
+
+
 ## Write Up {.smaller}
 
-We conducted a <i class="pt">sensitivity power analysis</i> using <i class="sw">custom simulation code and the R packages faux (DeBruine, 2026) and lme4 (Bates, Maechler, Bolker & Walker, 2015)</i> to determine the power. With <i class="ss">100 subjects and 20 items</i>, an effect of condition of <i class="es">10</i> <i class="esm">milliseconds</i>, using <i class="st">treatment coding (control = 0, experimental = 1)</i>, the <i class="st">expected parameters in @tbl-model-params</i>, and a <i class="a">critical alpha of 0.05</i>, simulation using <i class="sw">10 replications</i> determined a power of <i class="power">`r power_table$power[[2]]*100`%</i>.
+We conducted a <i class="pt">sensitivity power analysis</i> using <i class="sw">custom simulation code and the R packages faux (DeBruine, 2026) and lme4 (Bates, Maechler, Bolker & Walker, 2015)</i> to determine the power. With <i class="ss">100 subjects and 20 items</i>, an effect of condition of <i class="es">10</i> <i class="esm">milliseconds</i>, using <i class="st">treatment coding (control = 0, experimental = 1)</i>, the <i class="st">expected parameters in @tbl-model-params</i>, and a <i class="a">critical alpha of 0.05</i>, simulation using <i class="sw">10 replications</i> resulted in a power of <i class="power">`r power_table$power[[2]]*100`%</i>.
 
 
 | Model Parameter                    | Value |
