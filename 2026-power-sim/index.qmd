@@ -14,6 +14,7 @@ format:
     theme: [dark, style.scss]
     transition: none
     transition-speed: fast
+    syntax-highlighting: zenburn
 ---
 
 # Abstract
@@ -289,7 +290,43 @@ We conducted an <i class="pt">a priori analysis</i> to determine the sample size
 
 ![xkcd #2682](images/easy_or_hard_2x.png)
 
+# Mixed Effects
+
+![xkcd #2682](images/xkcd-lmer-power.png)
+
+## Faux
+
+:::: {.columns}
+
+::: {.column width="50%"}
+![](images/faux.png)
+
+[Shiny app or scriptable](https://debruine.github.io/faux/)
+
+:::
+
+::: {.column width="50%"}
+
+![](images/faux-articles.png)
+
+[Extensive Documentation](https://debruine.github.io/faux/)
+
+:::
+::::
+
+## Simulate a Crossed Design
+
+ * 100 subjects
+ * 20 items
+ * two conditions: control and experimental
+ * dependent variable = reaction time in ms
+ * SESOI = 10 ms 
+ * *variability between subjects and between items in average RT and the effect of condition*
+
+
 ## Random factors
+
+Start with a small number of subjects to more easily view the resulting table.
 
 ```{r, echo = TRUE}
 subj_n <- 2 # number of subjects
@@ -307,6 +344,8 @@ lmem_dat |>
 
 ## Crossed random factors
 
+Cross subjects with a small number of items.
+
 ```{r, echo = TRUE}
 item_n <- 2 # number of items
 
@@ -322,6 +361,8 @@ lmem_dat <- add_random(subj = subj_n) |>
 
 ## Nested random factors
 
+You can also nest items in faux (but this is not our design).
+
 ```{r, echo = TRUE}
 lmem_dat <- add_random(subj = subj_n) |>
   add_random(item = item_n, .nested_in = "subj")
@@ -333,7 +374,25 @@ lmem_dat |>
   theme_vader()
 ```
 
+## Fixed factors (between)
+
+You can set fixed factors that vary between subject or items (but this is not our design).
+
+```{r, echo = TRUE}
+lmem_dat <- add_random(subj = subj_n) |>
+  add_random(item = item_n) |>
+  add_between(condition = c("control", "experimental"), .by = "item")
+```
+
+```{r}
+lmem_dat |>
+  flextable() |>
+  theme_vader()
+```
+
 ## Fixed factors (within)
+
+Here, we set a factor that varies within subjects and items.
 
 ```{r, echo = TRUE}
 lmem_dat <- add_random(subj = subj_n) |>
@@ -347,22 +406,8 @@ lmem_dat |>
   theme_vader()
 ```
 
-## Fixed factors (between)
 
-```{r, echo = TRUE}
-gender_prob <- c(20, 75, 5) # gender category distribution
 
-lmem_dat <- add_random(subj = subj_n) |>
-  add_random(item = item_n) |>
-  add_within(condition = c("control", "experimental")) |>
-  add_between("subj", gender = c("M", "F", "NB"), .prob = gender_prob)
-```
-
-```{r}
-lmem_dat |>
-  flextable() |>
-  theme_vader()
-```
 
 ## Contrast Coding
 
@@ -386,7 +431,6 @@ lmem_dat |>
 lmem_dat <- add_random(subj = subj_n) |>
   add_random(item = item_n) |>
   add_within(condition = c("control", "experimental")) |>
-  add_between("subj", gender = c("M", "F", "NB"), .prob = gender_prob) |>
   add_contrast("condition", "treatment", colnames = "treat") |>
   add_contrast("condition", "anova", colnames = "anova") |>
   add_contrast("condition", "sum", colnames = "sum")
@@ -409,7 +453,6 @@ lmem_dat |>
 design <- add_random(subj = subj_n) |>
   add_random(item = item_n) |>
   add_within(condition = c("control", "experimental")) |>
-  add_between("subj", gender = c("M", "F", "NB"), .prob = gender_prob) |>
   add_contrast("condition", "treatment", colnames = "cond")
 ```
 
@@ -422,7 +465,7 @@ design |>
 ## Fixed Effects
 
 ```{r, echo = TRUE}
-intercept <- 100 # model intercept (mean for control condition)
+intercept <- 600 # model intercept (mean for control condition)
 cond_eff  <-  10 # condition effect size
 
 lmem_dat <- design |>
@@ -512,8 +555,7 @@ lmem_dat |>
 ```{r, echo = TRUE}
 subj_n       <- 100   # number of subjects
 item_n       <-  20   # number of items
-gender_prob  <- c(20, 75, 5) # gender category distribution
-intercept    <- 100   # model intercept (mean for control condition)
+intercept    <- 600   # model intercept (mean for control condition)
 cond_eff     <-  10   # condition effect size
 error_sd     <-  20   # SD of trial-level error (residuals)
 subj_sd      <-   8   # SD of subject-level intercepts
@@ -530,7 +572,6 @@ item_cors    <-  -0.5 # correlation between item intercept and slope
 lmem_dat <- add_random(subj = subj_n) |>
   add_random(item = item_n) |>
   add_within(condition = c("control", "experimental")) |>
-  add_between("subj", gender = c("M", "F", "NB"), .prob = gender_prob) |>
   add_contrast("condition", "treatment", colnames = "cond") |>
   add_ranef(err = error_sd) |>
   add_ranef(.by = "subj", 
@@ -586,8 +627,7 @@ sim_func <- function(iteration = 0, subj_n = 100, item_n = 20, cond_eff = 0) {
 ```{r, echo = TRUE}
 sim_func <- function(iteration = 0, subj_n = 100, item_n = 20, cond_eff = 0) {
   # variables not in function arguments
-  gender_prob  <- c(20, 75, 5)
-  intercept    <- 100
+  intercept    <- 600
   error_sd     <-  20
   subj_sd      <-   8
   item_sd      <-   4
@@ -600,7 +640,6 @@ sim_func <- function(iteration = 0, subj_n = 100, item_n = 20, cond_eff = 0) {
   lmem_dat <- add_random(subj = subj_n) |>
     add_random(item = item_n) |>
     add_within(condition = c("control", "experimental")) |>
-    add_between("subj", gender = c("M", "F", "NB"), .prob = gender_prob) |>
     add_contrast("condition", "treatment", colnames = "cond") |>
     add_ranef(err = error_sd) |>
     add_ranef(.by = "subj", 
@@ -686,13 +725,17 @@ head(sim_results, 10) |>
 ## Summarise
 
 ```{r, echo = TRUE, eval = FALSE}
+
+alpha <- 0.05 # critical alpha
+
 sim_results |>
-  summarise(power = mean(p.value < 0.05), .by = term)
+  summarise(power = mean(p.value < alpha), .by = term)
 ```
 
 ```{r}
+alpha <- 0.05
 power_table <- sim_results |>
-  summarise(power = mean(p.value < 0.05), .by = term) 
+  summarise(power = mean(p.value < alpha), .by = term) 
 
 power_table |>
   flextable() |>
@@ -702,12 +745,12 @@ power_table |>
 
 ## Write Up {.smaller}
 
-We conducted a <i class="pt">sensitivity power analysis</i> using <i class="sw">custom simulation code and the R packages faux (DeBruine, 2026) and lme4 (Bates, Maechler, Bolker & Walker ,2015)</i> to determine the power for our <i class="st">expected parameters (@tbl-model-params)</i> using a <i class="a">critical alpha of 0.05</i>. With <i class="ss">100 subjects and 20 items</i>, and an effect of condition of <i class="es">10</i> <i class="esm">milliseconds</i>, simulation using <i class="sw">10 replications</i> determined a power of <i class="power">`r power_table$power[[2]]*100`%</i>.
+We conducted a <i class="pt">sensitivity power analysis</i> using <i class="sw">custom simulation code and the R packages faux (DeBruine, 2026) and lme4 (Bates, Maechler, Bolker & Walker, 2015)</i> to determine the power. With <i class="ss">100 subjects and 20 items</i>, an effect of condition of <i class="es">10</i> <i class="esm">milliseconds</i>, using <i class="st">treatment coding (control = 0, experimental = 1)</i>, the <i class="st">expected parameters in @tbl-model-params</i>, and a <i class="a">critical alpha of 0.05</i>, simulation using <i class="sw">10 replications</i> determined a power of <i class="power">`r power_table$power[[2]]*100`%</i>.
 
 
 | Model Parameter                    | Value |
 |:--------------------------------------|------:|
-| SD of residuals                              |  20   |
+| SD of trial-level error (residuals)          |  20   |
 | SD of subject-level intercepts               |   8   |
 | SD of item-level intercepts                  |   4   |
 | SD of subject-level condition effect         |   5   |
