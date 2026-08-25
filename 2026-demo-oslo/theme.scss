@@ -1,0 +1,178 @@
+/*-- scss:defaults --*/
+
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@600;700;800&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;500;600&display=swap');
+
+// Brand colors (matching statistical_inferences textbook)
+$tue-red: #a60a0a;
+$tue-red-dark: #7a0707;
+$dark-bg: #1b1b1d;
+$body-bg: #fffafa;
+$body-color: #1c1717;
+$link-color: $tue-red;
+
+$presentation-heading-font: "Montserrat", "Helvetica Neue", Helvetica, Arial, sans-serif;
+$font-family-sans-serif: "Open Sans", "Helvetica Neue", Helvetica, Arial, sans-serif;
+$presentation-font-size-root: 40px;
+$presentation-line-height: 1.4;
+
+$presentation-heading-color: $tue-red-dark;
+$code-block-bg: #f7f7f7;
+$code-block-border-color: #d6dadc;
+
+/*-- scss:rules --*/
+
+.reveal .slides section {
+  text-align: left;
+}
+
+.reveal .slides section.center,
+.reveal .slides section[data-layout="center"] {
+  text-align: center;
+}
+
+.reveal h1, .reveal h2, .reveal h3 {
+  font-weight: 700;
+  letter-spacing: -0.01em;
+}
+
+.reveal h1 {
+  font-size: 1.7em;
+}
+
+.reveal h2 {
+  font-size: 1.3em;
+  border-bottom: 3px solid $tue-red;
+  padding-bottom: 0.2em;
+  margin-bottom: 0.6em;
+}
+
+.reveal .title-slide-bg {
+  background: linear-gradient(135deg, #fffafa 60%, #f4e3e3 100%);
+}
+
+.reveal .slide-logo {
+  position: fixed;
+  bottom: 14px;
+  right: 18px;
+  max-height: 34px;
+  opacity: 0.85;
+}
+
+.reveal .callout {
+  border-left: 6px solid $tue-red;
+  background: #f9eaea;
+  padding: 0.5em 0.9em;
+  border-radius: 4px;
+}
+
+.reveal .callout.green {
+  border-left-color: #1e8e3e;
+  background: #e8f5ea;
+}
+
+.reveal .callout.left {
+  text-align: left;
+}
+
+.reveal .badge {
+  display: inline-block;
+  background: $tue-red;
+  color: white;
+  border-radius: 999px;
+  padding: 0.15em 0.8em;
+  font-size: 0.55em;
+  font-weight: 600;
+  vertical-align: middle;
+  margin-left: 0.4em;
+}
+
+.reveal .module-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 0.6em;
+  margin-top: 0.5em;
+}
+
+.reveal .module-card {
+  background: #f7f3f3;
+  border: 1px solid #e3d3d3;
+  border-radius: 10px;
+  padding: 0.55em 0.7em;
+  font-size: 0.6em;
+  line-height: 1.25;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.reveal .module-card .icon {
+  font-size: 1.5em;
+  display: block;
+  margin-bottom: 0.15em;
+}
+
+.reveal .module-card.fragment.visible {
+  box-shadow: 0 4px 14px rgba(166, 10, 10, 0.25);
+  border-color: $tue-red;
+}
+
+.reveal .big-number {
+  font-size: 2.6em;
+  font-weight: 800;
+  color: $tue-red;
+  line-height: 1;
+}
+
+.reveal .step-arrow {
+  font-size: 1.4em;
+  color: $tue-red;
+  font-weight: 700;
+}
+
+.reveal .panel-tabset .panel-tabset-tab {
+  font-size: 0.7em;
+}
+
+.reveal blockquote {
+  border-left: 5px solid $tue-red;
+  font-style: italic;
+  opacity: 1;
+  box-shadow: none;
+  background: transparent;
+  padding-left: 0.8em;
+}
+
+.reveal a {
+  color: $tue-red;
+}
+
+.reveal pre {
+  box-shadow: none;
+  font-size: 0.7em;        // larger code blocks (default reveal is ~0.55em)
+  line-height: 1.3;
+}
+
+.reveal pre code {
+  background: $code-block-bg;
+  border: 1px solid $code-block-border-color;
+  border-radius: 0.45em;
+  box-shadow: 0 1px 0 rgba(0, 0, 0, 0.04);
+  padding: 0.6em 0.8em;
+}
+
+// inline code a touch larger too
+.reveal code {
+  font-size: 0.95em;
+}
+
+.reveal code {
+  font-family: "Fira Code", "SFMono-Regular", Consolas, monospace;
+}
+
+.reveal .reveal-anim-pulse {
+  animation: tuePulse 1.6s ease-in-out infinite;
+}
+
+@keyframes tuePulse {
+  0%, 100% { transform: scale(1); }
+  50% { transform: scale(1.05); }
+}

@@ -7,6 +7,7 @@ format:
 ---
 
 * [Power and Simulation](2026-power-sim) for the 10th annual [Summer School on Statistical Methods for Linguistics and Psychology](https://vasishth.github.io/smlp2026/) 2026-08-25
+* [Metacheck Demo](2026-demo-oslo) for OHN 2026-06-25
 * [Spotlight AI for Research](2025-fdsai-ethics) for Using AI Ethically for Research at Festival of Data Science and AI 2025-10-27
 * [Papercheck Module Demo](2025-module-demo) for Transparency Check kickoff 2025-10-06
 * [Papercheck](/2025-papercheck-intro)

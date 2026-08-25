@@ -1,0 +1,65 @@
+/*-- scss:defaults --*/
+
+$body-bg: #222;
+
+/*-- scss:rules --*/
+
+:root {
+  --red: #B52824;
+  --orange: #CB7631;
+  --yellow: #F7BB44;
+  --green: #42A148;
+  --aqua: #32A198;
+  --blue: #338ECA;
+  --purple: #836AC3;
+  --pink: #B94096;
+}
+
+/* rainbow borders */
+.slide-background-content {
+  margin-top: 24px;
+  box-shadow: 0 -3px 0 0px var(--pink),
+              0 -6px 0 0px var(--purple),
+              0 -9px 0 0px var(--blue),
+              0 -12px 0 0px var(--aqua),
+              0 -15px 0 0px var(--green),
+              0 -18px 0 0px var(--yellow),
+              0 -21px 0 0px var(--orange),
+              0 -24px 0 0px var(--red);
+}
+
+.checklist li {
+  list-style: none;
+}
+
+.checklist li::before {
+  content: '';
+  display: inline-block;
+  margin: 0 0 -.25em -1.3em;
+  height: 1.2em;
+  width: 1.2em;
+  background-image: url(images/checkbox.svg);
+}
+
+.plotcode {
+  font-size: .8em;
+}
+
+#fauxapp li {
+  font-size: 50%;
+}
+
+code.sourceCode { padding-bottom: 1em !important; }
+
+.pt { color: var(--red) }
+.power { color: var(--orange) }
+.ss { color: var(--yellow) }
+.es { color: var(--green) }
+.esm { color: var(--aqua) }
+.st { color: var(--blue) }
+.a { color: var(--purple) }
+.sw { color: var(--pink) }
+
+.reveal pre code {
+  max-height: 500px;
+}

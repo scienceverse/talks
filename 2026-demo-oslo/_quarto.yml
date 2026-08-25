@@ -1,0 +1,6 @@
+project:
+  title: "Metacheck"
+
+format:
+  revealjs:
+    output-file: index.html
