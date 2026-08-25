@@ -557,7 +557,7 @@ sim_func <- function(iteration = 0, subj_n = 100, item_n = 20, cond_eff = 0) {
   subj_cors    <-   0.5
   item_cors    <-  -0.5
 
-# simulate the data
+  # simulate the data
   lmem_dat <- add_random(subj = subj_n) |>
     add_random(item = item_n) |>
     add_within(condition = c("control", "experimental")) |>
@@ -585,8 +585,6 @@ sim_func <- function(iteration = 0, subj_n = 100, item_n = 20, cond_eff = 0) {
   broom.mixed::tidy(mod, effects = "fixed") |>
     mutate(iteration = iteration)
 }
-
-#arrow::write_feather(lmem_dat, "~/rproj/julia/SMLP2026/examples/simdat.arrow")
 
 ```
 
@@ -639,7 +637,7 @@ sim_results <- map_df(1:10, sim_func, cond_eff = 10)
 ```
 
 ```{r}
-head(sim_results) |>
+head(sim_results, 10) |>
   flextable() |>
   colformat_double(digits = 2) |>
   colformat_double(j = "iteration", digits = 0) |>
