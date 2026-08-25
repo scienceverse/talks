@@ -6,8 +6,10 @@ qrcode::qr_code(url) |> qrcode::generate_svg("images/qrcode.svg")
 ```
 ---
 title: "Power and Simulation"
-subtitle: "`r subtitle`"
-author: "Lisa DeBruine, Cristian Mesquida, Daniël Lakens  \n![](images/qrcode.svg){width=300}"
+subtitle: "Lisa DeBruine, Cristian Mesquida, Daniël Lakens"
+author: "![](images/qrcode.svg){width=300}
+\n\n`r subtitle`
+\n\n<https://github.com/scienceverse/talks>"
 format: 
   revealjs:
     logo: images/scienceverse.png
@@ -772,5 +774,6 @@ We conducted a <i class="pt">sensitivity power analysis</i> using <i class="sw">
 
 # Thank You!
 
-[![`r url`](images/qrcode.svg)](`r url`)
+![](images/qrcode.svg)
 
+<`r url`>
