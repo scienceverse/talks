@@ -41,12 +41,12 @@ Power analyses help us to plan studies and interpret findings. The statistical p
 # Power
 
 ::: {style="font-size: 90%;"}
-* **false positive rate**: the probability a test concludes there is an effect when there is no effect; Type I Error Rate
-* **<i class="a">alpha</i> **: the false positive rate we accept for a test
-* **false negative rate**: the probability a test concludes there is no effect when there is one; Type II Error Rate
+* **false positive rate**: the probability a <i class="st">test</i> concludes there is an <i class="es">effect</i> when there is no effect; Type I Error Rate
+* **<i class="a">alpha</i> **: the false positive rate we accept for a <i class="st">test</i>
+* **false negative rate**: the probability a <i class="st">test</i> concludes there is no <i class="es">effect</i> when there is one; Type II Error Rate
 * **beta**: the false negative rate we accept for a test
-* **true positive rate**: the probability a test concludes there is an effect when there is one
-* **<i class="power">power</i>**: the true positive rate (1-beta), given a specific <i class="es">effect size</i>, <i class="ss">sample size</i>, and <i class="a">alpha</i> 
+* **true positive rate**: the probability a <i class="st">test</i> concludes there is an <i class="es">effect</i> when there is one
+* **<i class="power">power</i>**: the true positive rate (1-beta), given a <i class="st">test</i>, <i class="es">effect</i>, <i class="ss">sample size</i>, and <i class="a">alpha</i> 
 :::
 
 
