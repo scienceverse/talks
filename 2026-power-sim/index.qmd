@@ -38,8 +38,6 @@ set.seed(8675309)
 Power analyses help us to plan studies and interpret findings. The statistical power of a specific test depends on the effect size, sample size, and alpha criterion. In this talk, I will cover common mistakes with conducting and reporting power analyses, and present simulation-based methods for conducting power analyses for any inferential test. I will cover fixed effects and mixed effects models, with additional materials at <https://debruine.github.io/data-sim-workshops/>.
 
 
-
-
 # Power
 
 ::: {style="font-size: 90%;"}
@@ -772,7 +770,7 @@ We conducted a <i class="pt">sensitivity power analysis</i> using <i class="sw">
 
 :::
 
-# Thank You!
+# Thank You! {.center}
 
 ![](images/qrcode.svg)
 
