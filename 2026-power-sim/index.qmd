@@ -79,7 +79,7 @@ Power analyses help us to plan studies and interpret findings. The statistical p
 ## Reporting
 
 * <i class="pt">power type</i>: a priori, power/sample size sensitivity, post hoc
-* <i class="power">power</i>: 0-100%
+* <i class="power">power</i>: value between alpha and 100%
 * <i class="ss">sample size</i>: number of subjects/items
 * <i class="es">effect size</i>: numeric value
 * <i class="esm">effect size metric</i>: e.g., Cohen's d, r, $\eta_{p}^{2}$, raw
