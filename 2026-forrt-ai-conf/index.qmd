@@ -1,14 +1,15 @@
 ```{r, eval=FALSE}
-url <- "https://scienceverse.org/talks/forrt-ai-conference/#/title-slide"
+url <- "https://scienceverse.org/talks/2026-forrt-ai-conf/#/title-slide"
 subtitle <- sprintf("[%s](%s)", url, url)
 # make QR code
 qrcode::qr_code(url) |> qrcode::generate_svg("images/qrcode.svg")
 ```
 
 ---
-title: "Metacheck: automated, validated checks for open science practices"
+title: "Improving the transparency of power analyses with Metacheck"
 subtitle: Cristian Mesquida
 author: "![](images/qrcode.svg){width=300}"
+date: "https://github.com/scienceverse/talks/2026-forrt-ai-conf"
 format: 
   revealjs:
     logo: images/metacheck.png
@@ -56,8 +57,8 @@ Studies designed with high <i class="power">power</i> are more informative:
 ## Types of Power Analysis
 
 :::::::: columns
-::::::: {.column width="80%"}
-- <i class="pt">**A Priori**</i>: calculates the <i class="ss">sample size</i> required to achieved a pre-specified <i class="power">power</i> for a pre-specified <i class="es">effect size</i>
+::::::: {.column width="100%"}
+- <i class="pt">**A Priori**</i>: calculates the required <i class="ss">sample size</i> to achieve a pre-specified <i class="power">power</i> given a pre-specified <i class="es">effect size</i>
 
 - <i class="pt">**Sensitivity (Effect Size)**</i>: calculates the smallest <i class="es">effect size</i> required to detect a pre-specified <i class="ss">sample size</i> with a pre-specified <i class="power">power</i>
 
@@ -128,8 +129,9 @@ Only 11% of 1295 power analyses from 1937 *Psychological Science* papers publish
 ## The solutions
 
 ::: {.fragment .fade-in-then-out}
-- Increase awareness through better training
 - Develop reporting guidelines
+- Increase awareness through better training
+- Adherence to reporting guidelines
 :::
 
 ::: {.fragment .fade-up}
@@ -289,11 +291,9 @@ res$table[2, c(
 | <i class="es">effect size</i>         | 189       | 91%      |
 | <i class="sw">software</i>            | 192       | 93%      |
 
-: Percentage of matched components for which the observed and ground-truth values agree.
 
-**Note.** Of the 224 observed extraction rows and 225 ground-truth rows, 207 were successfully matched. Accuracy was calculated as the number of agreements for each component divided by the number of matched cases (207), multiplied by 100.
-
-
+## Metacheck team
+![](images/metacheck_team.png)
 
 [^index-1]: Preliminary analysis using [Metacheck](https://scienceverse.github.io/metacheck), from Mesquida, Lakens & DeBruine (in prep)
 
