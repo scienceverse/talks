@@ -7,9 +7,8 @@ qrcode::qr_code(url) |> qrcode::generate_svg("images/qrcode.svg")
 
 ---
 title: "Improving the transparency of power analyses with Metacheck"
-subtitle: Cristian Mesquida
+subtitle: "Cristian Mesquida"
 author: "![](images/qrcode.svg){width=300}"
-date: "https://github.com/scienceverse/talks/2026-forrt-ai-conf"
 format: 
   revealjs:
     logo: images/metacheck.png
@@ -17,9 +16,10 @@ format:
     transition: none
     transition-speed: fast
     syntax-highlighting: zenburn
+bibliography: references.bib
 ---
 
-```{r, include = FALSE}
+```{r packages, include = FALSE}
 library(tidyverse)
 library(flextable)
 library(metacheck)
@@ -46,18 +46,18 @@ theme_set(theme_minimal(base_size = 17))
 - <i class="power">power</i>: the true positive rate (1-beta), given a <i class="st">test</i>, <i class="es">effect</i>, <i class="ss">sample size</i>, and <i class="a">alpha</i>
 :::
 
-## Power analyses
+## Power analysis
 
 Studies designed with high <i class="power">power</i> are more informative:
 
-- Higher probability of detecting the effect size of interest when it exists
+- Higher probability of detecting the effect size of interest when it exists (i.e., higher true positive rate)
 
-- A non-significant result is more informative because it is less likely to be due to insufficient power. For example, a non-significant result from a study desgined with 90% <i class="power">power</i> is more informative than one from a study designed with 50% <i class="power">power</i>
+- A non-significant result is more informative because it is less likely to be due to insufficient power. For example, a non-significant result from a study designed with <i class="power">90% power</i> is more informative than one from a study designed with <i class="power">50% power</i>
 
 ## Types of Power Analysis
 
-:::::::: columns
-::::::: {.column width="100%"}
+:::: columns
+::: {.column width="100%"}
 - <i class="pt">**A Priori**</i>: calculates the required <i class="ss">sample size</i> to achieve a pre-specified <i class="power">power</i> given a pre-specified <i class="es">effect size</i>
 
 - <i class="pt">**Sensitivity (Effect Size)**</i>: calculates the smallest <i class="es">effect size</i> required to detect a pre-specified <i class="ss">sample size</i> with a pre-specified <i class="power">power</i>
@@ -65,8 +65,13 @@ Studies designed with high <i class="power">power</i> are more informative:
 - <i class="pt">**Sensitivity (Power)**</i>: calculates <i class="power">power</i> given a pre-specified <i class="es">effect size</i> and <i class="ss">sample size</i>
 
 - <i class="pt">**Post Hoc**</i>: calculates the <i class="power">power</i> associated with the observed <i class="es">effect size</i> and the <i class="ss">sample size</i> actually obtained
-:::::::
-::::::::
+:::
+::::
+
+## Current issues in power analyses
+
+- Mindlessly done [@schulz2005; @mesquida2025]
+- Insufficient reporting [@mesquida2025; @bakker2020; @thibault_2024]
 
 ## Reporting
 
@@ -77,13 +82,13 @@ Studies designed with high <i class="power">power</i> are more informative:
 - <i class="esm">effect size metric</i>: e.g., Cohen's $d$, $r$, $\eta_{p}^{2}$, raw
 - <i class="st">statistical test</i>: full specification
 - <i class="a">alpha</i>: 0-1, often assumed to be 0.05
-- <i class="sw">software</i>: e.g., G\*Power, Superpower, simulation!
+- <i class="sw">software</i>: e.g., G\*Power, Superpower, simulation
 
 ## 
 
 How would you write up this power analysis?
 
-```{r}
+```{r example}
 #| echo: true
 
 pwr::pwr.t.test(          
@@ -105,26 +110,7 @@ pwr::pwr.t.test(
 
 ## The Reality
 
-> A <i class="sw">G\*Power (Version 3.1; Faul et al., 2009)</i> analysis using pilot data from 20 participants for a <i class="a">Bonferroni-corrected (for two comparisons)</i> <i class="st">one-sample t test</i> (<i class="esm">d</i> = <i class="es">0.45</i>, α = .05, p = .95) determined that we should recruit <i class="ss">67</i> participants.
-
-## The Reality
-
-> We decided to obtain a sample size that would allow us to detect a within-subjects difference of at least a medium effect size (<i class="esm">Cohen's d</i> \> <i class="es">0.5</i>) with <i class="power">80%</i> power, using a <i class="st">two-tailed t-test</i>. A power analysis using <i class="sw">G\*Power (Version 3.1.9.3; Faul et al., 2007)</i> indicated that this required a sample size of <i class="ss">34</i>.
-
-## We Could Do Better {.smaller}
-
-Only 11% of 1295 power analyses from 1937 *Psychological Science* papers published between 2014 and 2026 have complete reporting.
-
-| Component                             | Percent Missing[^index-1] |
-|:--------------------------------------|--------------------------:|
-| <i class="pt">power type</i>          |                        0% |
-| <i class="power">power</i>            |                       15% |
-| <i class="ss">sample size</i>         |                       19% |
-| <i class="es">effect size</i>         |                       32% |
-| <i class="esm">effect size metric</i> |                       28% |
-| <i class="st">statistical test</i>    |                       22% |
-| <i class="a">alpha</i>                |                       67% |
-| <i class="sw">software</i>            |                       71% |
+> We decided to obtain a sample size that would allow us to detect a within-subjects difference of at least a medium effect size with <i class="power">80%</i> power, using a <i class="st">two-tailed t-test</i>. A power analysis using <i class="sw">G\*Power (Version 3.1.9.3; Faul et al., 2007)</i> indicated that this required a sample size of <i class="ss">34</i>.
 
 ## The solutions
 
@@ -143,7 +129,7 @@ Only 11% of 1295 power analyses from 1937 *Psychological Science* papers publish
 - It performs automated checks on **manuscripts** and **repositories**
 
 ::: {.fragment .fade-in-then-out}
-- Manuscripts: `stat_effect_size`, `stat_nonsig`, `marginal`, `power`, etc.
+- Manuscripts: `stat_effect_size`, `stat_p_nonsig`, `marginal`, `power`, etc.
 :::
 
 ::: {.fragment .fade-up}
@@ -152,26 +138,49 @@ Only 11% of 1295 power analyses from 1937 *Psychological Science* papers publish
 
 ## Checking for power analysis
 
-The `power` module
+The `power` module can help researchers report all components of a power analysis.
 
-- **Regex-based approach**: only detects the type of power analysis based on regex
+```{r}
+#| echo: TRUE
+#| eval: FALSE
 
-- **LLM-based approach**: identifies components of the power analysis
+library(metacheck)
+module_run(paper, "power")
+```
+
+## Regex-based approach
+
+It detects the type of power analysis using regular expressions (i.e., regex) only
+
+```{r run_and_display}
+#| echo: TRUE
+papers <- papers_load("psychsci")         # Load Psychological Science articles
+llm_use(FALSE)                            # Set to FALSE by default
+res <- module_run(papers[100], "power")   # Run the power module
+
+res$table[, c(                            # Select relevant columns
+  "section_type", 
+  "power_type"
+  )] |> 
+  flextable()
+```
 
 ## LLM-based approach
 
-```{r}
+An LLM is used to identify and extract the reported components of the power analysis
+
+```{r run_and_store}
 #| echo: FALSE
 #| eval: FALSE
 
-psychsci <- papers_load("psychsci") # Load a set of articles
-llm_use(TRUE) # Set to true to enable LLM
-llm_model("ollama") # LLM model
-res <- module_run(psychsci[100], "power") # run power module
-saveRDS(res, "res.RDS") # store for efficiency
+papers <- papers_load("psychsci")         # Load a set of articles
+llm_use(TRUE)                             # Set to TRUE to enable LLM
+llm_model("ollama/qwen2.5:3b")                       # Specify LLM model
+res <- module_run(papers[100], "power")   # Run the power module
+saveRDS(res, "res.RDS")                   # Store for efficiency
 ```
 
-```{r}
+```{r read}
 #| echo: FALSE
 #| eval: TRUE
 res <- readRDS("res.RDS")
@@ -181,54 +190,84 @@ res <- readRDS("res.RDS")
 #| echo: TRUE
 #| eval: FALSE
 
-llm_use(TRUE)
-llm_model("ollama")
-res <- module_run(psychsci[110], "power")
+llm_use(TRUE)                           # Set to TRUE to enable LLM
+llm_model("ollama/qwen2.5:3b")          # Specify LLM model
+res <- module_run(papers[110], "power") # Run the power module
 ```
 
-```{r}
+```{r display}
 #| echo: TRUE
+
 res$summary_table |> 
   flextable()
 ```
 
 ## First match
 
-```{r}
+```{r first_match}
 #| echo: TRUE
-res$table[1, c(
-  "power_type", 
-  "statistical_test", 
-  "sample_size", 
-  "alpha_level", 
-  "power", 
-  "effect_size", 
-  "effect_size_metric", 
-  "software"
-  )] |> 
+
+# Select relevant columns
+res$table[1, c("power_type", "statistical_test", "sample_size", "alpha_level", "power", "effect_size", "effect_size_metric", "software")] |> 
   flextable()
 ```
+
+> \[...\], we used a conservative effect size (<i class="esm">d</i>) of <i class="es">0.5</i>, an alpha of <i class="a">.05</i>, and power of <i class="power">.8</i> for our sample-size computation (<i class="sw">G\*Power Version 3.1.9.2; Faul et al., 2007</i>). The estimated sample size was <i class="ss">34</i> participants, but we used <i class="ss">36</i> \[...\], which yielded a power estimate of <i class="power">.83</i>.
 
 ## Second match
 
-```{r}
+```{r second_match}
 #| echo: TRUE
-res$table[2, c(
-  "power_type", 
-  "statistical_test", 
-  "sample_size", 
-  "alpha_level", 
-  "power", 
-  "effect_size", 
-  "effect_size_metric", 
-  "software"
-  )] |> 
+
+# Select relevant columns
+res$table[2, c("power_type", "statistical_test", "sample_size", "alpha_level", "power", "effect_size", "effect_size_metric", "software")] |> 
   flextable()
 ```
 
+> \[...\], we used a medium effect size (<i class="esm">d</i>) of <i class="es">0.6</i>, an alpha of <i class="a">.004</i> (Bonferroni corrected for the current study), and power of <i class="power">.8</i> for our sample-size computation (<i class="sw">G\*Power Version 3.1.9.2; Faul et al., 2007</i>). The estimated sample size was <i class="ss">33</i> participants, but to fit the counterbalancing, we recruited <i class="ss">48</i>, which yielded a power estimate of <i class="power">.86</i>.
+
+## Limitations of the LLM-based approach
+
+Even LLMs struggle to identify information with inconsisting reporting
+
+> Two groups of 48 participants \[...\].
+>
+> Sample size was determined using \[...\].
+>
+> A two-level factor manipulating fixation placement was added to create a 2 (initial fixation position: background, foreground) × 2 (presentation duration) × 2 (scene type: normal, chimera) × 3 (target condition: foreground, background, inconsistent control) within-subjects design. 
+
+## We Could Do Better {.smaller}
+
+Only 11% of 1295 power analyses from 1937 *Psychological Science* papers published between 2014 and 2026 have complete reporting.
+
+:::: {.columns}
+
+::: {.column width="65%"}
+
+| Component                             | Percent Missing |
+|:--------------------------------------|----------------:|
+| <i class="pt">power type</i>          |              0% |
+| <i class="power">power</i>            |             15% |
+| <i class="ss">sample size</i>         |             19% |
+| <i class="es">effect size</i>         |             32% |
+| <i class="esm">effect size metric</i> |             28% |
+| <i class="st">statistical test</i>    |             22% |
+| <i class="a">alpha</i>                |             67% |
+| <i class="sw">software</i>            |             71% |
+
+:::
+
+::: {.column width="35%"}
+
+Preliminary analysis using [Metacheck](https://scienceverse.github.io/metacheck), from Mesquida, Lakens & DeBruine (in prep).
+
+:::
+
+::::
+
 ## The schema
 
-```json
+``` json
 {
   "$schema": "https://json-schema.org/draft/2020-12/schema",
   "$id": "https://scienceverse.org/schema/power.json",
@@ -265,35 +304,49 @@ res$table[2, c(
 ```
 
 ## Validation
-- Conducted on 250 articles from Psychological Science
-- Created an over-inclusive ground-truth dataset
-- Manually coded whether each matched statement was a power analysis (0/1)
+
+- Created an over-inclusive ground-truth dataset using 250 articles from Psychological Science
 - Manually coded:
-    - <i class="pt">power type</i>
-    - <i class="power">power</i>
-    - <i class="ss">sample size</i>
-    - <i class="es">effect size</i>
-    - <i class="esm">effect size metric</i>
-    - <i class="st">statistical test</i>
-    - <i class="a">alpha</i>
-    - <i class="sw">software</i>
+  - Whether each matched statement was a power analysis
+  - <i class="pt">power type</i>, <i class="power">power</i>,<i class="ss">sample size</i>, <i class="es">effect size</i>, <i class="esm">effect size metric</i>, <i class="st">statistical test</i>, <i class="a">alpha</i>, <i class="sw">software</i>
 
 ## Validation metrics
 
-| Component                             | Agree (n) | Accuracy[^index-1] |
-|---------------------------------------|----------:|-------------------:|
-| <i class="pt">power type</i>          | 165       | 80%      |
-| <i class="st">statistical test</i>    | 159       | 77%      |
-| <i class="ss">sample size</i>         | 173       | 84%      |
-| <i class="a">alpha</i>                | 201       | 97%      |
-| <i class="power">power</i>            | 194       | 94%      |
-| <i class="esm">effect size metric</i> | 193       | 93%      |
-| <i class="es">effect size</i>         | 189       | 91%      |
-| <i class="sw">software</i>            | 192       | 93%      |
+:::: {.columns}
 
+::: {.column width="75%"}
+
+| Component                             | Agree     | Accuracy |
+|---------------------------------------|----------:|-------------------:|
+| <i class="pt">power type</i>          |       165 |                80% |
+| <i class="st">statistical test</i>    |       159 |                77% |
+| <i class="ss">sample size</i>         |       173 |                84% |
+| <i class="a">alpha</i>                |       201 |                97% |
+| <i class="power">power</i>            |       194 |                94% |
+| <i class="esm">effect size metric</i> |       193 |                93% |
+| <i class="es">effect size</i>         |       189 |                91% |
+| <i class="sw">software</i>            |       192 |                93% |
+
+:::
+
+::::
+
+## Our approach to Validation
+
+- Treat validation as a [FAIR workflow]{style="color: green;"}
+- Repeat validation after every release or update
+- Transparently report validation metrics
 
 ## Metacheck team
+
 ![](images/metacheck_team.png)
 
-[^index-1]: Preliminary analysis using [Metacheck](https://scienceverse.github.io/metacheck), from Mesquida, Lakens & DeBruine (in prep)
+## Reach out
 
+Interested in developing new modules?<br> <br> Get in touch: `c.mesquida.caldentey@tue.nl`
+
+## Thank you!
+
+![](images/qrcode.svg){width="500"} <br> <https://github.com/scienceverse/talks/tree/main/2026-forrt-ai-conf>
+
+## References

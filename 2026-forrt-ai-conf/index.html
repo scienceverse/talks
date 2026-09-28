@@ -95,7 +95,26 @@
     code span.va { } /* Variable */
     code span.vs { color: #cc9393; } /* VerbatimString */
     code span.wa { color: #7f9f7f; font-weight: bold; } /* Warning */
-  </style>
+    /* CSS for citations */
+    div.csl-bib-body { }
+    div.csl-entry {
+      clear: both;
+    }
+    .hanging-indent div.csl-entry {
+      margin-left:2em;
+      text-indent:-2em;
+    }
+    div.csl-left-margin {
+      min-width:2em;
+      float:left;
+    }
+    div.csl-right-inline {
+      margin-left:2em;
+      padding-left:1em;
+    }
+    div.csl-indent {
+      margin-left: 2em;
+    }  </style>
   <link rel="stylesheet" href="index_files/libs/revealjs/dist/theme/quarto-9aea461f05a9a1f6eb252041aac6d462.css">
   <link href="index_files/libs/revealjs/plugin/quarto-line-highlight/line-highlight.css" rel="stylesheet">
   <link href="index_files/libs/revealjs/plugin/reveal-menu/menu.css" rel="stylesheet">
@@ -207,7 +226,6 @@
 </div>
 </div>
 
-  <p class="date">https://github.com/scienceverse/talks/2026-forrt-ai-conf</p>
 </section>
 <section id="power" class="slide level2">
 <h2>Power</h2>
@@ -222,12 +240,12 @@
 </ul>
 </div>
 </section>
-<section id="power-analyses" class="slide level2">
-<h2>Power analyses</h2>
+<section id="power-analysis" class="slide level2">
+<h2>Power analysis</h2>
 <p>Studies designed with high <i class="power">power</i> are more informative:</p>
 <ul>
-<li><p>Higher probability of detecting the effect size of interest when it exists</p></li>
-<li><p>A non-significant result is more informative because it is less likely to be due to insufficient power. For example, a non-significant result from a study desgined with 90% <i class="power">power</i> is more informative than one from a study designed with 50% <i class="power">power</i></p></li>
+<li><p>Higher probability of detecting the effect size of interest when it exists (i.e., higher true positive rate)</p></li>
+<li><p>A non-significant result is more informative because it is less likely to be due to insufficient power. For example, a non-significant result from a study designed with <i class="power">90% power</i> is more informative than one from a study designed with <i class="power">50% power</i></p></li>
 </ul>
 </section>
 <section id="types-of-power-analysis" class="slide level2">
@@ -242,6 +260,13 @@
 </ul>
 </div></div>
 </section>
+<section id="current-issues-in-power-analyses" class="slide level2">
+<h2>Current issues in power analyses</h2>
+<ul>
+<li>Mindlessly done <span class="citation" data-cites="schulz2005 mesquida2025">(<a href="#/references" role="doc-biblioref" onclick="">Schulz and Grimes 2005</a>; <a href="#/references" role="doc-biblioref" onclick="">Mesquida et al. 2025</a>)</span></li>
+<li>Insufficient reporting <span class="citation" data-cites="mesquida2025 bakker2020 thibault_2024">(<a href="#/references" role="doc-biblioref" onclick="">Mesquida et al. 2025</a>; <a href="#/references" role="doc-biblioref" onclick="">Bakker et al. 2020</a>; <a href="#/references" role="doc-biblioref" onclick="">Thibault et al. 2024</a>)</span></li>
+</ul>
+</section>
 <section id="reporting" class="slide level2">
 <h2>Reporting</h2>
 <ul>
@@ -252,7 +277,7 @@
 <li><i class="esm">effect size metric</i>: e.g., Cohen’s <span class="math inline">\(d\)</span>, <span class="math inline">\(r\)</span>, <span class="math inline">\(\eta_{p}^{2}\)</span>, raw</li>
 <li><i class="st">statistical test</i>: full specification</li>
 <li><i class="a">alpha</i>: 0-1, often assumed to be 0.05</li>
-<li><i class="sw">software</i>: e.g., G*Power, Superpower, simulation!</li>
+<li><i class="sw">software</i>: e.g., G*Power, Superpower, simulation</li>
 </ul>
 </section>
 <section id="section" class="slide level2">
@@ -295,23 +320,129 @@ NOTE: n is number in *each* group</code></pre>
 <section id="the-reality-1" class="slide level2">
 <h2>The Reality</h2>
 <blockquote>
-<p>A <i class="sw">G*Power (Version 3.1; Faul et al., 2009)</i> analysis using pilot data from 20 participants for a <i class="a">Bonferroni-corrected (for two comparisons)</i> <i class="st">one-sample t test</i> (<i class="esm">d</i> = <i class="es">0.45</i>, α = .05, p = .95) determined that we should recruit <i class="ss">67</i> participants.</p>
+<p>We decided to obtain a sample size that would allow us to detect a within-subjects difference of at least a medium effect size with <i class="power">80%</i> power, using a <i class="st">two-tailed t-test</i>. A power analysis using <i class="sw">G*Power (Version 3.1.9.3; Faul et al., 2007)</i> indicated that this required a sample size of <i class="ss">34</i>.</p>
 </blockquote>
 </section>
-<section id="the-reality-2" class="slide level2">
-<h2>The Reality</h2>
+<section id="the-solutions" class="slide level2">
+<h2>The solutions</h2>
+<div class="fragment fade-in-then-out">
+<ul>
+<li>Develop reporting guidelines</li>
+<li>Increase awareness through better training</li>
+<li>Adherence to reporting guidelines</li>
+</ul>
+</div>
+<div class="fragment fade-up">
+<ul>
+<li>Automation</li>
+</ul>
+</div>
+</section>
+<section id="metacheck" class="slide level2">
+<h2>Metacheck</h2>
+<ul>
+<li>It performs automated checks on <strong>manuscripts</strong> and <strong>repositories</strong></li>
+</ul>
+<div class="fragment fade-in-then-out">
+<ul>
+<li>Manuscripts: <code>stat_effect_size</code>, <code>stat_p_nonsig</code>, <code>marginal</code>, <code>power</code>, etc.</li>
+</ul>
+</div>
+<div class="fragment fade-up">
+<ul>
+<li>Repositories: <code>repo_check</code>, <code>code_check</code>, <code>data_check</code>, etc.</li>
+</ul>
+</div>
+</section>
+<section id="checking-for-power-analysis" class="slide level2">
+<h2>Checking for power analysis</h2>
+<p>The <code>power</code> module can help researchers report all components of a power analysis.</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb3"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href=""></a><span class="fu">library</span>(metacheck)</span>
+<span id="cb3-2"><a href=""></a><span class="fu">module_run</span>(paper, <span class="st">"power"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+</section>
+<section id="regex-based-approach" class="slide level2">
+<h2>Regex-based approach</h2>
+<p>It detects the type of power analysis using regular expressions (i.e., regex) only</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb4"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href=""></a>papers <span class="ot">&lt;-</span> <span class="fu">papers_load</span>(<span class="st">"psychsci"</span>)         <span class="co"># Load Psychological Science articles</span></span>
+<span id="cb4-2"><a href=""></a><span class="fu">llm_use</span>(<span class="cn">FALSE</span>)                            <span class="co"># Set to FALSE by default</span></span>
+<span id="cb4-3"><a href=""></a>res <span class="ot">&lt;-</span> <span class="fu">module_run</span>(papers[<span class="dv">100</span>], <span class="st">"power"</span>)   <span class="co"># Run the power module</span></span>
+<span id="cb4-4"><a href=""></a></span>
+<span id="cb4-5"><a href=""></a>res<span class="sc">$</span>table[, <span class="fu">c</span>(                            <span class="co"># Select relevant columns</span></span>
+<span id="cb4-6"><a href=""></a>  <span class="st">"section_type"</span>, </span>
+<span id="cb4-7"><a href=""></a>  <span class="st">"power_type"</span></span>
+<span id="cb4-8"><a href=""></a>  )] <span class="sc">|&gt;</span> </span>
+<span id="cb4-9"><a href=""></a>  <span class="fu">flextable</span>()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output-display">
+<div class="tabwid"><style>.cl-a32c9052{}.cl-a31bf0d0{font-family:'Helvetica';font-size:20pt;font-weight:normal;font-style:normal;text-decoration:none;color:rgba(255, 255, 255, 1.00);background-color:transparent;}.cl-a32a5ac6{margin:0;text-align:left;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);padding-bottom:5pt;padding-top:5pt;padding-left:5pt;padding-right:5pt;line-height: 1;background-color:transparent;}.cl-a32a6c78{width:0.75in;background-color:transparent;vertical-align: middle;border-bottom: 1.5pt solid rgba(190, 190, 190, 1.00);border-top: 1.5pt solid rgba(190, 190, 190, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-a32a6c79{width:0.75in;background-color:transparent;vertical-align: middle;border-bottom: 1.5pt solid rgba(190, 190, 190, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}</style><table data-quarto-disable-processing="true" class="cl-a32c9052"><thead><tr style="overflow-wrap:break-word;"><th class="cl-a32a6c78"><p class="cl-a32a5ac6"><span class="cl-a31bf0d0">section_type</span></p></th><th class="cl-a32a6c78"><p class="cl-a32a5ac6"><span class="cl-a31bf0d0">power_type</span></p></th></tr></thead><tbody><tr style="overflow-wrap:break-word;"><td class="cl-a32a6c79"><p class="cl-a32a5ac6"><span class="cl-a31bf0d0">method</span></p></td><td class="cl-a32a6c79"><p class="cl-a32a5ac6"><span class="cl-a31bf0d0">unknown</span></p></td></tr></tbody></table></div>
+</div>
+</div>
+</section>
+<section id="llm-based-approach" class="slide level2">
+<h2>LLM-based approach</h2>
+<p>An LLM is used to identify and extract the reported components of the power analysis</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb5"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href=""></a><span class="fu">llm_use</span>(<span class="cn">TRUE</span>)                           <span class="co"># Set to TRUE to enable LLM</span></span>
+<span id="cb5-2"><a href=""></a><span class="fu">llm_model</span>(<span class="st">"ollama/qwen2.5:3b"</span>)          <span class="co"># Specify LLM model</span></span>
+<span id="cb5-3"><a href=""></a>res <span class="ot">&lt;-</span> <span class="fu">module_run</span>(papers[<span class="dv">110</span>], <span class="st">"power"</span>) <span class="co"># Run the power module</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb6"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href=""></a>res<span class="sc">$</span>summary_table <span class="sc">|&gt;</span> </span>
+<span id="cb6-2"><a href=""></a>  <span class="fu">flextable</span>()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output-display">
+<div class="tabwid"><style>.cl-a33b38d2{}.cl-a336fb46{font-family:'Helvetica';font-size:20pt;font-weight:normal;font-style:normal;text-decoration:none;color:rgba(255, 255, 255, 1.00);background-color:transparent;}.cl-a338b0bc{margin:0;text-align:left;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);padding-bottom:5pt;padding-top:5pt;padding-left:5pt;padding-right:5pt;line-height: 1;background-color:transparent;}.cl-a338b0d0{margin:0;text-align:right;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);padding-bottom:5pt;padding-top:5pt;padding-left:5pt;padding-right:5pt;line-height: 1;background-color:transparent;}.cl-a338c41c{width:0.75in;background-color:transparent;vertical-align: middle;border-bottom: 1.5pt solid rgba(190, 190, 190, 1.00);border-top: 1.5pt solid rgba(190, 190, 190, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-a338c41d{width:0.75in;background-color:transparent;vertical-align: middle;border-bottom: 1.5pt solid rgba(190, 190, 190, 1.00);border-top: 1.5pt solid rgba(190, 190, 190, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-a338c426{width:0.75in;background-color:transparent;vertical-align: middle;border-bottom: 1.5pt solid rgba(190, 190, 190, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-a338c430{width:0.75in;background-color:transparent;vertical-align: middle;border-bottom: 1.5pt solid rgba(190, 190, 190, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}</style><table data-quarto-disable-processing="true" class="cl-a33b38d2"><thead><tr style="overflow-wrap:break-word;"><th class="cl-a338c41c"><p class="cl-a338b0bc"><span class="cl-a336fb46">paper_id</span></p></th><th class="cl-a338c41d"><p class="cl-a338b0d0"><span class="cl-a336fb46">power_n</span></p></th><th class="cl-a338c41d"><p class="cl-a338b0d0"><span class="cl-a336fb46">power_complete</span></p></th><th class="cl-a338c41d"><p class="cl-a338b0d0"><span class="cl-a336fb46">power_statistical_test</span></p></th><th class="cl-a338c41d"><p class="cl-a338b0d0"><span class="cl-a336fb46">power_sample_size</span></p></th><th class="cl-a338c41d"><p class="cl-a338b0d0"><span class="cl-a336fb46">power_alpha_level</span></p></th><th class="cl-a338c41d"><p class="cl-a338b0d0"><span class="cl-a336fb46">power_power</span></p></th><th class="cl-a338c41d"><p class="cl-a338b0d0"><span class="cl-a336fb46">power_effect_size</span></p></th><th class="cl-a338c41d"><p class="cl-a338b0d0"><span class="cl-a336fb46">power_effect_size_metric</span></p></th><th class="cl-a338c41d"><p class="cl-a338b0d0"><span class="cl-a336fb46">power_software</span></p></th></tr></thead><tbody><tr style="overflow-wrap:break-word;"><td class="cl-a338c426"><p class="cl-a338b0bc"><span class="cl-a336fb46">0956797620984464</span></p></td><td class="cl-a338c430"><p class="cl-a338b0d0"><span class="cl-a336fb46">2</span></p></td><td class="cl-a338c430"><p class="cl-a338b0d0"><span class="cl-a336fb46">2</span></p></td><td class="cl-a338c430"><p class="cl-a338b0d0"><span class="cl-a336fb46">2</span></p></td><td class="cl-a338c430"><p class="cl-a338b0d0"><span class="cl-a336fb46">2</span></p></td><td class="cl-a338c430"><p class="cl-a338b0d0"><span class="cl-a336fb46">2</span></p></td><td class="cl-a338c430"><p class="cl-a338b0d0"><span class="cl-a336fb46">2</span></p></td><td class="cl-a338c430"><p class="cl-a338b0d0"><span class="cl-a336fb46">2</span></p></td><td class="cl-a338c430"><p class="cl-a338b0d0"><span class="cl-a336fb46">2</span></p></td><td class="cl-a338c430"><p class="cl-a338b0d0"><span class="cl-a336fb46">2</span></p></td></tr></tbody></table></div>
+</div>
+</div>
+</section>
+<section id="first-match" class="slide level2">
+<h2>First match</h2>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb7"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href=""></a><span class="co"># Select relevant columns</span></span>
+<span id="cb7-2"><a href=""></a>res<span class="sc">$</span>table[<span class="dv">1</span>, <span class="fu">c</span>(<span class="st">"power_type"</span>, <span class="st">"statistical_test"</span>, <span class="st">"sample_size"</span>, <span class="st">"alpha_level"</span>, <span class="st">"power"</span>, <span class="st">"effect_size"</span>, <span class="st">"effect_size_metric"</span>, <span class="st">"software"</span>)] <span class="sc">|&gt;</span> </span>
+<span id="cb7-3"><a href=""></a>  <span class="fu">flextable</span>()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output-display">
+<div class="tabwid"><style>.cl-a348463a{}.cl-a344bde4{font-family:'Helvetica';font-size:20pt;font-weight:normal;font-style:normal;text-decoration:none;color:rgba(255, 255, 255, 1.00);background-color:transparent;}.cl-a3464038{margin:0;text-align:left;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);padding-bottom:5pt;padding-top:5pt;padding-left:5pt;padding-right:5pt;line-height: 1;background-color:transparent;}.cl-a3464042{margin:0;text-align:right;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);padding-bottom:5pt;padding-top:5pt;padding-left:5pt;padding-right:5pt;line-height: 1;background-color:transparent;}.cl-a346529e{width:0.75in;background-color:transparent;vertical-align: middle;border-bottom: 1.5pt solid rgba(190, 190, 190, 1.00);border-top: 1.5pt solid rgba(190, 190, 190, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-a346529f{width:0.75in;background-color:transparent;vertical-align: middle;border-bottom: 1.5pt solid rgba(190, 190, 190, 1.00);border-top: 1.5pt solid rgba(190, 190, 190, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-a34652a8{width:0.75in;background-color:transparent;vertical-align: middle;border-bottom: 1.5pt solid rgba(190, 190, 190, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-a34652a9{width:0.75in;background-color:transparent;vertical-align: middle;border-bottom: 1.5pt solid rgba(190, 190, 190, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}</style><table data-quarto-disable-processing="true" class="cl-a348463a"><thead><tr style="overflow-wrap:break-word;"><th class="cl-a346529e"><p class="cl-a3464038"><span class="cl-a344bde4">power_type</span></p></th><th class="cl-a346529e"><p class="cl-a3464038"><span class="cl-a344bde4">statistical_test</span></p></th><th class="cl-a346529f"><p class="cl-a3464042"><span class="cl-a344bde4">sample_size</span></p></th><th class="cl-a346529f"><p class="cl-a3464042"><span class="cl-a344bde4">alpha_level</span></p></th><th class="cl-a346529f"><p class="cl-a3464042"><span class="cl-a344bde4">power</span></p></th><th class="cl-a346529f"><p class="cl-a3464042"><span class="cl-a344bde4">effect_size</span></p></th><th class="cl-a346529e"><p class="cl-a3464038"><span class="cl-a344bde4">effect_size_metric</span></p></th><th class="cl-a346529e"><p class="cl-a3464038"><span class="cl-a344bde4">software</span></p></th></tr></thead><tbody><tr style="overflow-wrap:break-word;"><td class="cl-a34652a8"><p class="cl-a3464038"><span class="cl-a344bde4">apriori</span></p></td><td class="cl-a34652a8"><p class="cl-a3464038"><span class="cl-a344bde4">unpaired t-test</span></p></td><td class="cl-a34652a9"><p class="cl-a3464042"><span class="cl-a344bde4">36</span></p></td><td class="cl-a34652a9"><p class="cl-a3464042"><span class="cl-a344bde4">0.05</span></p></td><td class="cl-a34652a9"><p class="cl-a3464042"><span class="cl-a344bde4">0.8</span></p></td><td class="cl-a34652a9"><p class="cl-a3464042"><span class="cl-a344bde4">0.5</span></p></td><td class="cl-a34652a8"><p class="cl-a3464038"><span class="cl-a344bde4">Cohen's d</span></p></td><td class="cl-a34652a8"><p class="cl-a3464038"><span class="cl-a344bde4">G*Power Version 3.1.9.2</span></p></td></tr></tbody></table></div>
+</div>
+</div>
 <blockquote>
-<p>We decided to obtain a sample size that would allow us to detect a within-subjects difference of at least a medium effect size (<i class="esm">Cohen’s d</i> &gt; <i class="es">0.5</i>) with <i class="power">80%</i> power, using a <i class="st">two-tailed t-test</i>. A power analysis using <i class="sw">G*Power (Version 3.1.9.3; Faul et al., 2007)</i> indicated that this required a sample size of <i class="ss">34</i>.</p>
+<p>[…], we used a conservative effect size (<i class="esm">d</i>) of <i class="es">0.5</i>, an alpha of <i class="a">.05</i>, and power of <i class="power">.8</i> for our sample-size computation (<i class="sw">G*Power Version 3.1.9.2; Faul et al., 2007</i>). The estimated sample size was <i class="ss">34</i> participants, but we used <i class="ss">36</i> […], which yielded a power estimate of <i class="power">.83</i>.</p>
+</blockquote>
+</section>
+<section id="second-match" class="slide level2">
+<h2>Second match</h2>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb8"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href=""></a><span class="co"># Select relevant columns</span></span>
+<span id="cb8-2"><a href=""></a>res<span class="sc">$</span>table[<span class="dv">2</span>, <span class="fu">c</span>(<span class="st">"power_type"</span>, <span class="st">"statistical_test"</span>, <span class="st">"sample_size"</span>, <span class="st">"alpha_level"</span>, <span class="st">"power"</span>, <span class="st">"effect_size"</span>, <span class="st">"effect_size_metric"</span>, <span class="st">"software"</span>)] <span class="sc">|&gt;</span> </span>
+<span id="cb8-3"><a href=""></a>  <span class="fu">flextable</span>()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output-display">
+<div class="tabwid"><style>.cl-a35265d4{}.cl-a34e8e96{font-family:'Helvetica';font-size:20pt;font-weight:normal;font-style:normal;text-decoration:none;color:rgba(255, 255, 255, 1.00);background-color:transparent;}.cl-a3504a1a{margin:0;text-align:left;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);padding-bottom:5pt;padding-top:5pt;padding-left:5pt;padding-right:5pt;line-height: 1;background-color:transparent;}.cl-a3504a24{margin:0;text-align:right;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);padding-bottom:5pt;padding-top:5pt;padding-left:5pt;padding-right:5pt;line-height: 1;background-color:transparent;}.cl-a3505f28{width:0.75in;background-color:transparent;vertical-align: middle;border-bottom: 1.5pt solid rgba(190, 190, 190, 1.00);border-top: 1.5pt solid rgba(190, 190, 190, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-a3505f29{width:0.75in;background-color:transparent;vertical-align: middle;border-bottom: 1.5pt solid rgba(190, 190, 190, 1.00);border-top: 1.5pt solid rgba(190, 190, 190, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-a3505f32{width:0.75in;background-color:transparent;vertical-align: middle;border-bottom: 1.5pt solid rgba(190, 190, 190, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-a3505f33{width:0.75in;background-color:transparent;vertical-align: middle;border-bottom: 1.5pt solid rgba(190, 190, 190, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}</style><table data-quarto-disable-processing="true" class="cl-a35265d4"><thead><tr style="overflow-wrap:break-word;"><th class="cl-a3505f28"><p class="cl-a3504a1a"><span class="cl-a34e8e96">power_type</span></p></th><th class="cl-a3505f28"><p class="cl-a3504a1a"><span class="cl-a34e8e96">statistical_test</span></p></th><th class="cl-a3505f29"><p class="cl-a3504a24"><span class="cl-a34e8e96">sample_size</span></p></th><th class="cl-a3505f29"><p class="cl-a3504a24"><span class="cl-a34e8e96">alpha_level</span></p></th><th class="cl-a3505f29"><p class="cl-a3504a24"><span class="cl-a34e8e96">power</span></p></th><th class="cl-a3505f29"><p class="cl-a3504a24"><span class="cl-a34e8e96">effect_size</span></p></th><th class="cl-a3505f28"><p class="cl-a3504a1a"><span class="cl-a34e8e96">effect_size_metric</span></p></th><th class="cl-a3505f28"><p class="cl-a3504a1a"><span class="cl-a34e8e96">software</span></p></th></tr></thead><tbody><tr style="overflow-wrap:break-word;"><td class="cl-a3505f32"><p class="cl-a3504a1a"><span class="cl-a34e8e96">apriori</span></p></td><td class="cl-a3505f32"><p class="cl-a3504a1a"><span class="cl-a34e8e96">unpaired t-test</span></p></td><td class="cl-a3505f33"><p class="cl-a3504a24"><span class="cl-a34e8e96">48</span></p></td><td class="cl-a3505f33"><p class="cl-a3504a24"><span class="cl-a34e8e96">0.004</span></p></td><td class="cl-a3505f33"><p class="cl-a3504a24"><span class="cl-a34e8e96">0.86</span></p></td><td class="cl-a3505f33"><p class="cl-a3504a24"><span class="cl-a34e8e96">0.6</span></p></td><td class="cl-a3505f32"><p class="cl-a3504a1a"><span class="cl-a34e8e96">Cohen's d</span></p></td><td class="cl-a3505f32"><p class="cl-a3504a1a"><span class="cl-a34e8e96">G*Power</span></p></td></tr></tbody></table></div>
+</div>
+</div>
+<blockquote>
+<p>[…], we used a medium effect size (<i class="esm">d</i>) of <i class="es">0.6</i>, an alpha of <i class="a">.004</i> (Bonferroni corrected for the current study), and power of <i class="power">.8</i> for our sample-size computation (<i class="sw">G*Power Version 3.1.9.2; Faul et al., 2007</i>). The estimated sample size was <i class="ss">33</i> participants, but to fit the counterbalancing, we recruited <i class="ss">48</i>, which yielded a power estimate of <i class="power">.86</i>.</p>
+</blockquote>
+</section>
+<section id="limitations-of-the-llm-based-approach" class="slide level2">
+<h2>Limitations of the LLM-based approach</h2>
+<p>Even LLMs struggle to identify information with inconsisting reporting</p>
+<blockquote>
+<p>Two groups of 48 participants […].</p>
+<p>Sample size was determined using […].</p>
+<p>A two-level factor manipulating fixation placement was added to create a 2 (initial fixation position: background, foreground) × 2 (presentation duration) × 2 (scene type: normal, chimera) × 3 (target condition: foreground, background, inconsistent control) within-subjects design.&nbsp;</p>
 </blockquote>
 </section>
 <section id="we-could-do-better" class="slide level2 smaller">
 <h2>We Could Do Better</h2>
 <p>Only 11% of 1295 power analyses from 1937 <em>Psychological Science</em> papers published between 2014 and 2026 have complete reporting.</p>
+<div class="columns">
+<div class="column" style="width:65%;">
 <table class="caption-top">
 <thead>
 <tr class="header">
 <th style="text-align: left;">Component</th>
-<th style="text-align: right;">Percent Missing<sup>1</sup></th>
+<th style="text-align: right;">Percent Missing</th>
 </tr>
 </thead>
 <tbody>
@@ -349,162 +480,72 @@ NOTE: n is number in *each* group</code></pre>
 </tr>
 </tbody>
 </table>
-<aside><ol class="aside-footnotes"><li id="fn1"><p>Preliminary analysis using <a href="https://scienceverse.github.io/metacheck">Metacheck</a>, from Mesquida, Lakens &amp; DeBruine (in prep)</p></li></ol></aside></section>
-<section id="the-solutions" class="slide level2">
-<h2>The solutions</h2>
-<div class="fragment fade-in-then-out">
-<ul>
-<li>Develop reporting guidelines</li>
-<li>Increase awareness through better training</li>
-<li>Adherence to reporting guidelines</li>
-</ul>
-</div>
-<div class="fragment fade-up">
-<ul>
-<li>Automation</li>
-</ul>
-</div>
-</section>
-<section id="metacheck" class="slide level2">
-<h2>Metacheck</h2>
-<ul>
-<li>It performs automated checks on <strong>manuscripts</strong> and <strong>repositories</strong></li>
-</ul>
-<div class="fragment fade-in-then-out">
-<ul>
-<li>Manuscripts: <code>stat_effect_size</code>, <code>stat_nonsig</code>, <code>marginal</code>, <code>power</code>, etc.</li>
-</ul>
-</div>
-<div class="fragment fade-up">
-<ul>
-<li>Repositories: <code>repo_check</code>, <code>code_check</code>, <code>data_check</code>, etc.</li>
-</ul>
-</div>
-</section>
-<section id="checking-for-power-analysis" class="slide level2">
-<h2>Checking for power analysis</h2>
-<p>The <code>power</code> module</p>
-<ul>
-<li><p><strong>Regex-based approach</strong>: only detects the type of power analysis based on regex</p></li>
-<li><p><strong>LLM-based approach</strong>: identifies components of the power analysis</p></li>
-</ul>
-</section>
-<section id="llm-based-approach" class="slide level2">
-<h2>LLM-based approach</h2>
-<div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb3"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href=""></a><span class="fu">llm_use</span>(<span class="cn">TRUE</span>)</span>
-<span id="cb3-2"><a href=""></a><span class="fu">llm_model</span>(<span class="st">"ollama"</span>)</span>
-<span id="cb3-3"><a href=""></a>res <span class="ot">&lt;-</span> <span class="fu">module_run</span>(psychsci[<span class="dv">110</span>], <span class="st">"power"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-</div>
-<div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb4"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href=""></a>res<span class="sc">$</span>summary_table <span class="sc">|&gt;</span> </span>
-<span id="cb4-2"><a href=""></a>  <span class="fu">flextable</span>()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<div class="cell-output-display">
-<div class="tabwid"><style>.cl-e8fc385c{}.cl-e8f6a22a{font-family:'Helvetica';font-size:20pt;font-weight:normal;font-style:normal;text-decoration:none;color:rgba(255, 255, 255, 1.00);background-color:transparent;}.cl-e8f953c6{margin:0;text-align:left;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);padding-bottom:5pt;padding-top:5pt;padding-left:5pt;padding-right:5pt;line-height: 1;background-color:transparent;}.cl-e8f953d0{margin:0;text-align:right;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);padding-bottom:5pt;padding-top:5pt;padding-left:5pt;padding-right:5pt;line-height: 1;background-color:transparent;}.cl-e8f973a6{width:0.75in;background-color:transparent;vertical-align: middle;border-bottom: 1.5pt solid rgba(190, 190, 190, 1.00);border-top: 1.5pt solid rgba(190, 190, 190, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-e8f973a7{width:0.75in;background-color:transparent;vertical-align: middle;border-bottom: 1.5pt solid rgba(190, 190, 190, 1.00);border-top: 1.5pt solid rgba(190, 190, 190, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-e8f973b0{width:0.75in;background-color:transparent;vertical-align: middle;border-bottom: 1.5pt solid rgba(190, 190, 190, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-e8f973b1{width:0.75in;background-color:transparent;vertical-align: middle;border-bottom: 1.5pt solid rgba(190, 190, 190, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}</style><table data-quarto-disable-processing="true" class="cl-e8fc385c"><thead><tr style="overflow-wrap:break-word;"><th class="cl-e8f973a6"><p class="cl-e8f953c6"><span class="cl-e8f6a22a">paper_id</span></p></th><th class="cl-e8f973a7"><p class="cl-e8f953d0"><span class="cl-e8f6a22a">power_n</span></p></th><th class="cl-e8f973a7"><p class="cl-e8f953d0"><span class="cl-e8f6a22a">power_complete</span></p></th><th class="cl-e8f973a7"><p class="cl-e8f953d0"><span class="cl-e8f6a22a">power_statistical_test</span></p></th><th class="cl-e8f973a7"><p class="cl-e8f953d0"><span class="cl-e8f6a22a">power_sample_size</span></p></th><th class="cl-e8f973a7"><p class="cl-e8f953d0"><span class="cl-e8f6a22a">power_alpha_level</span></p></th><th class="cl-e8f973a7"><p class="cl-e8f953d0"><span class="cl-e8f6a22a">power_power</span></p></th><th class="cl-e8f973a7"><p class="cl-e8f953d0"><span class="cl-e8f6a22a">power_effect_size</span></p></th><th class="cl-e8f973a7"><p class="cl-e8f953d0"><span class="cl-e8f6a22a">power_effect_size_metric</span></p></th><th class="cl-e8f973a7"><p class="cl-e8f953d0"><span class="cl-e8f6a22a">power_software</span></p></th></tr></thead><tbody><tr style="overflow-wrap:break-word;"><td class="cl-e8f973b0"><p class="cl-e8f953c6"><span class="cl-e8f6a22a">0956797620984464</span></p></td><td class="cl-e8f973b1"><p class="cl-e8f953d0"><span class="cl-e8f6a22a">2</span></p></td><td class="cl-e8f973b1"><p class="cl-e8f953d0"><span class="cl-e8f6a22a">2</span></p></td><td class="cl-e8f973b1"><p class="cl-e8f953d0"><span class="cl-e8f6a22a">2</span></p></td><td class="cl-e8f973b1"><p class="cl-e8f953d0"><span class="cl-e8f6a22a">2</span></p></td><td class="cl-e8f973b1"><p class="cl-e8f953d0"><span class="cl-e8f6a22a">2</span></p></td><td class="cl-e8f973b1"><p class="cl-e8f953d0"><span class="cl-e8f6a22a">2</span></p></td><td class="cl-e8f973b1"><p class="cl-e8f953d0"><span class="cl-e8f6a22a">2</span></p></td><td class="cl-e8f973b1"><p class="cl-e8f953d0"><span class="cl-e8f6a22a">2</span></p></td><td class="cl-e8f973b1"><p class="cl-e8f953d0"><span class="cl-e8f6a22a">2</span></p></td></tr></tbody></table></div>
-</div>
-</div>
-</section>
-<section id="first-match" class="slide level2">
-<h2>First match</h2>
-<div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb5"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href=""></a>res<span class="sc">$</span>table[<span class="dv">1</span>, <span class="fu">c</span>(</span>
-<span id="cb5-2"><a href=""></a>  <span class="st">"power_type"</span>, </span>
-<span id="cb5-3"><a href=""></a>  <span class="st">"statistical_test"</span>, </span>
-<span id="cb5-4"><a href=""></a>  <span class="st">"sample_size"</span>, </span>
-<span id="cb5-5"><a href=""></a>  <span class="st">"alpha_level"</span>, </span>
-<span id="cb5-6"><a href=""></a>  <span class="st">"power"</span>, </span>
-<span id="cb5-7"><a href=""></a>  <span class="st">"effect_size"</span>, </span>
-<span id="cb5-8"><a href=""></a>  <span class="st">"effect_size_metric"</span>, </span>
-<span id="cb5-9"><a href=""></a>  <span class="st">"software"</span></span>
-<span id="cb5-10"><a href=""></a>  )] <span class="sc">|&gt;</span> </span>
-<span id="cb5-11"><a href=""></a>  <span class="fu">flextable</span>()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<div class="cell-output-display">
-<div class="tabwid"><style>.cl-e909132e{}.cl-e90514a4{font-family:'Helvetica';font-size:20pt;font-weight:normal;font-style:normal;text-decoration:none;color:rgba(255, 255, 255, 1.00);background-color:transparent;}.cl-e906ae72{margin:0;text-align:left;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);padding-bottom:5pt;padding-top:5pt;padding-left:5pt;padding-right:5pt;line-height: 1;background-color:transparent;}.cl-e906ae7c{margin:0;text-align:right;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);padding-bottom:5pt;padding-top:5pt;padding-left:5pt;padding-right:5pt;line-height: 1;background-color:transparent;}.cl-e906c0f6{width:0.75in;background-color:transparent;vertical-align: middle;border-bottom: 1.5pt solid rgba(190, 190, 190, 1.00);border-top: 1.5pt solid rgba(190, 190, 190, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-e906c100{width:0.75in;background-color:transparent;vertical-align: middle;border-bottom: 1.5pt solid rgba(190, 190, 190, 1.00);border-top: 1.5pt solid rgba(190, 190, 190, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-e906c101{width:0.75in;background-color:transparent;vertical-align: middle;border-bottom: 1.5pt solid rgba(190, 190, 190, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-e906c102{width:0.75in;background-color:transparent;vertical-align: middle;border-bottom: 1.5pt solid rgba(190, 190, 190, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}</style><table data-quarto-disable-processing="true" class="cl-e909132e"><thead><tr style="overflow-wrap:break-word;"><th class="cl-e906c0f6"><p class="cl-e906ae72"><span class="cl-e90514a4">power_type</span></p></th><th class="cl-e906c0f6"><p class="cl-e906ae72"><span class="cl-e90514a4">statistical_test</span></p></th><th class="cl-e906c100"><p class="cl-e906ae7c"><span class="cl-e90514a4">sample_size</span></p></th><th class="cl-e906c100"><p class="cl-e906ae7c"><span class="cl-e90514a4">alpha_level</span></p></th><th class="cl-e906c100"><p class="cl-e906ae7c"><span class="cl-e90514a4">power</span></p></th><th class="cl-e906c100"><p class="cl-e906ae7c"><span class="cl-e90514a4">effect_size</span></p></th><th class="cl-e906c0f6"><p class="cl-e906ae72"><span class="cl-e90514a4">effect_size_metric</span></p></th><th class="cl-e906c0f6"><p class="cl-e906ae72"><span class="cl-e90514a4">software</span></p></th></tr></thead><tbody><tr style="overflow-wrap:break-word;"><td class="cl-e906c101"><p class="cl-e906ae72"><span class="cl-e90514a4">apriori</span></p></td><td class="cl-e906c101"><p class="cl-e906ae72"><span class="cl-e90514a4">unpaired t-test</span></p></td><td class="cl-e906c102"><p class="cl-e906ae7c"><span class="cl-e90514a4">36</span></p></td><td class="cl-e906c102"><p class="cl-e906ae7c"><span class="cl-e90514a4">0.05</span></p></td><td class="cl-e906c102"><p class="cl-e906ae7c"><span class="cl-e90514a4">0.8</span></p></td><td class="cl-e906c102"><p class="cl-e906ae7c"><span class="cl-e90514a4">0.5</span></p></td><td class="cl-e906c101"><p class="cl-e906ae72"><span class="cl-e90514a4">Cohen's d</span></p></td><td class="cl-e906c101"><p class="cl-e906ae72"><span class="cl-e90514a4">G*Power Version 3.1.9.2</span></p></td></tr></tbody></table></div>
-</div>
-</div>
-</section>
-<section id="second-match" class="slide level2">
-<h2>Second match</h2>
-<div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb6"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href=""></a>res<span class="sc">$</span>table[<span class="dv">2</span>, <span class="fu">c</span>(</span>
-<span id="cb6-2"><a href=""></a>  <span class="st">"power_type"</span>, </span>
-<span id="cb6-3"><a href=""></a>  <span class="st">"statistical_test"</span>, </span>
-<span id="cb6-4"><a href=""></a>  <span class="st">"sample_size"</span>, </span>
-<span id="cb6-5"><a href=""></a>  <span class="st">"alpha_level"</span>, </span>
-<span id="cb6-6"><a href=""></a>  <span class="st">"power"</span>, </span>
-<span id="cb6-7"><a href=""></a>  <span class="st">"effect_size"</span>, </span>
-<span id="cb6-8"><a href=""></a>  <span class="st">"effect_size_metric"</span>, </span>
-<span id="cb6-9"><a href=""></a>  <span class="st">"software"</span></span>
-<span id="cb6-10"><a href=""></a>  )] <span class="sc">|&gt;</span> </span>
-<span id="cb6-11"><a href=""></a>  <span class="fu">flextable</span>()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<div class="cell-output-display">
-<div class="tabwid"><style>.cl-e9165c0a{}.cl-e911f700{font-family:'Helvetica';font-size:20pt;font-weight:normal;font-style:normal;text-decoration:none;color:rgba(255, 255, 255, 1.00);background-color:transparent;}.cl-e913803e{margin:0;text-align:left;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);padding-bottom:5pt;padding-top:5pt;padding-left:5pt;padding-right:5pt;line-height: 1;background-color:transparent;}.cl-e9138048{margin:0;text-align:right;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);padding-bottom:5pt;padding-top:5pt;padding-left:5pt;padding-right:5pt;line-height: 1;background-color:transparent;}.cl-e913927c{width:0.75in;background-color:transparent;vertical-align: middle;border-bottom: 1.5pt solid rgba(190, 190, 190, 1.00);border-top: 1.5pt solid rgba(190, 190, 190, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-e9139286{width:0.75in;background-color:transparent;vertical-align: middle;border-bottom: 1.5pt solid rgba(190, 190, 190, 1.00);border-top: 1.5pt solid rgba(190, 190, 190, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-e9139287{width:0.75in;background-color:transparent;vertical-align: middle;border-bottom: 1.5pt solid rgba(190, 190, 190, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-e9139288{width:0.75in;background-color:transparent;vertical-align: middle;border-bottom: 1.5pt solid rgba(190, 190, 190, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}</style><table data-quarto-disable-processing="true" class="cl-e9165c0a"><thead><tr style="overflow-wrap:break-word;"><th class="cl-e913927c"><p class="cl-e913803e"><span class="cl-e911f700">power_type</span></p></th><th class="cl-e913927c"><p class="cl-e913803e"><span class="cl-e911f700">statistical_test</span></p></th><th class="cl-e9139286"><p class="cl-e9138048"><span class="cl-e911f700">sample_size</span></p></th><th class="cl-e9139286"><p class="cl-e9138048"><span class="cl-e911f700">alpha_level</span></p></th><th class="cl-e9139286"><p class="cl-e9138048"><span class="cl-e911f700">power</span></p></th><th class="cl-e9139286"><p class="cl-e9138048"><span class="cl-e911f700">effect_size</span></p></th><th class="cl-e913927c"><p class="cl-e913803e"><span class="cl-e911f700">effect_size_metric</span></p></th><th class="cl-e913927c"><p class="cl-e913803e"><span class="cl-e911f700">software</span></p></th></tr></thead><tbody><tr style="overflow-wrap:break-word;"><td class="cl-e9139287"><p class="cl-e913803e"><span class="cl-e911f700">apriori</span></p></td><td class="cl-e9139287"><p class="cl-e913803e"><span class="cl-e911f700">unpaired t-test</span></p></td><td class="cl-e9139288"><p class="cl-e9138048"><span class="cl-e911f700">48</span></p></td><td class="cl-e9139288"><p class="cl-e9138048"><span class="cl-e911f700">0.004</span></p></td><td class="cl-e9139288"><p class="cl-e9138048"><span class="cl-e911f700">0.86</span></p></td><td class="cl-e9139288"><p class="cl-e9138048"><span class="cl-e911f700">0.6</span></p></td><td class="cl-e9139287"><p class="cl-e913803e"><span class="cl-e911f700">Cohen's d</span></p></td><td class="cl-e9139287"><p class="cl-e913803e"><span class="cl-e911f700">G*Power</span></p></td></tr></tbody></table></div>
-</div>
-</div>
+</div><div class="column" style="width:35%;">
+<p>Preliminary analysis using <a href="https://scienceverse.github.io/metacheck">Metacheck</a>, from Mesquida, Lakens &amp; DeBruine (in prep).</p>
+</div></div>
 </section>
 <section id="the-schema" class="slide level2">
 <h2>The schema</h2>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb7"><pre class="sourceCode numberSource json number-lines code-with-copy"><code class="sourceCode json"><span id="cb7-1"><a href=""></a><span class="fu">{</span></span>
-<span id="cb7-2"><a href=""></a>  <span class="dt">"$schema"</span><span class="fu">:</span> <span class="st">"https://json-schema.org/draft/2020-12/schema"</span><span class="fu">,</span></span>
-<span id="cb7-3"><a href=""></a>  <span class="dt">"$id"</span><span class="fu">:</span> <span class="st">"https://scienceverse.org/schema/power.json"</span><span class="fu">,</span></span>
-<span id="cb7-4"><a href=""></a>  <span class="dt">"title"</span><span class="fu">:</span> <span class="st">"Power Analyses"</span><span class="fu">,</span></span>
-<span id="cb7-5"><a href=""></a>  <span class="dt">"description"</span><span class="fu">:</span> <span class="st">"A power analysis."</span><span class="fu">,</span></span>
-<span id="cb7-6"><a href=""></a>  <span class="dt">"type"</span><span class="fu">:</span> <span class="st">"object"</span><span class="fu">,</span></span>
-<span id="cb7-7"><a href=""></a>  <span class="dt">"properties"</span><span class="fu">:</span> <span class="fu">{</span></span>
-<span id="cb7-8"><a href=""></a>    <span class="dt">"text"</span><span class="fu">:</span> <span class="fu">{</span></span>
-<span id="cb7-9"><a href=""></a>      <span class="dt">"description"</span><span class="fu">:</span> <span class="st">"The specific text that contains all of the information used to determine this object's properties."</span><span class="fu">,</span></span>
-<span id="cb7-10"><a href=""></a>      <span class="dt">"type"</span><span class="fu">:</span> <span class="ot">[</span><span class="st">"string"</span><span class="ot">,</span> <span class="st">"null"</span><span class="ot">]</span></span>
-<span id="cb7-11"><a href=""></a>    <span class="fu">},</span></span>
-<span id="cb7-12"><a href=""></a>    </span>
-<span id="cb7-13"><a href=""></a>    <span class="dt">"power_type"</span><span class="fu">:</span> <span class="fu">{</span></span>
-<span id="cb7-14"><a href=""></a>      <span class="dt">"description"</span><span class="fu">:</span> <span class="st">" ... "</span><span class="fu">,</span></span>
-<span id="cb7-15"><a href=""></a>      <span class="dt">"type"</span><span class="fu">:</span> <span class="ot">[</span><span class="st">"string"</span><span class="ot">,</span> <span class="st">"null"</span><span class="ot">]</span><span class="fu">,</span></span>
-<span id="cb7-16"><a href=""></a>      <span class="dt">"enum"</span><span class="fu">:</span> <span class="ot">[</span><span class="st">"apriori"</span><span class="ot">,</span> <span class="st">"sensitivity"</span><span class="ot">,</span> <span class="st">"posthoc"</span><span class="ot">,</span> <span class="kw">null</span><span class="ot">]</span></span>
-<span id="cb7-17"><a href=""></a>    <span class="fu">},</span></span>
-<span id="cb7-18"><a href=""></a></span>
-<span id="cb7-19"><a href=""></a>    <span class="dt">"statistical_test"</span><span class="fu">:</span> <span class="fu">{</span></span>
-<span id="cb7-20"><a href=""></a>      <span class="dt">"description"</span><span class="fu">:</span> <span class="st">"The statistical test used. Use null if unclear."</span><span class="fu">,</span></span>
-<span id="cb7-21"><a href=""></a>      <span class="dt">"type"</span><span class="fu">:</span> <span class="ot">[</span><span class="st">"string"</span><span class="ot">,</span> <span class="st">"null"</span><span class="ot">]</span><span class="fu">,</span></span>
-<span id="cb7-22"><a href=""></a>      <span class="dt">"enum"</span><span class="fu">:</span> <span class="ot">[</span></span>
-<span id="cb7-23"><a href=""></a>        <span class="st">"paired t-test"</span><span class="ot">,</span></span>
-<span id="cb7-24"><a href=""></a>        <span class="st">"unpaired t-test"</span><span class="ot">,</span></span>
-<span id="cb7-25"><a href=""></a>        <span class="st">"one-sample t-test"</span><span class="ot">,</span></span>
-<span id="cb7-26"><a href=""></a>        <span class="st">"1-way ANOVA"</span><span class="ot">,</span></span>
-<span id="cb7-27"><a href=""></a>        <span class="st">"2-way ANOVA"</span><span class="ot">,</span></span>
-<span id="cb7-28"><a href=""></a>        <span class="er">...</span></span>
-<span id="cb7-29"><a href=""></a>        <span class="st">"other"</span><span class="ot">,</span></span>
-<span id="cb7-30"><a href=""></a>        <span class="kw">null</span></span>
-<span id="cb7-31"><a href=""></a>      <span class="ot">]</span></span>
-<span id="cb7-32"><a href=""></a><span class="er">...</span> </span>
-<span id="cb7-33"><a href=""></a>    <span class="fu">}</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb9"><pre class="sourceCode numberSource json number-lines code-with-copy"><code class="sourceCode json"><span id="cb9-1"><a href=""></a><span class="fu">{</span></span>
+<span id="cb9-2"><a href=""></a>  <span class="dt">"$schema"</span><span class="fu">:</span> <span class="st">"https://json-schema.org/draft/2020-12/schema"</span><span class="fu">,</span></span>
+<span id="cb9-3"><a href=""></a>  <span class="dt">"$id"</span><span class="fu">:</span> <span class="st">"https://scienceverse.org/schema/power.json"</span><span class="fu">,</span></span>
+<span id="cb9-4"><a href=""></a>  <span class="dt">"title"</span><span class="fu">:</span> <span class="st">"Power Analyses"</span><span class="fu">,</span></span>
+<span id="cb9-5"><a href=""></a>  <span class="dt">"description"</span><span class="fu">:</span> <span class="st">"A power analysis."</span><span class="fu">,</span></span>
+<span id="cb9-6"><a href=""></a>  <span class="dt">"type"</span><span class="fu">:</span> <span class="st">"object"</span><span class="fu">,</span></span>
+<span id="cb9-7"><a href=""></a>  <span class="dt">"properties"</span><span class="fu">:</span> <span class="fu">{</span></span>
+<span id="cb9-8"><a href=""></a>    <span class="dt">"text"</span><span class="fu">:</span> <span class="fu">{</span></span>
+<span id="cb9-9"><a href=""></a>      <span class="dt">"description"</span><span class="fu">:</span> <span class="st">"The specific text that contains all of the information used to determine this object's properties."</span><span class="fu">,</span></span>
+<span id="cb9-10"><a href=""></a>      <span class="dt">"type"</span><span class="fu">:</span> <span class="ot">[</span><span class="st">"string"</span><span class="ot">,</span> <span class="st">"null"</span><span class="ot">]</span></span>
+<span id="cb9-11"><a href=""></a>    <span class="fu">},</span></span>
+<span id="cb9-12"><a href=""></a>    </span>
+<span id="cb9-13"><a href=""></a>    <span class="dt">"power_type"</span><span class="fu">:</span> <span class="fu">{</span></span>
+<span id="cb9-14"><a href=""></a>      <span class="dt">"description"</span><span class="fu">:</span> <span class="st">" ... "</span><span class="fu">,</span></span>
+<span id="cb9-15"><a href=""></a>      <span class="dt">"type"</span><span class="fu">:</span> <span class="ot">[</span><span class="st">"string"</span><span class="ot">,</span> <span class="st">"null"</span><span class="ot">]</span><span class="fu">,</span></span>
+<span id="cb9-16"><a href=""></a>      <span class="dt">"enum"</span><span class="fu">:</span> <span class="ot">[</span><span class="st">"apriori"</span><span class="ot">,</span> <span class="st">"sensitivity"</span><span class="ot">,</span> <span class="st">"posthoc"</span><span class="ot">,</span> <span class="kw">null</span><span class="ot">]</span></span>
+<span id="cb9-17"><a href=""></a>    <span class="fu">},</span></span>
+<span id="cb9-18"><a href=""></a></span>
+<span id="cb9-19"><a href=""></a>    <span class="dt">"statistical_test"</span><span class="fu">:</span> <span class="fu">{</span></span>
+<span id="cb9-20"><a href=""></a>      <span class="dt">"description"</span><span class="fu">:</span> <span class="st">"The statistical test used. Use null if unclear."</span><span class="fu">,</span></span>
+<span id="cb9-21"><a href=""></a>      <span class="dt">"type"</span><span class="fu">:</span> <span class="ot">[</span><span class="st">"string"</span><span class="ot">,</span> <span class="st">"null"</span><span class="ot">]</span><span class="fu">,</span></span>
+<span id="cb9-22"><a href=""></a>      <span class="dt">"enum"</span><span class="fu">:</span> <span class="ot">[</span></span>
+<span id="cb9-23"><a href=""></a>        <span class="st">"paired t-test"</span><span class="ot">,</span></span>
+<span id="cb9-24"><a href=""></a>        <span class="st">"unpaired t-test"</span><span class="ot">,</span></span>
+<span id="cb9-25"><a href=""></a>        <span class="st">"one-sample t-test"</span><span class="ot">,</span></span>
+<span id="cb9-26"><a href=""></a>        <span class="st">"1-way ANOVA"</span><span class="ot">,</span></span>
+<span id="cb9-27"><a href=""></a>        <span class="st">"2-way ANOVA"</span><span class="ot">,</span></span>
+<span id="cb9-28"><a href=""></a>        <span class="er">...</span></span>
+<span id="cb9-29"><a href=""></a>        <span class="st">"other"</span><span class="ot">,</span></span>
+<span id="cb9-30"><a href=""></a>        <span class="kw">null</span></span>
+<span id="cb9-31"><a href=""></a>      <span class="ot">]</span></span>
+<span id="cb9-32"><a href=""></a><span class="er">...</span> </span>
+<span id="cb9-33"><a href=""></a>    <span class="fu">}</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </section>
 <section id="validation" class="slide level2">
 <h2>Validation</h2>
 <ul>
-<li>Conducted on 250 articles from Psychological Science</li>
-<li>Created an over-inclusive ground-truth dataset</li>
-<li>Manually coded whether each matched statement was a power analysis (0/1)</li>
+<li>Created an over-inclusive ground-truth dataset using 250 articles from Psychological Science</li>
 <li>Manually coded:
 <ul>
-<li><i class="pt">power type</i></li>
-<li><i class="power">power</i></li>
-<li><i class="ss">sample size</i></li>
-<li><i class="es">effect size</i></li>
-<li><i class="esm">effect size metric</i></li>
-<li><i class="st">statistical test</i></li>
-<li><i class="a">alpha</i></li>
-<li><i class="sw">software</i></li>
+<li>Whether each matched statement was a power analysis</li>
+<li><i class="pt">power type</i>, <i class="power">power</i>,<i class="ss">sample size</i>, <i class="es">effect size</i>, <i class="esm">effect size metric</i>, <i class="st">statistical test</i>, <i class="a">alpha</i>, <i class="sw">software</i></li>
 </ul></li>
 </ul>
 </section>
 <section id="validation-metrics" class="slide level2">
 <h2>Validation metrics</h2>
+<div class="columns">
+<div class="column" style="width:75%;">
 <table class="caption-top">
+<colgroup>
+<col style="width: 55%">
+<col style="width: 15%">
+<col style="width: 28%">
+</colgroup>
 <thead>
 <tr class="header">
 <th>Component</th>
-<th style="text-align: right;">Agree (n)</th>
-<th style="text-align: right;">Accuracy<sup>1</sup></th>
+<th style="text-align: right;">Agree</th>
+<th style="text-align: right;">Accuracy</th>
 </tr>
 </thead>
 <tbody>
@@ -550,13 +591,46 @@ NOTE: n is number in *each* group</code></pre>
 </tr>
 </tbody>
 </table>
-<aside><ol class="aside-footnotes"><li id="fn2"><p>Preliminary analysis using <a href="https://scienceverse.github.io/metacheck">Metacheck</a>, from Mesquida, Lakens &amp; DeBruine (in prep)</p></li></ol></aside></section>
+</div></div>
+</section>
+<section id="our-approach-to-validation" class="slide level2">
+<h2>Our approach to Validation</h2>
+<ul>
+<li>Treat validation as a <span style="color: green;">FAIR workflow</span></li>
+<li>Repeat validation after every release or update</li>
+<li>Transparently report validation metrics</li>
+</ul>
+</section>
 <section id="metacheck-team" class="slide level2">
 <h2>Metacheck team</h2>
 
-
 <img data-src="images/metacheck_team.png" class="r-stretch"></section>
+<section id="reach-out" class="slide level2">
+<h2>Reach out</h2>
+<p>Interested in developing new modules?<br> <br> Get in touch: <code>c.mesquida.caldentey@tue.nl</code></p>
+</section>
+<section id="thank-you" class="slide level2">
+<h2>Thank you!</h2>
+<p><img data-src="images/qrcode.svg" width="500"> <br> <a href="https://github.com/scienceverse/talks/tree/main/2026-forrt-ai-conf" class="uri">https://github.com/scienceverse/talks/tree/main/2026-forrt-ai-conf</a></p>
+</section>
+<section id="references" class="slide level2 smaller scrollable">
+<h2>References</h2>
 
+<div id="refs" class="references csl-bib-body hanging-indent" role="list">
+<div id="ref-bakker2020" class="csl-entry" role="listitem">
+Bakker, Marjan, Coosje L. S. Veldkamp, Olmo R. Van Den Akker, et al. 2020. <span>“Recommendations in Pre-Registrations and Internal Review Board Proposals Promote Formal Power Analyses but Do Not Increase Sample Size.”</span> <em>PLOS ONE</em> 15 (7): e0236079. <a href="https://doi.org/10.1371/journal.pone.0236079">https://doi.org/10.1371/journal.pone.0236079</a>.
+</div>
+<div id="ref-mesquida2025" class="csl-entry" role="listitem">
+Mesquida, Cristian, Jennifer Murphy, Joe Warne, and Daniël Lakens. 2025. <em>Prevalence, Reporting Practices, and Methodological Quality of a Priori Power Analyses in Sports and Exercise Science Research</em>. July. <a href="https://doi.org/10.51224/SRXIV.575">https://doi.org/10.51224/SRXIV.575</a>.
+</div>
+<div id="ref-schulz2005" class="csl-entry" role="listitem">
+Schulz, Kenneth F., and David A. Grimes. 2005. <span>“Sample Size Calculations in Randomised Trials: Mandatory and Mystical.”</span> <em>The Lancet</em> 365 (9467): 13481353. <a href="https://doi.org/10.1016/S0140-6736(05)61034-3">https://doi.org/10.1016/S0140-6736(05)61034-3</a>.
+</div>
+<div id="ref-thibault_2024" class="csl-entry" role="listitem">
+Thibault, Robert T., Emmanuel A. Zavalis, Mario Malički, and Hugo Pedder. 2024. <em>An Evaluation of Reproducibility and Errors in Published Sample Size Calculations Performed Using g*power</em>. <a href="https://doi.org/10.1101/2024.07.15.24310458">https://doi.org/10.1101/2024.07.15.24310458</a>.
+</div>
+</div>
+</section>
     </div>
   <div class="quarto-auto-generated-content" style="display: none;">
 <p><img src="images/metacheck.png" class="slide-logo"></p>
