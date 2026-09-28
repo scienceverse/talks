@@ -16,6 +16,7 @@ format:
     transition: none
     transition-speed: fast
     syntax-highlighting: zenburn
+    slide-number: true
 bibliography: references.bib
 ---
 
