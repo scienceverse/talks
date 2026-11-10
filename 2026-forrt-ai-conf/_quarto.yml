@@ -1,0 +1,6 @@
+project:
+  title: "Power module"
+
+format:
+  revealjs:
+    output-file: index.html

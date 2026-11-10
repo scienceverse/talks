@@ -1,0 +1,48 @@
+/*-- scss:defaults --*/
+
+$body-bg: #222;
+
+/*-- scss:rules --*/
+
+:root {
+  --red:    #FF5C57;
+  --orange: #FF9F43;
+  --yellow: #FFD93D;
+  --green:  #57D163;
+  --aqua:   #3DD6C6;
+  --blue:   #4DA6FF;
+  --purple: #B084F5;
+  --pink:   #FF6BCB;
+}
+
+.checklist li {
+  list-style: none;
+}
+
+.checklist li::before {
+  content: '';
+  display: inline-block;
+  margin: 0 0 -.25em -1.3em;
+  height: 1.2em;
+  width: 1.2em;
+  background-image: url(images/checkbox.svg);
+}
+
+.plotcode {
+  font-size: .8em;
+}
+
+code.sourceCode { padding-bottom: 1em !important; }
+
+.pt { color: var(--red) }
+.power { color: var(--orange) }
+.ss { color: var(--yellow) }
+.es { color: var(--green) }
+.esm { color: var(--aqua) }
+.st { color: var(--blue) }
+.a { color: var(--purple) }
+.sw { color: var(--pink) }
+
+.reveal pre code {
+  max-height: 500px;
+}
