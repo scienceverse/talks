@@ -2164,9 +2164,28 @@ vertical-align: -.125em;
 
 <style type="text/css">/*-- scss:defaults --*/
 
-$body-bg: #FFF;
+// Typography
+$font-family-sans-serif: "Cabin", sans-serif !default;
+$headings-font-family: "Cabin", sans-serif !default;
+$font-family-monospace: "Fira Code", monospace !default;
+
+// Colors
+$body-bg: #E9E8E5 !default;
+$body-color: #262624 !default;
+
+$primary: #2F6F1C !default;
+$secondary: #5E5C58 !default;
+
+$border-color: #CFCDC8 !default;
+
+// Base typography
+$font-size-base: 1.0625rem !default;
+$line-height-base: 1.6 !default;
 
 /*-- scss:rules --*/
+
+@import url('https://fonts.googleapis.com/css2?family=Cabin:wght@400;500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Fira+Code:wght@300..700&display=swap');
 
 :root {
   --red: #B52824; 
@@ -2197,26 +2216,9 @@ h3.yellow::before { content: '🟡 '; }
 h3.green::before { content: '🟢 '; }
 
 
-.module p, .module table {
-  font-size: 0.5em;
-}
-
-.module h3 { 
-  font-size: 0.75em;
-  margin-top: 1em; 
-}
-
-.checklist li {
-  list-style: none;
-}
-
-.checklist li::before {
-  content: '';
-  display: inline-block;
-  margin: 0 0 -.25em -1.3em;
-  height: 1.2em;
-  width: 1.2em;
-}</style>
+h1.title {font-size: 1.8em;}
+.slide-logo { max-height: 5rem !important; 
+              height: 5rem !important; }</style>
 </head>
 
 <body class="fullcontent quarto-light">
@@ -2245,6 +2247,7 @@ h3.green::before { content: '🟢 '; }
 
 
 <ul>
+<li><a href="2026-bennett-open-code">Open Code Needs Open Checks: Automated FAIR Data and Computational Reproducibility Assessment with Metacheck</a> for the <a href="https://www.bennett.ox.ac.uk/events/2026-bennett-institute-symposium/">Bennett Oxford Symposium on Open Code in Science</a> 2026-12-08</li>
 <li><a href="2026-power-sim">Power and Simulation</a> for the 10th annual <a href="https://vasishth.github.io/smlp2026/">Summer School on Statistical Methods for Linguistics and Psychology</a> 2026-08-25</li>
 <li><a href="2026-demo-oslo">Metacheck Demo</a> for OHN 2026-06-25</li>
 <li><a href="2025-fdsai-ethics">Spotlight AI for Research</a> for Using AI Ethically for Research at Festival of Data Science and AI 2025-10-27</li>

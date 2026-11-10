@@ -1,0 +1,55 @@
+```{r, include=FALSE}
+folder <- normalizePath(".") |> basename()
+url <- sprintf("https://scienceverse.org/talks/%s/", folder)
+link_display <- sprintf("![](images/scienceverse.png){height=300} ![](images/qrcode.svg){height=320 style='margin: 0 1em;'} ![](images/metacheck.png){height=300}\\n\\n[%s](%s)", url, url)
+# make QR code
+qrcode::qr_code(url) |> 
+  qrcode::generate_svg("images/qrcode.svg", 
+                       background = "#E9E8E5", # bg-color from scss
+                       foreground = "black")
+```
+---
+title: "Open Code Needs Open Checks"
+subtitle: "Automated FAIR Data and Computational Reproducibility Assessment with Metacheck"
+author: "`r link_display`"
+format: 
+  revealjs:
+    logo: images/metacheck.png
+    theme: style.scss
+    transition: none
+    transition-speed: fast
+    syntax-highlighting: zenburn
+---
+
+```{r, include = FALSE}
+library(tidyverse)
+library(flextable)
+
+knitr::opts_chunk$set(echo = FALSE)
+
+set_flextable_defaults(font.size = 20)
+theme_set(theme_minimal(base_size = 17))
+set.seed(8675309)
+```
+
+# Abstract
+
+[2026 Bennett Oxford Symposium on Open Code in Science ](https://www.bennett.ox.ac.uk/events/2026-bennett-institute-symposium/)
+
+
+# Thank You! {.center}
+
+:::: {.columns}
+::: {.column width="50%"}
+Speaker: [Lisa DeBruine](https://debruine.github.io)
+
+![](images/qrcode.svg)
+:::
+::: {.column width="50%"}
+Come find me today or tomorrow if you want to chat about using or improving metacheck.
+
+Or contact us at <https://www.scienceverse.org/metacheck/>
+:::
+::::
+
+<`r url`>
