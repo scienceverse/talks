@@ -7,6 +7,7 @@ format:
 ---
 
 * [Open Code Needs Open Checks: Automated FAIR Data and Computational Reproducibility Assessment with Metacheck](2026-bennett-open-code) for the [Bennett Oxford Symposium on Open Code in Science ](https://www.bennett.ox.ac.uk/events/2026-bennett-institute-symposium/) 2026-12-08
+* [Power module](2026-forrt-ai-conf) for FORRT AI Conference
 * [Power and Simulation](2026-power-sim) for the 10th annual [Summer School on Statistical Methods for Linguistics and Psychology](https://vasishth.github.io/smlp2026/) 2026-08-25
 * [Metacheck Demo](2026-demo-oslo) for OHN 2026-06-25
 * [Spotlight AI for Research](2025-fdsai-ethics) for Using AI Ethically for Research at Festival of Data Science and AI 2025-10-27
